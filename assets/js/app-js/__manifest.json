@@ -1,6 +1,7 @@
 {
     "name": "SADHNA",
     "short_name": "SSCY",
+    "id":"sscy",
     "start_url": "https://sscy.toxscube.in/app/",
     "display": "standalone",
     "scope" : "https://sscy.toxscube.in/app/",
