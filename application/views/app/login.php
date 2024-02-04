@@ -14,7 +14,7 @@
     
     <link rel="stylesheet" href="<?=base_url("assets/css/app-css/style.css")?>">
     <link rel="stylesheet" href="<?=base_url("assets/css/app-css/app-style.css")?>">
-    <!-- <link rel="manifest" href="<?=base_url("assets/js/app-js/__manifest.json")?>"> -->
+    <link rel="manifest" href="<?=base_url("assets/js/app-js/__manifest.json")?>">
 </head>
 
 <body>
