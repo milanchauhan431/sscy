@@ -15654,3 +15654,56 @@ INFO - 2024-02-05 03:43:59 --> Model "UserMasterModel" initialized
 INFO - 2024-02-05 03:43:59 --> File loaded: D:\xampp\htdocs\sscy\application\views\app/user_master/form.php
 INFO - 2024-02-05 03:43:59 --> Final output sent to browser
 DEBUG - 2024-02-05 03:43:59 --> Total execution time: 0.0118
+ERROR - 2024-02-05 03:44:22 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+INFO - 2024-02-05 03:44:22 --> Config Class Initialized
+INFO - 2024-02-05 03:44:22 --> Hooks Class Initialized
+DEBUG - 2024-02-05 03:44:22 --> UTF-8 Support Enabled
+INFO - 2024-02-05 03:44:22 --> Utf8 Class Initialized
+INFO - 2024-02-05 03:44:22 --> URI Class Initialized
+INFO - 2024-02-05 03:44:22 --> Router Class Initialized
+INFO - 2024-02-05 03:44:22 --> Output Class Initialized
+INFO - 2024-02-05 03:44:22 --> Security Class Initialized
+DEBUG - 2024-02-05 03:44:22 --> Global POST, GET and COOKIE data sanitized
+INFO - 2024-02-05 03:44:22 --> Input Class Initialized
+INFO - 2024-02-05 03:44:22 --> Language Class Initialized
+INFO - 2024-02-05 03:44:22 --> Loader Class Initialized
+INFO - 2024-02-05 03:44:22 --> Helper loaded: url_helper
+INFO - 2024-02-05 03:44:22 --> Helper loaded: file_helper
+INFO - 2024-02-05 03:44:22 --> Helper loaded: form_helper
+INFO - 2024-02-05 03:44:22 --> Database Driver Class Initialized
+DEBUG - 2024-02-05 03:44:22 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+INFO - 2024-02-05 03:44:22 --> Session: Class initialized using 'files' driver.
+INFO - 2024-02-05 03:44:22 --> Controller Class Initialized
+INFO - 2024-02-05 03:44:22 --> Form Validation Class Initialized
+INFO - 2024-02-05 03:44:22 --> Model "MasterModel" initialized
+INFO - 2024-02-05 03:44:22 --> Model "UserMasterModel" initialized
+INFO - 2024-02-05 03:44:22 --> File loaded: D:\xampp\htdocs\sscy\application\views\app/includes/header.php
+INFO - 2024-02-05 03:44:22 --> File loaded: D:\xampp\htdocs\sscy\application\views\app/includes/sidebar.php
+INFO - 2024-02-05 03:44:22 --> File loaded: D:\xampp\htdocs\sscy\application\views\app/includes/modal.php
+INFO - 2024-02-05 03:44:22 --> File loaded: D:\xampp\htdocs\sscy\application\views\app/includes/footer.php
+INFO - 2024-02-05 03:44:22 --> File loaded: D:\xampp\htdocs\sscy\application\views\app/user_master/index.php
+INFO - 2024-02-05 03:44:22 --> Final output sent to browser
+DEBUG - 2024-02-05 03:44:22 --> Total execution time: 0.0150
+ERROR - 2024-02-05 03:44:22 --> Could not find the specified $config['composer_autoload'] path: vendor/autoload.php
+INFO - 2024-02-05 03:44:22 --> Config Class Initialized
+INFO - 2024-02-05 03:44:22 --> Hooks Class Initialized
+DEBUG - 2024-02-05 03:44:22 --> UTF-8 Support Enabled
+INFO - 2024-02-05 03:44:22 --> Utf8 Class Initialized
+INFO - 2024-02-05 03:44:22 --> URI Class Initialized
+INFO - 2024-02-05 03:44:22 --> Router Class Initialized
+INFO - 2024-02-05 03:44:22 --> Output Class Initialized
+INFO - 2024-02-05 03:44:22 --> Security Class Initialized
+DEBUG - 2024-02-05 03:44:22 --> Global POST, GET and COOKIE data sanitized
+INFO - 2024-02-05 03:44:22 --> Input Class Initialized
+INFO - 2024-02-05 03:44:22 --> Language Class Initialized
+INFO - 2024-02-05 03:44:22 --> Loader Class Initialized
+INFO - 2024-02-05 03:44:22 --> Helper loaded: url_helper
+INFO - 2024-02-05 03:44:22 --> Helper loaded: file_helper
+INFO - 2024-02-05 03:44:22 --> Helper loaded: form_helper
+INFO - 2024-02-05 03:44:22 --> Database Driver Class Initialized
+DEBUG - 2024-02-05 03:44:22 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+INFO - 2024-02-05 03:44:22 --> Session: Class initialized using 'files' driver.
+INFO - 2024-02-05 03:44:22 --> Controller Class Initialized
+INFO - 2024-02-05 03:44:22 --> Form Validation Class Initialized
+INFO - 2024-02-05 03:44:22 --> Model "MasterModel" initialized
+INFO - 2024-02-05 03:44:22 --> Model "UserMasterModel" initialized

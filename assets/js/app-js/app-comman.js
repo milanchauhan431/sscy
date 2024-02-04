@@ -118,7 +118,7 @@ function initModal(postData,response){
 	}
 	
 	setTimeout(function(){ 
-		$("#"+modalId+" .select2").select2({with:null});
+		$("#"+postData.modal_id+" .select2").select2({with:null});
 	}, 5);
 	setTimeout(function(){
 		$('#'+postData.modal_id+'  :input:enabled:visible:first, select:first').focus();
