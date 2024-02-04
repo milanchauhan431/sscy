@@ -108,7 +108,7 @@
 </html>
 
 <script>
-    const inputs = document.querySelectorAll(".input");
+const inputs = document.querySelectorAll(".input");
 const rmCheck = document.getElementById("rememberMe"),emailInput = document.getElementById("user_name"),password = document.getElementById("password");
 $(document).ready(function(){
     if (localStorage.checkbox && localStorage.checkbox !== "") {
