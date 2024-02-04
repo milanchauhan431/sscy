@@ -62,7 +62,7 @@ var loader =  document.getElementById('loader');
 //-----------------------------------------------------------------------
 if (SADHNA.PWA.enable) {
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('https://sscy.toxscube.com/app/assets/js/app-js/__service-worker.js')
+        navigator.serviceWorker.register('https://sscy.toxscube.com/service-worker.js')
             .then(reg => console.log('service worker registered'))
             .catch(err => console.log('service worker not registered - there is an error.', err));
     }
