@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="icon" type="image/png" sizes="16x16" href="<?=base_url("assets/dist/img/deckle_logo.png")?>">
+	<link rel="icon" type="image/png" sizes="16x16" href="<?=base_url("assets/dist/img/favicon.png")?>">
 	<title>LOGIN | <?=SITENAME?></title>
 	
     <!-- icheck bootstrap -->
@@ -10,8 +10,13 @@
 	<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
 	<script src="https://kit.fontawesome.com/a81368914c.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+
 </head>
 <body>
+	<div class="preloader flex-column justify-content-center align-items-center">
+		<img class="animation__shake" src="<?=base_url("assets/dist/img/logo.png")?>" alt="Deckle Logo" height="80" width="80" style="border:1px solid black; border-radius:3rem; display:none;">
+	</div>
+
 	<img class="wave" src="<?=base_url("assets/dist/img/wave.png")?>">
 	<div class="container">
 		<div class="img">
@@ -20,7 +25,7 @@
 		<div class="login-content">
 			<form id="loginForm">
 				<!-- <img src="<?=base_url("assets/dist/img/avatar.svg")?>"> -->
-				<img src="<?=base_url("assets/dist/img/deckle_text_logo.png")?>">
+				<img src="<?=base_url("assets/dist/img/logo.png")?>">
 				<div class="error formError"></div>
 				<div class="form-input">
 					<div class="input-div one userName">
@@ -130,12 +135,18 @@ $(document).ready(function(){
 			processData:false,
 			contentType:false,
 			dataType:"json",
+			beforeSend: function() {
+				$(".preloader").attr("style","height: 100vh;");
+				$(".animation__shake").show();
+			},
 		}).done(function(response){
 			if(response.status == true){
 				localStorage.authToken = response.data.token;
 				localStorage.menus = response.data.menus;
 				window.location.href = '<?=base_url("dashboard")?>';
 			}else{
+				$(".preloader").attr("style","");
+				$(".animation__shake").hide();
 				$(".formError").html(response.message);
 			}
 		});

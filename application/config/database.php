@@ -75,10 +75,10 @@ $query_builder = TRUE;
 date_default_timezone_set('Asia/Kolkata');
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => '',
-	'username' => "",
-	'password' => "",
-	'database' => "",
+	'hostname' => 'localhost',
+	'username' => USER_NAME,
+	'password' => PASSWORD,
+	'database' => MASTER_DB,
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => TRUE,

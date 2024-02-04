@@ -84,9 +84,27 @@ defined('EXIT_USER_INPUT')     OR define('EXIT_USER_INPUT', 7); // invalid user 
 defined('EXIT_DATABASE')       OR define('EXIT_DATABASE', 8); // database error
 defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
+define('FIREBASE_API_KEY','');
 
-define("SITENAME","Deckle");
-define("API_URL","http://dec.saffroninfosoft.com/api/");
+define("LIVE_LINK","https://sscy.toxscube.com/");
+
+define('HOST_NAME','localhost');
+if($_SERVER['HTTP_HOST'] == 'localhost' || $_SERVER['HTTP_HOST'] == "192.168.1.2"):
+	define('SERVER_PREFIX','');
+	define('USER_NAME','root');
+	define('PASSWORD','');
+	define('DEVELOPMENT',1);
+else:
+	define('SERVER_PREFIX','u960016065_');
+	define('USER_NAME',SERVER_PREFIX.'sscy');
+	define('PASSWORD','Sscy@012024$');
+	define('DEVELOPMENT',0);
+endif;
+
+define('SITENAME','SSCY');
+define('MASTER_DB', SERVER_PREFIX.'sscy');
+define('POPUP_TITLE', 'SSCY');
+define('ISO_COMPANY_TITLE', 'SSCY');
 
 
 

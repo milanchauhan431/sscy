@@ -119,7 +119,7 @@ function setPlaceHolder(){
 			$(this).attr("autocomplete", 'off');
 			var errorClass="";
 			var nm = $(this).attr('name');
-			if($(this).attr('id')){errorClass=$(this).attr('id');}else{errorClass=$(this).attr('id');if(errorClass){errorClass = errorClass.replace("[]", "");}}
+			if($(this).attr('id')){errorClass=$(this).attr('id');}else{errorClass=$(this).attr('name');if(errorClass){errorClass = errorClass.replace("[]", "");}}
 			/* if(inputElement.find('.'+errorClass).length <= 0){inputElement.append('<div class="error '+ errorClass +'"></div>');} */
 		}
 		else{$(this).attr("autocomplete", 'off');}
@@ -135,7 +135,7 @@ function setPlaceHolder(){
 		$(this).attr("autocomplete", 'off');
 		var errorClass="";
 		var nm = $(this).attr('name');
-		if($(this).attr('id')){errorClass=$(this).attr('id');}else{errorClass=$(this).attr('id');}
+		if($(this).attr('id')){errorClass=$(this).attr('id');}else{errorClass=$(this).attr('name');}
 		/* if($(this).parent().find('.'+errorClass).length <= 0){$(this).parent().append('<div class="error '+ errorClass +'"></div>');} */
 	});
 
@@ -149,7 +149,7 @@ function setPlaceHolder(){
 		if($(this).hasClass('req')){selectElement.children("label").html(label + ' <strong class="text-danger">*</strong>');}
 		var errorClass="";
 		var nm = $(this).attr('name');
-		if($(this).attr('id')){errorClass=$(this).attr('id');}else{errorClass=$(this).attr('id');}
+		if($(this).attr('id')){errorClass=$(this).attr('id');}else{errorClass=$(this).attr('name');}
 		/* if(selectElement.find('.'+errorClass).length <= 0){selectElement.append('<div class="error '+ errorClass +'"></div>');} */
 	});
 }

@@ -10,7 +10,8 @@ class Error_403 extends CI_controller
 
   public function index(){
     $this->output->set_status_header('403');
-    $this->load->view('page-403',$this->data);
+    $page = (!empty($this->session->userdata('is_app')))?"app/app-403":"page-403";
+    $this->load->view($page,$this->data);
   }
 }
 ?>

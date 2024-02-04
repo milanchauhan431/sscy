@@ -10,7 +10,8 @@ class Error_404 extends CI_controller
 
   public function index(){
     $this->output->set_status_header('404');
-    $this->load->view('page-404',$this->data);
+    $page = (!empty($this->session->userdata('is_app')))?"app/app-404":"page-404";
+    $this->load->view($page,$this->data);
   }
 }
 ?>

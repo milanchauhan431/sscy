@@ -9,8 +9,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="<?=base_url("assets/dist/img/deckle_logo.png")?>">
-    <title><?=SITENAME?> - <?=(isset($headData->pageName)) ? $headData->pageName : '' ?></title>
+    <link rel="icon" type="image/png" sizes="16x16" href="<?=base_url("assets/dist/img/logo.png")?>">
+    <title><?=SITENAME?> - ERROR 404</title>
     <!-- Theme style -->
     <link rel="stylesheet" href="<?=base_url("assets/dist/css/adminlte.min.css?v=".time())?>">
     <Style>
@@ -382,7 +382,7 @@
     <div class="error">
         <div class="container-floud">
             <div class="col-md-12 ground-color text-center">
-                <img src="<?=base_url('assets/dist/img/deckle_text_logo.png')?>" style="width:400px;margin-top:10px;border-bottom:2px dotted #000000;" />
+                <img src="<?=base_url('assets/dist/img/logo.png')?>" style="width:150px;margin-top:10px;border-bottom:2px dotted #000000;" />
                 <div class="container-error-404">
                     <div class="clip">
                         <div class="shadow"><span class="digit thirdDigit"></span></div>
