@@ -12,8 +12,8 @@
     <link rel="icon" type="image/png" href="<?=base_url("assets/dist/img/icon.png")?>" sizes="32x32">
     <link rel="apple-touch-icon" sizes="180x180" href="<?=base_url("assets/dist/img/app-img/icon/192x192.png")?>">
 
-    <link rel="stylesheet" href="<?=base_url("assets/css/app-css/style.css?v=".time())?>">
-    <link rel="stylesheet" href="<?=base_url("assets/css/app-css/app-style.css?v=".time())?>">
+    <link rel="stylesheet" href="<?=base_url("assets/css/app-css/style.css")?>">
+    <link rel="stylesheet" href="<?=base_url("assets/css/app-css/app-style.css")?>">
     <link rel="manifest" href="<?=base_url("assets/js/app-js/__manifest.json")?>">
 </head>
 

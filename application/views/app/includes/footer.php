@@ -73,11 +73,11 @@
     <!-- Splide -->
     <script src="<?=base_url("assets/js/app-js/plugins/splide/splide.min.js")?>"></script>
     <!-- Base Js File -->
-    <script src="<?=base_url("assets/js/app-js/base.js?v=".time())?>"></script>
+    <script src="<?=base_url("assets/js/app-js/base.js")?>"></script>
 
     <!-- Custom JS -->
-    <script src="<?=base_url("assets/js/app-js/app-comman.js?v=".time())?>"></script>
-    <script src="<?=base_url("assets/js/app-js/app-lazy-load.js?v=".time())?>"></script>
+    <script src="<?=base_url("assets/js/app-js/app-comman.js")?>"></script>
+    <script src="<?=base_url("assets/js/app-js/app-lazy-load.js")?>"></script>
 
     <script>
         // Add to Home with 2 seconds delay.
