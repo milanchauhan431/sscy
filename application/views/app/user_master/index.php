@@ -65,7 +65,7 @@ $(document).ready(function(){
 
 function dataListing(response){
     var dataList = response.data;
-    var totalRecords = response.recordsTotal
+    var totalRecords = response.recordsFiltered;
     if(dataList.length > 0){
         $.each(dataList,function(key,row){
             
