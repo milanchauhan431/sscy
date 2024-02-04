@@ -74,6 +74,10 @@
     <script src="<?=base_url("assets/js/app-js/plugins/splide/splide.min.js")?>"></script>
     <!-- Base Js File -->
     <script src="<?=base_url("assets/js/app-js/base.js")?>"></script>
+    <!-- Jquery Confirm -->
+    <script src="<?=base_url("assets/js/jquery-confirm.js");?>"></script>
+    <!-- Select2 -->
+    <script src="<?=base_url("assets/plugins/select2/js/select2.full.min.js")?>"></script>
 
     <!-- Custom JS -->
     <script src="<?=base_url("assets/js/app-js/app-comman.js")?>"></script>
@@ -82,9 +86,28 @@
     <script>
         // Add to Home with 2 seconds delay.
         AddtoHome("2000", "once");
+
+        var base_url = '<?=base_url("app/")?>';
+        var controller = '<?=$headData->controller?>';
     </script>
 
     <?php $this->load->view("app/includes/modal.php"); ?>
+
+    <div id="success" class="toast-box toast-bottom bg-success">
+        <div class="in">
+            <div class="text">
+                Auto close in 2 seconds
+            </div>
+        </div>
+    </div>
+
+    <div id="error" class="toast-box toast-bottom bg-danger">
+        <div class="in">
+            <div class="text">
+                Auto close in 2 seconds
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

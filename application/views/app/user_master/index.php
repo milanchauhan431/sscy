@@ -13,7 +13,10 @@
             <ion-icon name="search-outline"></ion-icon>
         </a>
 
-        <a href="#" class="button" data-bs-toggle="modal" data-bs-target="#depositActionSheet">
+        <?php
+            $addParam = "{'modal_id' : 'ModalBasic', 'controller' : 'userMaster','call_function':'addUser', 'form_id' : 'userFrom', 'title' : 'Add Kariger'}";
+        ?>
+        <a href="#" class="button" onclick="modalAction(<?=$addParam?>);">
             <ion-icon name="add-outline"></ion-icon>
         </a>
     </div>

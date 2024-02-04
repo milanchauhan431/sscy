@@ -48,6 +48,95 @@
     border-radius: 0;
 }
 
+/* Select 2 */
+.select2-container--classic .select2-selection--single,
+.select2-container--default .select2-selection--single,
+.select2-container--default .select2-selection--single .select2-selection__rendered,
+.select2-container--default .select2-selection--single .select2-selection__arrow,
+.select2-container--default .select2-selection--multiple {
+  border-color: #ced4da;
+  height: calc(2.25rem + 2px);
+  color: #3e5569;
+  line-height: 1.5;
+  overflow: hidden !important;
+}
+
+.select2-container--default .select2-selection--multiple {
+  line-height: 27px; 
+}
+
+.select2-container--classic .select2-selection--multiple .select2-selection__choice,
+.select2-container--default .select2-selection--multiple .select2-selection__choice,
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+  background-color: #20ffbc;
+  border-color: #5dd6b2;
+  color: #fff; 
+}
+
+.select2-container .select2-selection--single{
+  height: calc(2.25rem + 2px);
+  border-radius: 0.2rem !important;
+}
+.select2-container--open { z-index: 999999 !important; width:100% !important; }
+
+.select2-container .select2-selection--single .select2-selection__rendered {
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: break-spaces !important;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.select2-container--default.select2-container--focus .select2-selection--multiple, .select2-container--default.select2-container--focus .select2-selection--single {
+  border-color: #5dd6b2;
+}
+
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+  background-color: #20ffbc;
+  color: black;
+}
+
+.select2-container--default .select2-results__option--highlighted[aria-selected]:hover {
+  background-color: #20ffbc;
+  color: black;
+}
+
+.select2-container--default.select2-container--open .select2-selection--single {
+  border-color: #5dd6b2;
+}
+
+.select2-container--default .select2-dropdown .select2-search__field:focus, .select2-container--default .select2-search--inline .select2-search__field:focus {
+  outline: 0;
+  border: 1px solid #5dd6b2;
+}
+/* Select 2 */
+
+.form-control:focus {
+    border-color: #5dd6b2;
+}
+
+.form-group.basic .form-control:focus, .form-group.basic .custom-select:focus {
+    border-bottom-color: #5dd6b2;
+    box-shadow: inset 0 -1px 0 0 #5dd6b2;
+}
+
+.btn-close {
+    box-sizing: content-box;
+    width: 1em;
+    height: 1em;
+    padding: 0.25em 0.25em;
+    color: #000;
+    border: 0;
+    border-radius: 0.25rem;
+    background: none;
+    opacity: 1;
+}
+
+.modal-header .btn-close {
+    padding: 0.5rem 0.5rem;
+    margin: 0;
+}
+
 /* Margin in px start */
 .m-1{ margin : 1px !important; }
 .m-2{ margin : 2px !important; }

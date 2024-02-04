@@ -16,7 +16,7 @@
 <!-- * Deposit Action Sheet -->
 
 <!-- Modal Basic -->
-<div class="modal fade modalbox" id="ModalBasic" tabindex="-1" role="dialog">
+<div class="modal fade modalbox" id="ModalBasic" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">

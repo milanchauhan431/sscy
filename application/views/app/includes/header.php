@@ -12,8 +12,17 @@
     <link rel="icon" type="image/png" href="<?=base_url("assets/dist/img/icon.png")?>" sizes="32x32">
     <link rel="apple-touch-icon" sizes="180x180" href="<?=base_url("assets/dist/img/app-img/icon/192x192.png")?>">
 
+    <!-- App Style -->
     <link rel="stylesheet" href="<?=base_url("assets/css/app-css/style.css")?>">
     <link rel="stylesheet" href="<?=base_url("assets/css/app-css/app-style.css")?>">
+
+    <!-- Select2 -->
+    <link rel="stylesheet" href="<?=base_url("assets/plugins/select2/css/select2.min.css")?>">
+    <link rel="stylesheet" href="<?=base_url("assets/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css")?>">
+
+    <!-- Jquery Confirm -->
+    <link href="<?=base_url("assets/css/jquery-confirm.css");?>" rel="stylesheet" type="text/css">
+
     <link rel="manifest" href="<?=base_url("assets/js/app-js/__manifest.json")?>">
 </head>
 

@@ -387,20 +387,26 @@ var toastTaptoClose = document.querySelectorAll(".toast-box.tap-to-close");
 var toastBoxes = document.querySelectorAll(".toast-box");
 
 function closeToastBox() {
-    toastBoxes.forEach(function (el) {
-        el.classList.remove("show")
-    })
+    /* toastBoxes.forEach(function (el) {
+        el.classList.remove("show");
+    }); */
+
+    $.each($(".toast-box"),function(el){
+        $(this).removeClass("show");
+        $(".toast-box .text").html("");
+    });
 }
-function toastbox(target, time) {
+function toastbox(target,text, time) {
     var a = document.getElementById(target);
     closeToastBox()
     setTimeout(() => {
-        a.classList.add("show")
+        $("#"+target).addClass("show");
+        $("#"+target+" .text").html(text);
     }, 100);
     if (time) {
         time = time + 100;
-        setTimeout(() => {
-            closeToastBox()
+        setTimeout(function(){
+            closeToastBox();
         }, time);
     }
 }

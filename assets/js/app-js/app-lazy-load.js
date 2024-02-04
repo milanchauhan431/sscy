@@ -41,6 +41,15 @@ function loadTransaction(){
 	loadMore(postData);
 }
 
+function reloadTransaction(){
+    var search = $('#commanSerach').val() || "";
+    load_flag = 0;
+	var dataSet = {draw:1,start:load_flag,length:25,search : {value : search, regex : false}};
+	var url = $("#transactions").attr('data-url');
+	var postData = {url:url,dataSet:dataSet,resFunctionName:"dataListing"};
+	loadMore(postData);
+}
+
 function tabLoading(url){
 	load_flag = 0;
 	$("#transactions").removeAttr('data-url');

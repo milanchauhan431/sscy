@@ -22,5 +22,9 @@ class UserMaster extends MY_Controller{
         $result = $this->userMaster->getDTRows($data);
         $this->printJson($result);
     }
+
+    public function addUser(){
+        $this->load->view($this->form,$this->data);
+    }
 }
 ?>
