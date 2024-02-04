@@ -58,25 +58,6 @@ function siteStatus(data=""){
     }    
 }
 
-function modalAction(data){
-	var call_function = data.call_function;
-	if(call_function == "" || call_function == null){call_function="edit";}
-
-	var fnsave = data.fnsave;
-	if(fnsave == "" || fnsave == null){fnsave="save";}
-
-	var controllerName = data.controller;
-	if(controllerName == "" || controllerName == null){controllerName=controller;}	
-
-	$.ajax({ 
-		type: "POST",   
-		url: base_url + controllerName + '/' + call_function,   
-		data: data.postData,
-	}).done(function(response){
-		initModal(data,response);
-	});
-}
-
 function initModal(postData,response){
 	var button = postData.button;if(button == "" || button == null){button="both";};
 	var fnedit = postData.fnedit;if(fnedit == "" || fnedit == null){fnedit="edit";}
@@ -125,6 +106,27 @@ function initModal(postData,response){
 	},500);
 	zindex++;
 }
+
+function modalAction(data){
+	var call_function = data.call_function;
+	if(call_function == "" || call_function == null){call_function="edit";}
+
+	var fnsave = data.fnsave;
+	if(fnsave == "" || fnsave == null){fnsave="save";}
+
+	var controllerName = data.controller;
+	if(controllerName == "" || controllerName == null){controllerName=controller;}	
+
+	$.ajax({ 
+		type: "POST",   
+		url: base_url + controllerName + '/' + call_function,   
+		data: data.postData,
+	}).done(function(response){
+		initModal(data,response);
+	});
+}
+
+
 
 function closeModal(formId){
 	zindex--;
