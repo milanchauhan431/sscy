@@ -3,20 +3,20 @@
 <!-- App Header -->
 <div class="appHeader">
     <div class="left">
-        <a href="#" class="headerButton goBack">
+        <a href="#" class="headerButton goBack text-dark">
             <ion-icon name="chevron-back-outline"></ion-icon>
         </a>
     </div>
     <div class="pageTitle"><?=(isset($headData->pageName)) ? $headData->pageName : '' ?></div>
     <div class="right">
-        <a href="#" class="headerButton toggle-searchbox">
+        <a href="#" class="headerButton toggle-searchbox text-success">
             <ion-icon name="search-outline"></ion-icon>
         </a>
 
         <?php
             $addParam = "{'modal_id' : 'ModalBasic', 'controller' : 'userMaster','call_function':'addUser', 'form_id' : 'userFrom', 'title' : 'Add Kariger'}";
         ?>
-        <a href="#" class="button fs-px-40" onclick="modalAction(<?=$addParam?>);">
+        <a href="#" class="button fs-px-40 text-success" onclick="modalAction(<?=$addParam?>);">
             <ion-icon name="add-outline"></ion-icon>
         </a>
     </div>
