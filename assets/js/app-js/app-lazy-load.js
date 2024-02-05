@@ -62,6 +62,7 @@ function loadMore(postData){
     var dataSet = postData.dataSet
     $.ajax({
         url : postData.url,
+        async : false,
         type : 'post',
         data : dataSet,
         dataType : 'json',
