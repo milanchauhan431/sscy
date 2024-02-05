@@ -85,7 +85,8 @@ function loadMore(postData){
             window[postData.resFunctionName](response);
             if(response.recordsFiltered > load_flag){
                 load_flag += dataSet.length;   
-                ajax_call = false;             
+                ajax_call = false;    
+                $("#transactions").removeClass("loadModre"); 
             }else{
                 $("#transactions").addClass("loadModre");
             }
