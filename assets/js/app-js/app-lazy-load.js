@@ -7,10 +7,8 @@ $(document).ready(function(){
             loadTransaction();
         }
 
-        //console.log(($(window).scrollTop())+" == "+($(document).height() - $(window).height()));
-        if($(window).scrollTop() == ($(document).height() - $(window).height())){
-            ajax_call = false;
-            console.log(($(window).scrollTop())+" == "+($(document).height() - $(window).height()));
+        if($("#transactions").hasClass("loadModre") == true){ 
+            ajax_call = false; $("#transactions").removeClass("loadModre"); 
         }
     });
 
@@ -57,6 +55,7 @@ function reloadTransaction(){
 
 function tabLoading(url){
 	load_flag = 0;
+    ajax_call = false;
 	$("#transactions").removeAttr('data-url');
 	$("#transactions").attr('data-url',url);
     $("#transactions").html('');
@@ -81,16 +80,16 @@ function loadMore(postData){
             ajax_call = true;
         },
     }).done(function(response){
-        setTimeout(function(){
-            ajax_call = false;
+        setTimeout(function(){            
             $("#transactionLoader").hide();
             window[postData.resFunctionName](response);
             if(response.recordsFiltered > load_flag){
-                load_flag += dataSet.length;                
+                load_flag += dataSet.length;   
+                ajax_call = false;             
             }else{
-                ajax_call = true;
+                $("#transactions").addClass("loadModre");
             }
-        },3000);
+        },2000);
     }).fail(function(xhr, err) { 
         loadingStatus(xhr); 
     });    
