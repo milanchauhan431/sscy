@@ -35,7 +35,8 @@ function actionBtnJson(jsonData){
 
 function loadTransaction(){
     var search = $('#commanSerach').val() || "";
-	var dataSet = {draw:1,start:load_flag,length:25,search : {value : search, regex : false}};
+    var start = $(".item").length || 0;
+	var dataSet = {draw:1,start:start,length:25,search : {value : search, regex : false}};
 	var url = $("#transactions").attr('data-url');
 	var postData = {url:url,dataSet:dataSet,resFunctionName:"dataListing"};
 	loadMore(postData);
@@ -68,6 +69,7 @@ function loadMore(postData){
     }).done(function(response){
         window[postData.resFunctionName](response);
         load_flag += dataSet.length;
+
         //console.log(load_flag);
     }).fail(function(xhr, err) { 
         loadingStatus(xhr); 

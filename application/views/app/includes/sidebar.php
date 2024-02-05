@@ -113,7 +113,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="<?=base_url("app/uaerMaster")?>" class="item <?=($headData->controller == "uaerMaster")?"active-item":""?>">
+                        <a href="<?=base_url("app/userMaster")?>" class="item <?=($headData->controller == "userMaster")?"active-item":""?>">
                             <div class="icon-box bg-success">
                                 <ion-icon name="people-outline"></ion-icon>
                             </div>
