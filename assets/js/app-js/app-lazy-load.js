@@ -1,4 +1,4 @@
-var load_flag = $(".item").length || 0;
+var load_flag = 0;
 
 $(document).ready(function(){
     
