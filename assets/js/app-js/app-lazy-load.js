@@ -1,4 +1,4 @@
-var load_flag = 0;
+var load_flag = $(".item").length || 0;
 
 $(document).ready(function(){
     
@@ -35,8 +35,7 @@ function actionBtnJson(jsonData){
 
 function loadTransaction(){
     var search = $('#commanSerach').val() || "";
-    var start = $(".item").length || 0;
-	var dataSet = {draw:1,start:start,length:25,search : {value : search, regex : false}};
+	var dataSet = {draw:1,start:load_flag,length:25,search : {value : search, regex : false}};
 	var url = $("#transactions").attr('data-url');
 	var postData = {url:url,dataSet:dataSet,resFunctionName:"dataListing"};
 	loadMore(postData);
@@ -68,8 +67,8 @@ function loadMore(postData){
         dataType : 'json',
     }).done(function(response){
         window[postData.resFunctionName](response);
-        load_flag += dataSet.length;
-
+        //load_flag += dataSet.length;
+        
         //console.log(load_flag);
     }).fail(function(xhr, err) { 
         loadingStatus(xhr); 
