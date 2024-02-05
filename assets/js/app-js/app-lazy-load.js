@@ -3,7 +3,7 @@ var ajax_call = false;
 $(document).ready(function(){
     
     $(window).scroll(function(){        
-        if(($(window).scrollTop() + 1) >= ($(document).height() - $(window).height())){           
+        if(($(window).scrollTop() + 2) >= ($(document).height() - $(window).height())){           
             loadTransaction();
         }
 
