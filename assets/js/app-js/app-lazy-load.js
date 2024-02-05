@@ -67,7 +67,7 @@ function loadMore(postData){
         dataType : 'json',
     }).done(function(response){
         window[postData.resFunctionName](response);
-        //load_flag += dataSet.length;
+        load_flag += dataSet.length;
         
         //console.log(load_flag);
     }).fail(function(xhr, err) { 
