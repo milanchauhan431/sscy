@@ -69,8 +69,6 @@ function loadMore(postData){
     }).done(function(response){
         window[postData.resFunctionName](response);
         load_flag += dataSet.length;
-        
-        //console.log(load_flag);
     }).fail(function(xhr, err) { 
         loadingStatus(xhr); 
     });
