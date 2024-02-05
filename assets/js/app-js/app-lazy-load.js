@@ -1,11 +1,16 @@
 var load_flag = 0;
-
+var ajax_call = false;
 $(document).ready(function(){
     
     $(window).scroll(function(){        
-        if(($(window).scrollTop() + 1) >= ($(document).height() - $(window).height())){
-            console.log("append");
+        if(($(window).scrollTop() + 1) >= ($(document).height() - $(window).height())){           
             loadTransaction();
+        }
+
+        //console.log(($(window).scrollTop())+" == "+($(document).height() - $(window).height()));
+        if($(window).scrollTop() == ($(document).height() - $(window).height())){
+            ajax_call = false;
+            console.log(($(window).scrollTop())+" == "+($(document).height() - $(window).height()));
         }
     });
 
@@ -59,19 +64,36 @@ function tabLoading(url){
 }
 
 function loadMore(postData){
-    var dataSet = postData.dataSet
+    var dataSet = postData.dataSet;
+
+    if(ajax_call == true){
+        return false;
+    }
+
     $.ajax({
         url : postData.url,
-        async : false,
         type : 'post',
         data : dataSet,
         dataType : 'json',
+        async : false,
+        beforeSend: function() {
+            $("#transactionLoader").show();
+            ajax_call = true;
+        },
     }).done(function(response){
-        window[postData.resFunctionName](response);
-        load_flag += dataSet.length;
+        setTimeout(function(){
+            ajax_call = false;
+            $("#transactionLoader").hide();
+            window[postData.resFunctionName](response);
+            if(response.recordsFiltered > load_flag){
+                load_flag += dataSet.length;                
+            }else{
+                ajax_call = true;
+            }
+        },3000);
     }).fail(function(xhr, err) { 
         loadingStatus(xhr); 
-    });
+    });    
 }
 
 function loadingStatus(data=""){

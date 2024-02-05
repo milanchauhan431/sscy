@@ -55,6 +55,10 @@
     <div class="section m-t-80">
         <div class="transactions" id="transactions" data-url="<?=base_url("app/userMaster/getDTRows/1")?>">
         </div>
+
+        <div id="transactionLoader" class="text-center" style="display:none;">
+            <img src="<?=base_url("assets/dist/img/infinity-rb.gif")?>" width="80" alt="Loader">
+        </div>
     </div>
 </div>
 <!-- * App Capsule -->
@@ -66,7 +70,7 @@ $(document).ready(function(){
     loadTransaction();
 });
 
-function dataListing(response){
+async function dataListing(response){
     var dataList = response.data;
     var totalRecords = response.recordsFiltered;
     if(dataList.length > 0){
