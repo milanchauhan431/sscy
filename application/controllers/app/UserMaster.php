@@ -44,6 +44,8 @@ class UserMaster extends MY_Controller{
                 if($data['password'] != $data['pass_code']):
                     $errorMessage['pass_code'] = "Confirm password does not match.";
                 endif;
+
+                $data['password'] = md5($data['password']);
             endif;
         endif;
 
