@@ -44,6 +44,7 @@ self.addEventListener('fetch', function (event) {
       .then(function (response) {
         // Cache hit - return the response from the cached version
         if (response) {
+          console.log('res-'+response);
           return response;
         }
         // Not in cache - return the result from the live server
