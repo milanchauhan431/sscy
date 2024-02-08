@@ -119,9 +119,11 @@ async function dataListing(response){
 
             var removeLink = $('<a class="dropdown-item" href="#" onclick="trash(' + deleteJsonData + ');"><ion-icon name="trash"></ion-icon>Remove</a>');
 
+            if(row.is_active == 1){ editLink,removeLink = ""; }
+
             var statusIcon = (row.is_active == 1)?'<ion-icon name="close-circle-outline"></ion-icon>In-Active':'<ion-icon name="checkmark-circle-outline"></ion-icon>Active';
             var statusLink = $('<a class="dropdown-item" href="#" onclick="confirmStore(' + statusJsonData + ');">'+statusIcon+'</a>');
-
+            
             // Append anchor tags to the dropdown menu
             dropdownMenu.append(editLink, removeLink, statusLink);
 
