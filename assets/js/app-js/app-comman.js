@@ -62,7 +62,6 @@ $(document).ready(function(){
 		$('.btn-save').removeAttr('disabled');
 	});
 	
-	window.location.reload(true);
 	$(document).on('click','#forceReload',function(){
 		window.location.reload(true);
 	});
