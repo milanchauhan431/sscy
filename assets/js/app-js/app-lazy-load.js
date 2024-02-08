@@ -13,13 +13,13 @@ $(document).ready(function(){
     });
 
     $(document).on('keyup','#commanSerach',function(){
-		load_flag = 0;
+		load_flag = 0;ajax_call = false;
         $("#transactions").html('');
 		loadTransaction();
 	});
 
     $(document).on('click',"#clearSerach",function(){
-        load_flag = 0;
+        load_flag = 0;ajax_call = false;
         $("#transactions").html('');
         $("#commanSerach").val("");
 		loadTransaction();
@@ -48,8 +48,7 @@ function reloadTransaction(){
     console.log("reloadTransaction");
     $("#transactions").html('');
     var search = $('#commanSerach').val() || "";
-    load_flag = 0;
-    ajax_call = false;
+    load_flag = 0;ajax_call = false;
 	var dataSet = {draw:1,start:load_flag,length:25,search : {value : search, regex : false}};
 	var url = $("#transactions").attr('data-url');
 	var postData = {url:url,dataSet:dataSet,resFunctionName:"dataListing"};
@@ -57,8 +56,7 @@ function reloadTransaction(){
 }
 
 function tabLoading(url){
-	load_flag = 0;
-    ajax_call = false;
+	load_flag = 0;ajax_call = false;
 	$("#transactions").removeAttr('data-url');
 	$("#transactions").attr('data-url',url);
     $("#transactions").html('');
