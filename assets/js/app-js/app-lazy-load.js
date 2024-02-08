@@ -46,7 +46,6 @@ function loadTransaction(){
 }
 
 function reloadTransaction(){
-    console.log("reloadTransaction");
     $("#lazy-load-trans").html('');
     var search = $('#commanSerach').val() || "";
     load_flag = 0;ajax_call = false;
@@ -65,7 +64,6 @@ function tabLoading(url){
 }
 
 function loadMore(postData){
-    console.log("loadMore");
     var dataSet = postData.dataSet;
 
     if(ajax_call == true){

@@ -16,7 +16,7 @@
         <?php
             $addParam = "{'modal_id' : 'ModalBasic', 'controller' : 'userMaster','call_function':'addUser', 'form_id' : 'userForm', 'title' : 'Add Kariger'}";
         ?>
-        <a href="#" class="button fs-px-40 text-success" onclick="modalAction(<?=$addParam?>);">
+        <a href="javascript:void(0)" class="button fs-px-40 text-success" onclick="modalAction(<?=$addParam?>);">
             <ion-icon name="add-outline"></ion-icon>
         </a>
     </div>
@@ -115,14 +115,14 @@ async function dataListing(response){
             var statusJsonData = actionBtnJson({postData: {id: row.id,is_active:((row.is_active == 1)?0:1)},controller : 'userMaster', fnsave:'changeStatus','message' : 'Are you sure want to '+((row.is_active == 1)?'In-Active':'Active')+' this Kariger?'});
 
             // Create anchor tag with onclick attribute
-            var editLink = $('<a class="dropdown-item" href="#" onclick="modalAction(' + editJsonData + ');"><ion-icon name="pencil-outline"></ion-icon>Edit</a>');
+            var editLink = $('<a class="dropdown-item" href="javascript:void(0)" onclick="modalAction(' + editJsonData + ');"><ion-icon name="pencil-outline"></ion-icon>Edit</a>');
 
-            var removeLink = $('<a class="dropdown-item" href="#" onclick="trash(' + deleteJsonData + ');"><ion-icon name="trash"></ion-icon>Remove</a>');
+            var removeLink = $('<a class="dropdown-item" href="javascript:void(0)" onclick="trash(' + deleteJsonData + ');"><ion-icon name="trash"></ion-icon>Remove</a>');
 
             if(row.is_active == 0){ editLink = ""; removeLink = ""; }
 
             var statusIcon = (row.is_active == 1)?'<ion-icon name="close-circle-outline"></ion-icon>In-Active':'<ion-icon name="checkmark-circle-outline"></ion-icon>Active';
-            var statusLink = $('<a class="dropdown-item" href="#" onclick="confirmStore(' + statusJsonData + ');">'+statusIcon+'</a>');
+            var statusLink = $('<a class="dropdown-item" href="javascript:void(0)" onclick="confirmStore(' + statusJsonData + ');">'+statusIcon+'</a>');
             
             // Append anchor tags to the dropdown menu
             dropdownMenu.append(editLink, removeLink, statusLink);

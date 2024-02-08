@@ -44,7 +44,6 @@ self.addEventListener('fetch', function (event) {
       .then(function (response) {
         // Cache hit - return the response from the cached version
         if (response) {
-          console.log('res-'+response);
           return response;
         }
         // Not in cache - return the result from the live server
@@ -58,14 +57,4 @@ self.addEventListener('fetch', function (event) {
 self.addEventListener('activate', function (event) {
   // Calling claim() to force a "controllerchange" event on navigator.serviceWorker
   event.waitUntil(self.clients.claim());
-  /* var cacheKeeplist = [CACHE_NAME];
-  event.waitUntil(
-    caches.keys().then( keyList => {
-        return Promise.all(keyList.map( key => {
-            if (cacheKeeplist.indexOf(key) === -1) {
-                return caches.delete(key);
-            }
-        }));
-    })
-  .then(self.clients.claim()));  */
 });
