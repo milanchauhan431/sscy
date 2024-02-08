@@ -61,7 +61,8 @@ $(document).ready(function(){
 		$('.ajaxLoader,.ajaxLoaderImg').hide();
 		$('.btn-save').removeAttr('disabled');
 	});
-
+	
+	window.location.reload(true);
 	$(document).on('click','#forceReload',function(){
 		window.location.reload(true);
 	});
