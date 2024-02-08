@@ -34,7 +34,6 @@
 
             <h1>Log in</h1>
             <h4>Fill the form to log in</h4>
-            <small id="cache_version"></small>
         </div>
 
         <div class="section mb-5 p-2">
