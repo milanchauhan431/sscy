@@ -4,7 +4,7 @@
 //--------------------------------------------------------------------------
 
 // Version
-var VERSION = 1.1
+var VERSION = 1.2;
 
 // Cache name
 var CACHE_NAME = 'cache-version-' + VERSION;
@@ -13,16 +13,6 @@ var CACHE_NAME = 'cache-version-' + VERSION;
 var REQUIRED_FILES = [
   'index.php'
 ];
-
-caches.keys().then(function(names) {
-  for (let name of names)
-    if(CACHE_NAME != name){caches.delete(name);}
-});
-
-caches.keys().then(function(names) {
-  for (let name of names)
-    console.log(name);
-});
 
 self.addEventListener('install', function (event) {
   // Perform install step:  loading each required file into cache
@@ -67,4 +57,9 @@ self.addEventListener('activate', function (event) {
         }));
     })
   .then(self.clients.claim())); 
+});
+
+caches.keys().then(function(names) {
+  for (let name of names)
+    console.log(name);
 });
