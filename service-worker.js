@@ -14,7 +14,12 @@ var REQUIRED_FILES = [
   'index.php'
 ];
 
-caches.delete();
+caches.keys().then(function(names) {
+  for (let name of names)
+      console.log(name);
+      /* caches.delete(name); */
+});
+
 self.addEventListener('install', function (event) {
   // Perform install step:  loading each required file into cache
   event.waitUntil(
