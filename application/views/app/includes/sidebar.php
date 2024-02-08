@@ -157,7 +157,7 @@
                     <li>
                         <a href="#" class="item" id="forceReload">
                             <div class="icon-box bg-success">
-                                <ion-icon name="log-out-outline"></ion-icon>
+                                <ion-icon name="reload-outline"></ion-icon>
                             </div>
                             <div class="in">
                                 Force Reload
