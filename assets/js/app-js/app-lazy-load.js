@@ -14,12 +14,14 @@ $(document).ready(function(){
 
     $(document).on('keyup','#commanSerach',function(){
 		load_flag = 0;ajax_call = false;
+        $("#transactions").addClass("filterList"); 
         $("#transactions").html('');
 		loadTransaction();
 	});
 
     $(document).on('click',"#clearSerach",function(){
         load_flag = 0;ajax_call = false;
+        $("#transactions").removeClass("filterList"); 
         $("#transactions").html('');
         $("#commanSerach").val("");
 		loadTransaction();
@@ -85,6 +87,9 @@ function loadMore(postData){
     }).done(function(response){
         setTimeout(function(){            
             $("#transactionLoader").hide();
+            if($("#transactions").hasClass("filterList") == true){ 
+                $("#transactions").html(""); 
+            }
             window[postData.resFunctionName](response);
             if(response.recordsFiltered > load_flag){
                 load_flag += dataSet.length;   
