@@ -2,7 +2,7 @@
     "name": "SADHNA",
     "short_name": "SADHNA",
     "id":"sscy",
-    "start_url": "https://sscy.toxscube.com/",
+    "start_url": "https://sscy.toxscube.com/app/",
     "display": "standalone",
     "scope" : "https://sscy.toxscube.com/app/",
     "background_color": "#FFFFFF",
