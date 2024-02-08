@@ -61,6 +61,8 @@ $(document).ready(function(){
 		$('.ajaxLoader,.ajaxLoaderImg').hide();
 		$('.btn-save').removeAttr('disabled');
 	});
+
+	Cache.delete();
 });
 
 function setInputEvent(){
