@@ -52,7 +52,7 @@ $(document).ready(function(){
 		});
 	});
 
-	$(document).ajaxStart(function(){
+	/* $(document).ajaxStart(function(){
 		$('.ajaxLoader,.ajaxLoaderImg').show();$(".error").html("");
 		$('.btn-save').attr('disabled','disabled');
 	});
@@ -60,7 +60,7 @@ $(document).ready(function(){
 	$(document).ajaxComplete(function(){
 		$('.ajaxLoader,.ajaxLoaderImg').hide();
 		$('.btn-save').removeAttr('disabled');
-	});
+	}); */
 });
 
 function setInputEvent(){
