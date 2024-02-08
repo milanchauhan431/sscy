@@ -175,17 +175,17 @@
   margin:14% auto;height: 120px; width: 120px;
 }
 
-@media only screen and (max-width: 450px) {
-  .ajaxLoaderImg{
-    top: 40%;
-    left: 20%;
-  }
-}
-
 @media only screen and (max-width: 750px) {
   .ajaxLoaderImg{
     top: 40%;
 	  left: 34%;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .ajaxLoaderImg{
+    top: 40%;
+    left: 20%;
   }
 }
 
