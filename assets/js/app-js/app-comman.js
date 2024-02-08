@@ -61,6 +61,10 @@ $(document).ready(function(){
 		$('.ajaxLoader,.ajaxLoaderImg').hide();
 		$('.btn-save').removeAttr('disabled');
 	});
+
+	$(document).on('click','#forceReload',function(){
+		window.location.reload(true);
+	});
 });
 
 function setInputEvent(){

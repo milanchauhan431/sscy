@@ -153,6 +153,17 @@
                             </div>
                         </a>
                     </li>
+
+                    <li>
+                        <a href="#" class="item" id="forceReload">
+                            <div class="icon-box bg-success">
+                                <ion-icon name="log-out-outline"></ion-icon>
+                            </div>
+                            <div class="in">
+                                Force Reload
+                            </div>
+                        </a>
+                    </li>
                 </ul>
                 <!-- * menu -->
 
