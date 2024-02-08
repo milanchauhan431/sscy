@@ -16,8 +16,7 @@ var REQUIRED_FILES = [
 
 caches.keys().then(function(names) {
   for (let name of names)
-      console.log(name);
-      /* caches.delete(name); */
+    if(CACHE_NAME != name){caches.delete(name);}
 });
 
 self.addEventListener('install', function (event) {
