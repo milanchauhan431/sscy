@@ -53,10 +53,10 @@
     </div>
 
     <div class="section m-t-80">
-        <div class="transactions" id="transactions" data-url="<?=base_url("app/userMaster/getDTRows/1")?>">
+        <div class="transactions" id="lazy-load-trans" data-url="<?=base_url("app/userMaster/getDTRows/1")?>">
         </div>
 
-        <div id="transactionLoader" class="text-center  m-b-20" style="display:none;">
+        <div id="lazyLoader" class="text-center  m-b-20" style="display:none;">
             <img src="<?=base_url("assets/dist/img/infinity-rb.gif")?>" width="80" alt="Loader">
         </div>
     </div>
@@ -119,7 +119,7 @@ async function dataListing(response){
 
             var removeLink = $('<a class="dropdown-item" href="#" onclick="trash(' + deleteJsonData + ');"><ion-icon name="trash"></ion-icon>Remove</a>');
 
-            if(row.is_active == 1){ editLink,removeLink = ""; }
+            if(row.is_active == 0){ editLink = ""; removeLink = ""; }
 
             var statusIcon = (row.is_active == 1)?'<ion-icon name="close-circle-outline"></ion-icon>In-Active':'<ion-icon name="checkmark-circle-outline"></ion-icon>Active';
             var statusLink = $('<a class="dropdown-item" href="#" onclick="confirmStore(' + statusJsonData + ');">'+statusIcon+'</a>');
@@ -134,7 +134,7 @@ async function dataListing(response){
             itemDiv.append(detailDiv, rightDiv.append(cardButtonDiv));
 
             // Append the generated HTML to the container
-            $('#transactions').append(itemDiv);
+            $('#lazy-load-trans').append(itemDiv);
         });
     }else{
         if(totalRecords <= 0){

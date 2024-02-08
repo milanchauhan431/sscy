@@ -1,5 +1,4 @@
-var load_flag = 0;
-var ajax_call = false;
+var load_flag = 0; var ajax_call = false;
 $(document).ready(function(){
     
     $(window).scroll(function(){        
@@ -7,22 +6,22 @@ $(document).ready(function(){
             loadTransaction();
         }
 
-        if($("#transactions").hasClass("loadModre") == true){ 
-            ajax_call = false; $("#transactions").removeClass("loadModre"); 
+        if($("#lazy-load-trans").hasClass("loadModre") == true){ 
+            ajax_call = false; $("#lazy-load-trans").removeClass("loadModre"); 
         }
     });
 
     $(document).on('keyup','#commanSerach',function(){
 		load_flag = 0;ajax_call = false;
-        $("#transactions").addClass("filterList"); 
-        $("#transactions").html('');
+        $("#lazy-load-trans").addClass("filterList"); 
+        $("#lazy-load-trans").html('');
 		loadTransaction();
 	});
 
     $(document).on('click',"#clearSerach",function(){
         load_flag = 0;ajax_call = false;
-        $("#transactions").removeClass("filterList"); 
-        $("#transactions").html('');
+        $("#lazy-load-trans").removeClass("filterList"); 
+        $("#lazy-load-trans").html('');
         $("#commanSerach").val("");
 		loadTransaction();
     });
@@ -41,27 +40,27 @@ function actionBtnJson(jsonData){
 function loadTransaction(){
     var search = $('#commanSerach').val() || "";
 	var dataSet = {draw:1,start:load_flag,length:25,search : {value : search, regex : false}};
-	var url = $("#transactions").attr('data-url');
+	var url = $("#lazy-load-trans").attr('data-url');
 	var postData = {url:url,dataSet:dataSet,resFunctionName:"dataListing"};
 	loadMore(postData);
 }
 
 function reloadTransaction(){
     console.log("reloadTransaction");
-    $("#transactions").html('');
+    $("#lazy-load-trans").html('');
     var search = $('#commanSerach').val() || "";
     load_flag = 0;ajax_call = false;
 	var dataSet = {draw:1,start:load_flag,length:25,search : {value : search, regex : false}};
-	var url = $("#transactions").attr('data-url');
+	var url = $("#lazy-load-trans").attr('data-url');
 	var postData = {url:url,dataSet:dataSet,resFunctionName:"dataListing"};
 	loadMore(postData);
 }
 
 function tabLoading(url){
 	load_flag = 0;ajax_call = false;
-	$("#transactions").removeAttr('data-url');
-	$("#transactions").attr('data-url',url);
-    $("#transactions").html('');
+	$("#lazy-load-trans").removeAttr('data-url');
+	$("#lazy-load-trans").attr('data-url',url);
+    $("#lazy-load-trans").html('');
 	loadTransaction();
 }
 
@@ -81,24 +80,24 @@ function loadMore(postData){
         async : false,
         global: false,
         beforeSend: function() {
-            $("#transactionLoader").show();
+            $("#lazyLoader").show();
             ajax_call = true;
         },
     }).done(function(response){
         setTimeout(function(){            
-            $("#transactionLoader").hide();
-            if($("#transactions").hasClass("filterList") == true){ 
+            $("#lazyLoader").hide();
+            if($("#lazy-load-trans").hasClass("filterList") == true){ 
                 if(response.data.length > 0){
-                    $("#transactions").html(""); 
+                    $("#lazy-load-trans").html(""); 
                 }
             }
             window[postData.resFunctionName](response);
             if(response.recordsFiltered > load_flag){
                 load_flag += dataSet.length;   
                 ajax_call = false;    
-                $("#transactions").removeClass("loadModre"); 
+                $("#lazy-load-trans").removeClass("loadModre"); 
             }else{
-                $("#transactions").addClass("loadModre");
+                $("#lazy-load-trans").addClass("loadModre");
             }
         },1000);
     }).fail(function(xhr, err) { 

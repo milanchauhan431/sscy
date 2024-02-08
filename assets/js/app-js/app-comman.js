@@ -245,14 +245,14 @@ function store(postData){
 		}else{
 			if(data.status==1){
 				reloadTransaction(); $('#'+formId)[0].reset(); closeModal(formId);
-				toastbox('success',data.message, 2000);
+				toastbox('success',data.message, 3000);
 			}else{
 				if(typeof data.message === "object"){
 					$(".error").html("");
 					$.each( data.message, function( key, value ) {$("."+key).html(value);});
 				}else{
 					reloadTransaction();
-					toastbox('error',data.message, 2000);
+					toastbox('error',data.message, 3000);
 				}			
 			}	
 		}			
@@ -308,14 +308,14 @@ function confirmStore(data){
 						}else{
 							if(response.status==1){
 								reloadTransaction(); if(formId != ""){$('#'+formId)[0].reset(); closeModal(formId);}
-								toastbox('success',response.message, 2000);
+								toastbox('success',response.message, 3000);
 							}else{
 								if(typeof response.message === "object"){
 									$(".error").html("");
 									$.each( response.message, function( key, value ) {$("."+key).html(value);});
 								}else{
 									reloadTransaction();
-									toastbox('error',response.message, 2000);
+									toastbox('error',response.message, 3000);
 								}			
 							}
 						}			
@@ -363,10 +363,10 @@ function trash(data){
 						}else{
 							if(response.status==0){
 								reloadTransaction();
-								toastbox('error',response.message, 2000);
+								toastbox('error',response.message, 3000);
 							}else{
 								reloadTransaction();
-								toastbox('success',response.message, 2000);
+								toastbox('success',response.message, 3000);
 							}	
 						}
 					});
