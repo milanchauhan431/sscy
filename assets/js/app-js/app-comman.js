@@ -364,10 +364,10 @@ function trash(data){
 						}else{
 							if(response.status==0){
 								reloadTransaction();
-								toastbox('error',data.message, 2000);
+								toastbox('error',response.message, 2000);
 							}else{
 								reloadTransaction();
-								toastbox('success',data.message, 2000);
+								toastbox('success',response.message, 2000);
 							}	
 						}
 					});
