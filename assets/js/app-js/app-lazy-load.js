@@ -88,7 +88,9 @@ function loadMore(postData){
         setTimeout(function(){            
             $("#transactionLoader").hide();
             if($("#transactions").hasClass("filterList") == true){ 
-                $("#transactions").html(""); 
+                if(response.data.length > 0){
+                    $("#transactions").html(""); 
+                }
             }
             window[postData.resFunctionName](response);
             if(response.recordsFiltered > load_flag){

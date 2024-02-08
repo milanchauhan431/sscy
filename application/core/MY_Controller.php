@@ -10,6 +10,7 @@ class MY_Controller extends CI_Controller{
 		//echo '<br><br><hr><h1 style="text-align:center;color:red;">We are sorry!<br>Your Application is Updating New Features</h1><hr><h2 style="text-align:center;color:green;">Thanks For Co-operate</h1>';exit;
 		$this->activeSource = $this->session->userdata('is_app');
 		$this->isLoggedin();		
+		
 		$this->data['headData'] = new StdClass;
 
 		$this->load->library('form_validation');
