@@ -32,6 +32,14 @@ $(document).ready(function(){
 		}, 500);
 	});
 
+	$(document).on("keypress",".numericOnly",function (e) {
+		if (String.fromCharCode(e.keyCode).match(/[^0-9]/g)) return false;
+	});	
+
+	$(document).on("keypress",'.floatOnly',function(event) {
+		if ((event.which != 46 || $(this).val().indexOf('.') != -1) && (event.which < 48 || event.which > 57)) {event.preventDefault();}
+	});
+
 	// on first focus (bubbles up to document), open the menu
 	$(document).on('focus', '.select2-selection.select2-selection--single', function (e) {
 		$(this).closest(".select2-container").siblings('select:enabled').select2('open');
@@ -43,7 +51,67 @@ $(document).ready(function(){
 			e.stopPropagation();
 		});
 	});
+
+	$(document).ajaxStart(function(){
+		$('.ajaxLoader,.ajaxLoaderImg').show();$(".error").html("");
+		$('.btn-save').attr('disabled','disabled');
+	});
+	
+	$(document).ajaxComplete(function(){
+		$('.ajaxLoader,.ajaxLoaderImg').hide();
+		$('.btn-save').removeAttr('disabled');
+	});
 });
+
+function setInputEvent(){
+	//-----------------------------------------------------------------------
+	// Input
+	// Clear input
+	var clearInput = document.querySelectorAll(".clear-input");
+	clearInput.forEach(function (el) {
+		el.addEventListener("click", function () {
+			var parent = this.parentElement
+			var input = parent.querySelector(".form-control")
+			input.focus();
+			input.value = "";
+			parent.classList.remove("not-empty");
+		})
+	})
+
+	// active
+	var formControl = document.querySelectorAll(".form-group .form-control");
+	formControl.forEach(function (el) {	
+		// active
+		el.addEventListener("focus", () => {
+			var parent = el.parentElement;
+			parent.classList.add("active");
+		});
+		el.addEventListener("blur", () => {
+			var parent = el.parentElement;
+			parent.classList.remove("active");
+		});
+		// empty check
+		el.addEventListener("keyup", log);
+		function log(e) {
+			var inputCheck = this.value.length;
+			if (inputCheck > 0) {
+				this.parentElement.classList.add("not-empty")
+			}
+			else {
+				this.parentElement.classList.remove("not-empty")
+			}
+		}
+
+		var checkInput = el.value.length;
+		if (checkInput > 0) {
+			el.parentElement.classList.add("not-empty")
+		}
+		else {
+			el.parentElement.classList.remove("not-empty")
+		}
+	})
+	//-----------------------------------------------------------------------
+}
 
 function siteStatus(data=""){
     var status = navigator.onLine; 
@@ -99,7 +167,8 @@ function initModal(postData,response){
 	}
 	
 	setTimeout(function(){ 
-		$("#"+postData.modal_id+" .select2").select2({with:null});
+		$("#"+postData.modal_id+" .select2").select2({with:null}); 
+		setInputEvent();
 	}, 5);
 	setTimeout(function(){
 		$('#'+postData.modal_id+'  :input:enabled:visible:first, select:first').focus();
@@ -108,6 +177,7 @@ function initModal(postData,response){
 }
 
 function modalAction(data){
+	if(typeof data == "string"){ data  = JSON.parse(data); }
 	var call_function = data.call_function;
 	if(call_function == "" || call_function == null){call_function="edit";}
 
@@ -142,12 +212,13 @@ function closeModal(formId){
 	$("#"+modal_id+" .modal-header .btn-close").attr('data-modal_id',"");
 	$("#"+modal_id+" .modal-header .btn-close").attr('data-modal_class',"");
 	setTimeout(function(){ 
-		$("#"+modalId+" .select2").select2({with:null});	
+		$("#"+modal_id+" .select2").select2({with:null});	
 	}, 500);
 }
 
 function store(postData){
-	setPlaceHolder();
+	setInputEvent();
+	if(typeof postData == "string"){ postData  = JSON.parse(postData); }
 
 	var formId = postData.formId;
 	var fnsave = postData.fnsave || "save";
@@ -184,7 +255,83 @@ function store(postData){
 	});
 }
 
+function confirmStore(data){
+	if(typeof data == "string"){ data  = JSON.parse(data); }
+	setInputEvent();
+
+	var formId = data.formId || "";
+	var fnsave = data.fnsave || "save";
+	var controllerName = data.controller || controller;
+
+	if(formId != ""){
+		var form = $('#'+formId)[0];
+		var fd = new FormData(form);
+		var resFunctionName = $("#"+formId).data('res_function') || "";
+		var msg = "Are you sure want to save this change ?";
+		var ajaxParam = {
+			url: base_url + controllerName + '/' + fnsave,
+			data:fd,
+			type: "POST",
+			processData:false,
+			contentType:false,
+			dataType:"json"
+		};
+	}else{
+		var fd = data.postData;
+		var resFunctionName = data.res_function || "";
+		var msg = data.message || "Are you sure want to save this change ?";
+		var ajaxParam = {
+			url: base_url + controllerName + '/' + fnsave,
+			data:fd,
+			type: "POST",
+			dataType:"json"
+		};
+	}
+
+	$.confirm({
+		title: 'Confirm!',
+		content: msg,
+		type: 'orange',
+		buttons: {   
+			ok: {
+				text: "ok!",
+				btnClass: 'btn waves-effect waves-light btn-outline-success',
+				keys: ['enter'],
+				action: function(){
+					$.ajax(ajaxParam).done(function(response){
+						if(resFunctionName != ""){
+							window[resFunctionName](response,formId);
+						}else{
+							if(response.status==1){
+								reloadTransaction(); if(formId != ""){$('#'+formId)[0].reset(); closeModal(formId);}
+								toastbox('success',response.message, 2000);
+							}else{
+								if(typeof response.message === "object"){
+									$(".error").html("");
+									$.each( response.message, function( key, value ) {$("."+key).html(value);});
+								}else{
+									reloadTransaction();
+									toastbox('error',response.message, 2000);
+								}			
+							}
+						}			
+					});
+
+				}
+			},
+			cancel: {
+                btnClass: 'btn waves-effect waves-light btn-outline-secondary',
+                action: function(){
+
+				}
+            }
+		}
+	});
+	
+}
+
 function trash(data){
+	if(typeof data == "string"){ data  = JSON.parse(data); }
 	var controllerName = data.controller || controller;
 	var fnName = data.fndelete || "delete";
 	var msg = data.message || "Record";

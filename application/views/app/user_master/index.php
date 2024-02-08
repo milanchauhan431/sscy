@@ -14,7 +14,7 @@
         </a>
 
         <?php
-            $addParam = "{'modal_id' : 'ModalBasic', 'controller' : 'userMaster','call_function':'addUser', 'form_id' : 'userFrom', 'title' : 'Add Kariger'}";
+            $addParam = "{'modal_id' : 'ModalBasic', 'controller' : 'userMaster','call_function':'addUser', 'form_id' : 'userForm', 'title' : 'Add Kariger'}";
         ?>
         <a href="#" class="button fs-px-40 text-success" onclick="modalAction(<?=$addParam?>);">
             <ion-icon name="add-outline"></ion-icon>
@@ -56,7 +56,7 @@
         <div class="transactions" id="transactions" data-url="<?=base_url("app/userMaster/getDTRows/1")?>">
         </div>
 
-        <div id="transactionLoader" class="text-center" style="display:none;">
+        <div id="transactionLoader" class="text-center  m-b-20" style="display:none;">
             <img src="<?=base_url("assets/dist/img/infinity-rb.gif")?>" width="80" alt="Loader">
         </div>
     </div>
@@ -86,10 +86,16 @@ async function dataListing(response){
             var imgElement = $('<img src="'+row.user_image+'" alt="img" class="image-block imaged w48">');
 
             // Create a div with a strong tag containing text
-            var nameDiv = $('<div></div>').html("<strong>"+row.user_name+"</strong><small>Code : "+row.user_code+"</small><br><small>Contact No. : "+row.mobile_no+"</small>");
+            var details = $('<div></div>');
+            var userName = $("<strong></strong>").html(row.user_name);
+            var userCode = $("<small></small>").html("Code : "+row.user_code+"<br>");
+            var userMobile = $("<small></small>").html("Contact No. : "+row.mobile_no);
 
             // Append the image and name div to the detail div
-            detailDiv.append(imgElement, nameDiv);
+            detailDiv.append(imgElement, details);
+
+            // Append Listing Details
+            details.append(userName, userCode, userMobile);
 
             // Create a div with class "right"
             var rightDiv = $('<div class="right"></div>');
@@ -104,15 +110,20 @@ async function dataListing(response){
             var dropdownMenu = $('<div class="dropdown-menu dropdown-menu-end"></div>');
 
             // JSON object
-            var jsonData = actionBtnJson({postData: {id: row.id}, controller: 'userMaster'});
+            var editJsonData = actionBtnJson({postData: {id: row.id}, modal_id : 'ModalBasic', controller : 'userMaster', call_function:'edit', form_id : 'userForm', title : 'Add Kariger'});
+            var deleteJsonData = actionBtnJson({postData: {id: row.id},'message' : 'Kariger'});
+            var statusJsonData = actionBtnJson({postData: {id: row.id,is_active:((row.is_active == 1)?0:1)},controller : 'userMaster', fnsave:'changeStatus','message' : 'Are you sure want to '+((row.is_active == 1)?'In-Active':'Active')+' this Kariger?'});
 
             // Create anchor tag with onclick attribute
-            var editLink = $('<a class="dropdown-item" href="#" onclick="edit(' + jsonData + ');"><ion-icon name="pencil-outline"></ion-icon>Edit</a>');
+            var editLink = $('<a class="dropdown-item" href="#" onclick="modalAction(' + editJsonData + ');"><ion-icon name="pencil-outline"></ion-icon>Edit</a>');
 
-            var removeLink = $('<a class="dropdown-item" href="#"><ion-icon name="close-outline"></ion-icon>Remove</a>');
+            var removeLink = $('<a class="dropdown-item" href="#" onclick="trash(' + deleteJsonData + ');"><ion-icon name="trash"></ion-icon>Remove</a>');
+
+            var statusIcon = (row.is_active == 1)?'<ion-icon name="close-circle-outline"></ion-icon>In-Active':'<ion-icon name="checkmark-circle-outline"></ion-icon>Active';
+            var statusLink = $('<a class="dropdown-item" href="#" onclick="confirmStore(' + statusJsonData + ');">'+statusIcon+'</a>');
 
             // Append anchor tags to the dropdown menu
-            dropdownMenu.append(editLink, removeLink);
+            dropdownMenu.append(editLink, removeLink, statusLink);
 
             // Append the button and dropdown menu to the card-button div
             cardButtonDiv.append(buttonElement, dropdownMenu);
@@ -128,9 +139,5 @@ async function dataListing(response){
             $("#transactions").html('<div class="text-center">No data available</div>');
         }
     }
-}
-
-function edit(data){
-    console.log(data);
 }
 </script>

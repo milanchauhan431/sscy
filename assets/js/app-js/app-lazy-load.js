@@ -45,8 +45,11 @@ function loadTransaction(){
 }
 
 function reloadTransaction(){
+    console.log("reloadTransaction");
+    $("#transactions").html('');
     var search = $('#commanSerach').val() || "";
     load_flag = 0;
+    ajax_call = false;
 	var dataSet = {draw:1,start:load_flag,length:25,search : {value : search, regex : false}};
 	var url = $("#transactions").attr('data-url');
 	var postData = {url:url,dataSet:dataSet,resFunctionName:"dataListing"};
@@ -63,6 +66,7 @@ function tabLoading(url){
 }
 
 function loadMore(postData){
+    console.log("loadMore");
     var dataSet = postData.dataSet;
 
     if(ajax_call == true){
@@ -75,6 +79,7 @@ function loadMore(postData){
         data : dataSet,
         dataType : 'json',
         async : false,
+        global: false,
         beforeSend: function() {
             $("#transactionLoader").show();
             ajax_call = true;
@@ -97,8 +102,8 @@ function loadMore(postData){
 }
 
 function loadingStatus(data=""){
-    var status = navigator.onLine; 
-    if(status == false){alert("no internet");}
+    /* var status = navigator.onLine; 
+    if(status == false){alert("no internet");} */
 
     if(data != ""){
         if(data.status == 401){

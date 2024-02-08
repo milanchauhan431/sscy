@@ -44,7 +44,7 @@
                             <div class="error errorMsg text-center"><?=$errorMsg?></div>
                         <?php endif; ?>
 
-                        <div class="form-group basic">
+                        <div class="form-group basic animated">
                             <div class="input-wrapper">
                                 <label class="label" for="user_name">Mobile No.</label>
                                 <input type="text" class="form-control" name="user_name" id="user_name" placeholder="Your Mobile No.">
@@ -55,7 +55,7 @@
                             <?=form_error('user_name')?>
                         </div>
 
-                        <div class="form-group basic">
+                        <div class="form-group basic animated">
                             <div class="input-wrapper">
                                 <label class="label" for="password">Password</label>
                                 <input type="password" class="form-control" name="password" id="password" autocomplete="off"
@@ -111,11 +111,10 @@
 const inputs = document.querySelectorAll(".input");
 const rmCheck = document.getElementById("rememberMe"),emailInput = document.getElementById("user_name"),password = document.getElementById("password");
 $(document).ready(function(){
-    if (localStorage.checkbox && localStorage.checkbox !== "") {
+    if (localStorage.sscy_checkbox && localStorage.sscy_checkbox !== "") {
         rmCheck.setAttribute("checked", "checked");
-        emailInput.value = localStorage.username;
-        password.value = localStorage.password;
-		$(".userName,.pass").addClass('focus');
+        emailInput.value = localStorage.sscy_username;
+        password.value = localStorage.sscy_password;
     } else {
         rmCheck.removeAttribute("checked");
         emailInput.value = "";
@@ -125,13 +124,13 @@ $(document).ready(function(){
 
 function lsRememberMe() {
     if (rmCheck.checked && emailInput.value !== "") {
-        localStorage.username = emailInput.value;
-        localStorage.password = password.value;
-        localStorage.checkbox = rmCheck.value;
+        localStorage.sscy_username = emailInput.value;
+        localStorage.sscy_password = password.value;
+        localStorage.sscy_checkbox = rmCheck.value;
     } else {
-        localStorage.username = "";
-        localStorage.password = "";
-        localStorage.checkbox = "";
+        localStorage.sscy_username = "";
+        localStorage.sscy_password = "";
+        localStorage.sscy_checkbox = "";
     }
 }
 </script>

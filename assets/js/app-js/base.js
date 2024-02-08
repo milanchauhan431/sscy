@@ -162,12 +162,12 @@ var formControl = document.querySelectorAll(".form-group .form-control");
 formControl.forEach(function (el) {
     // active
     el.addEventListener("focus", () => {
-        var parent = el.parentElement
-        parent.classList.add("active")
+        var parent = el.parentElement;
+        parent.classList.add("active");
     });
     el.addEventListener("blur", () => {
-        var parent = el.parentElement
-        parent.classList.remove("active")
+        var parent = el.parentElement;
+        parent.classList.remove("active");
     });
     // empty check
     el.addEventListener("keyup", log);
@@ -179,6 +179,14 @@ formControl.forEach(function (el) {
         else {
             this.parentElement.classList.remove("not-empty")
         }
+    }
+
+    var checkInput = el.value.length;
+    if (checkInput > 0) {
+        el.parentElement.classList.add("not-empty")
+    }
+    else {
+        el.parentElement.classList.remove("not-empty")
     }
 })
 //-----------------------------------------------------------------------

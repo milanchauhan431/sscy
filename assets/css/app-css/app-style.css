@@ -145,6 +145,36 @@
     margin: 0;
 }
 
+.ajaxLoader{
+	display:none;
+	position: fixed;
+	z-index: 99999;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	background-color: black;
+	filter: alpha(opacity=60);
+	opacity: 0.6;
+	-moz-opacity: 0.6;
+}
+.ajaxLoaderImg{
+	position:fixed;
+	display:none;
+	z-index: 9999999;
+	top: 25%;
+	left: 40%;
+	padding: 10px;
+	width:	260px;
+	height: 200px;
+	background-color: White;
+	border-radius: 10px;
+	text-align:center !important;
+}
+.ajaxLoaderImg img{
+  margin:14% auto;height: 120px; width: 120px;
+}
+
 /* Margin in px start */
 .m-1{ margin : 1px !important; }
 .m-2{ margin : 2px !important; }

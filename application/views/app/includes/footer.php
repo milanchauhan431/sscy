@@ -93,7 +93,7 @@
 
     <?php $this->load->view("app/includes/modal.php"); ?>
 
-    <div id="success" class="toast-box toast-bottom bg-success">
+    <div id="success" class="toast-box toast-bottom bg-success text-dark">
         <div class="in">
             <div class="text">
                 Auto close in 2 seconds
@@ -101,12 +101,17 @@
         </div>
     </div>
 
-    <div id="error" class="toast-box toast-bottom bg-danger">
+    <div id="error" class="toast-box toast-bottom bg-danger text-dark">
         <div class="in">
             <div class="text">
                 Auto close in 2 seconds
             </div>
         </div>
+    </div>
+
+    <div class="ajaxLoader"></div>
+    <div class="ajaxLoaderImg">
+        <img src="<?=base_url()?>assets/dist/img/rolling-rb.gif" >
     </div>
 </body>
 
