@@ -58,12 +58,6 @@ self.addEventListener('fetch', function (event) {
 self.addEventListener('activate', function (event) {
   // Calling claim() to force a "controllerchange" event on navigator.serviceWorker
   event.waitUntil(self.clients.claim());
-
-  caches.keys().then(function(names) {
-    for (let name of names)
-      $("#cache_version").append(name);
-  });
-
   /* var cacheKeeplist = [CACHE_NAME];
   event.waitUntil(
     caches.keys().then( keyList => {
