@@ -19,6 +19,11 @@ caches.keys().then(function(names) {
     if(CACHE_NAME != name){caches.delete(name);}
 });
 
+caches.keys().then(function(names) {
+  for (let name of names)
+    console.log(name);
+});
+
 self.addEventListener('install', function (event) {
   // Perform install step:  loading each required file into cache
   event.waitUntil(
