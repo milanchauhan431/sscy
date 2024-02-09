@@ -326,7 +326,7 @@ function confirmStore(data){
 			cancel: {
                 btnClass: 'btn waves-effect waves-light btn-outline-secondary',
                 action: function(){
-					console.log("cancel");
+					
 				}
             }
 		}
