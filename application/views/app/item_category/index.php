@@ -14,7 +14,7 @@
         </a>
 
         <?php
-            $addParam = "{'modal_id' : 'ModalBasic', 'controller' : 'userMaster','call_function':'addUser', 'form_id' : 'userForm', 'title' : 'Add Kariger'}";
+            $addParam = "{'modal_id' : 'ModalBasic', 'controller' : 'itemCategory','call_function':'addItemCategory', 'form_id' : 'itemCategoryForm', 'title' : 'Add Item Category'}";
         ?>
         <a href="javascript:void(0)" class="button fs-px-40 text-success" onclick="modalAction(<?=$addParam?>);">
             <ion-icon name="add-outline"></ion-icon>
@@ -35,25 +35,8 @@
 
 <!-- App Capsule -->
 <div id="appCapsule">
-    <div class="card lazy-load-tab">
-        <div class="card-body pt-0">
-            <ul class="nav nav-tabs lined" role="tablist">
-                <li class="nav-item">
-                    <button class="nav-link text-success active" id="active_user" onclick="tabLoading('<?=base_url('app/userMaster/getDTRows/1')?>');" role="tab">
-                        Active
-                    </button>
-                </li>
-                <li class="nav-item">
-                    <button class="nav-link text-danger" id="inactive_user" onclick="tabLoading('<?=base_url('app/userMaster/getDTRows/0')?>');" role="tab">
-                        In-Active
-                    </button>
-                </li>
-            </ul>
-        </div>        
-    </div>
-
-    <div class="section m-t-80">
-        <div class="transactions" id="lazy-load-trans" data-url="<?=base_url("app/userMaster/getDTRows/1")?>">
+    <div class="section m-t-10">
+        <div class="transactions" id="lazy-load-trans" data-url="<?=base_url("app/itemCategory/getDTRows")?>">
         </div>
 
         <div id="lazyLoader" class="text-center  m-b-20" style="display:none;">
@@ -64,7 +47,6 @@
 <!-- * App Capsule -->
 
 <?php $this->load->view("app/includes/footer"); ?>
-
 <script>
 $(document).ready(function(){
     loadTransaction();
@@ -73,6 +55,7 @@ $(document).ready(function(){
 async function dataListing(response){
     var dataList = response.data;
     var totalRecords = response.recordsFiltered;
+
     if(dataList.length > 0){
         $.each(dataList,function(key,row){
             
@@ -82,20 +65,16 @@ async function dataListing(response){
             // Create a div with class "detail"
             var detailDiv = $('<div class="detail"></div>');
 
-            // Create an image element with src attribute
-            var imgElement = $('<img src="'+row.user_image+'" alt="img" class="image-block imaged w48">');
-
             // Create a div with a strong tag containing text
             var details = $('<div></div>');
-            var userName = $("<strong></strong>").html(row.user_name);
-            var userCode = $("<small></small>").html("Code : "+row.user_code+"<br>");
-            var userMobile = $("<small></small>").html("Contact No. : "+row.mobile_no);
+            var categoryName = $("<strong></strong>").html(row.category_name);
+            var categoryRemark = $("<small></small>").html("Remark : "+row.remark+"<br>");
 
             // Append the image and name div to the detail div
-            detailDiv.append(imgElement, details);
+            detailDiv.append(details);
 
             // Append Listing Details
-            details.append(userName, userCode, userMobile);
+            details.append(categoryName, categoryRemark);
 
             // Create a div with class "right"
             var rightDiv = $('<div class="right"></div>');
@@ -110,22 +89,16 @@ async function dataListing(response){
             var dropdownMenu = $('<div class="dropdown-menu dropdown-menu-end"></div>');
 
             // JSON object
-            var editJsonData = actionBtnJson({postData: {id: row.id}, modal_id : 'ModalBasic', controller : 'userMaster', call_function:'edit', form_id : 'userForm', title : 'Update Kariger'});
-            var deleteJsonData = actionBtnJson({postData: {id: row.id},'message' : 'Kariger'});
-            var statusJsonData = actionBtnJson({postData: {id: row.id,is_active:((row.is_active == 1)?0:1)},controller : 'userMaster', fnsave:'changeStatus','message' : 'Are you sure want to '+((row.is_active == 1)?'In-Active':'Active')+' this Kariger?'});
+            var editJsonData = actionBtnJson({postData: {id: row.id}, modal_id : 'ModalBasic', controller : 'itemCategory', call_function:'edit', form_id : 'itemCategoryForm', title : 'Update Item Category'});
+            var deleteJsonData = actionBtnJson({postData: {id: row.id},'message' : 'Item Category'});
 
             // Create anchor tag with onclick attribute
             var editLink = $('<span class="dropdown-item" href="javascript:void(0)" onclick="modalAction(' + editJsonData + ');"><ion-icon name="pencil-outline"></ion-icon>Edit</span>');
 
             var removeLink = $('<span class="dropdown-item" href="javascript:void(0)" onclick="trash(' + deleteJsonData + ');"><ion-icon name="trash"></ion-icon>Remove</span>');
-
-            if(row.is_active == 0){ editLink = ""; removeLink = ""; }
-
-            var statusIcon = (row.is_active == 1)?'<ion-icon name="close-circle-outline"></ion-icon>In-Active':'<ion-icon name="checkmark-circle-outline"></ion-icon>Active';
-            var statusLink = $('<span class="dropdown-item" href="javascript:void(0)" onclick="confirmStore(' + statusJsonData + ');">'+statusIcon+'</span>');
             
             // Append anchor tags to the dropdown menu
-            dropdownMenu.append(editLink, removeLink, statusLink);
+            dropdownMenu.append(editLink, removeLink);
 
             // Append the button and dropdown menu to the card-button div
             cardButtonDiv.append(buttonElement, dropdownMenu);

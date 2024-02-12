@@ -15,9 +15,10 @@ class LoginModel extends CI_Model{
 				//User Data
 				$this->session->set_userdata('LoginOk','login success');
 				$this->session->set_userdata('loginId',$resData->id);
-				$this->session->set_userdata('role',$resData->emp_role);
-				$this->session->set_userdata('roleName',$this->empRole[$empRole]);
-				$this->session->set_userdata('emp_name',$resData->emp_name);
+				$this->session->set_userdata('role',$resData->user_role);
+				$this->session->set_userdata('roleName',$this->empRole[$resData->user_role]);
+				$this->session->set_userdata('user_code',$resData->user_code);
+				$this->session->set_userdata('user_name',$resData->user_name);
 				
 				return ['status'=>1,'message'=>'Login Success.'];
 			endif;

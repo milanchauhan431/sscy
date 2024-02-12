@@ -1,6 +1,27 @@
 
 var zindex = "9999";
 $(document).ready(function(){
+	//Select2 check if there is no dropdownParent and if the function is called on an element that has a parent of the type div.modal. If so, it will add that modal as the parent for the dropdown.
+	(function(){
+		var oldSelect2 = jQuery.fn.select2;
+		jQuery.fn.select2 = function() {
+			const modalParent = jQuery(this).parents('div.modal').first();
+			if (arguments.length === 0 && modalParent.length > 0) {
+				arguments = [{dropdownParent: modalParent}];
+			} else if (arguments.length === 1
+						&& typeof arguments[0] === 'object'
+						&& typeof arguments[0].dropdownParent === 'undefined'
+						&& modalParent.length > 0) {
+				arguments[0].dropdownParent = modalParent;
+			}
+			return oldSelect2.apply(this,arguments);
+		};
+		// Copy all properties of the old function to the new
+		for (var key in oldSelect2) {
+			jQuery.fn.select2[key] = oldSelect2[key];
+		}
+	})();
+
 	/*** Keep Selected Tab after page loading ***/
 	/* var selectedTab = localStorage.getItem('selected_tab');
 	if (selectedTab != null) { 
@@ -42,7 +63,7 @@ $(document).ready(function(){
 
 	// on first focus (bubbles up to document), open the menu
 	$(document).on('focus', '.select2-selection.select2-selection--single', function (e) {
-		$(this).closest(".select2-container").siblings('select:enabled').select2('open');
+		$(this).closest(".select2-container").siblings('select:enabled').select2('open');		
 	});
 	
 	// steal focus during close - only capture once and stop propogation
@@ -114,6 +135,73 @@ function setInputEvent(){
 			el.parentElement.classList.remove("not-empty")
 		}
 	})
+
+	var select2 = document.querySelectorAll(".selectBox");
+	select2.forEach(function (el) {
+		// Initialize Select2
+		$(el).select2();
+
+		// Event listeners for Select2
+		$(el).on('select2:open', function (e) {
+			console.log(el.className);
+			var parent = el.parentElement;
+			parent.classList.add("active");
+			parent.classList.add("not-empty");
+			$(".select2-dropdown .select2-search__field").focus().select();
+		});
+
+		$(el).on('select2:close', function (e) {
+			var parent = el.parentElement;
+			parent.classList.remove("active");
+		});
+
+		$(el).on('change', function (e) {
+			var checkSelected = $(this).val().length;
+			var parent = el.parentElement;
+
+			if (checkSelected > 0) {
+				parent.classList.add("not-empty");
+			} else {
+				parent.classList.remove("not-empty");
+			}
+		});
+
+		// Check initial state
+		var checkSelected = $(el).val().length;
+		var parent = el.parentElement;
+
+		if (checkSelected > 0) {
+			parent.classList.add("not-empty");
+		} else {
+			parent.classList.remove("not-empty");
+		}
+	});
+
+	//-----------------------------------------------------------------------
+
+	//-----------------------------------------------------------------------
+	// Upload Input
+	var uploadComponent = document.querySelectorAll('.custom-file-upload');
+	uploadComponent.forEach(function (el) {
+		var fileUploadParent = '#' + el.id;
+		var fileInput = document.querySelector(fileUploadParent + ' input[type="file"]')
+		var fileLabel = document.querySelector(fileUploadParent + ' label')
+		var fileLabelText = document.querySelector(fileUploadParent + ' label span')
+		var filelabelDefault = fileLabelText.innerHTML;
+		fileInput.addEventListener('change', function (event) {
+			var name = this.value.split('\\').pop()
+			tmppath = URL.createObjectURL(event.target.files[0]);
+			if (name) {
+				fileLabel.classList.add('file-uploaded');
+				fileLabel.style.backgroundImage = "url(" + tmppath + ")";
+				fileLabelText.innerHTML = name;
+			}
+			else {
+				fileLabel.classList.remove("file-uploaded")
+				fileLabelText.innerHTML = filelabelDefault;
+			}
+		})
+	})
 	//-----------------------------------------------------------------------
 }
 
@@ -171,11 +259,12 @@ function initModal(postData,response){
 	}
 	
 	setTimeout(function(){ 
-		$("#"+postData.modal_id+" .select2").select2({with:null}); 
+		$("#"+postData.modal_id+" .select2").select2(); 
 		setInputEvent();
 	}, 5);
 	setTimeout(function(){
-		$('#'+postData.modal_id+'  :input:enabled:visible:first, select:first').focus();
+		//$('#'+postData.modal_id+'  :input:enabled:visible:first, select:first').focus();
+		$('#'+postData.modal_id+'  .form-control:enabled:visible:first').focus();
 	},500);
 	zindex++;
 }

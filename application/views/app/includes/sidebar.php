@@ -6,13 +6,24 @@
             <strong>Overview</strong>
         </div>
     </a>
+
+    <?php if($this->userRole <= 1): ?>
     <a href="<?=base_url("app/userMaster")?>" class="item <?=($headData->controller == "userMaster")?"active":""?>">
         <div class="col">
             <ion-icon name="people-outline"></ion-icon>
             <strong>Karigar</strong>
         </div>
     </a>
-    <a href="<?=base_url("app/products")?>" class="item <?=($headData->controller == "products")?"active":""?>">
+    <?php else: ?>
+        <a href="<?=base_url("app/itemCategory")?>" class="item <?=($headData->controller == "itemCategory")?"active":""?>">
+        <div class="col">
+            <ion-icon name="bookmark-outline"></ion-icon>
+            <strong>Category</strong>
+        </div>
+    </a>
+    <?php endif; ?>
+
+    <a href="<?=base_url("app/itemMaster")?>" class="item <?=($headData->controller == "itemMaster")?"active":""?>">
         <div class="col">
             <ion-icon name="cart-outline"></ion-icon>
             <strong>Product</strong>
@@ -112,18 +123,33 @@
                             </div>
                         </a>
                     </li>
+                    
+                    <?php if($this->userRole <= 1): ?>
+                        <li>
+                            <a href="<?=base_url("app/userMaster")?>" class="item <?=($headData->controller == "userMaster")?"active-item":""?>">
+                                <div class="icon-box bg-success">
+                                    <ion-icon name="people-outline"></ion-icon>
+                                </div>
+                                <div class="in">
+                                    Kariger
+                                </div>
+                            </a>
+                        </li>
+                    <?php else: ?>
+                        <li>
+                            <a href="<?=base_url("app/itemCategory")?>" class="item <?=($headData->controller == "itemCategory")?"active-item":""?>">
+                                <div class="icon-box bg-success">
+                                    <ion-icon name="bookmark-outline"></ion-icon>
+                                </div>
+                                <div class="in">
+                                    Category
+                                </div>
+                            </a>
+                        </li>
+                    <?php endif; ?>
+
                     <li>
-                        <a href="<?=base_url("app/userMaster")?>" class="item <?=($headData->controller == "userMaster")?"active-item":""?>">
-                            <div class="icon-box bg-success">
-                                <ion-icon name="people-outline"></ion-icon>
-                            </div>
-                            <div class="in">
-                                Kariger
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="<?=base_url("app/products")?>" class="item <?=($headData->controller == "products")?"active-item":""?>">
+                        <a href="<?=base_url("app/itemMaster")?>" class="item <?=($headData->controller == "itemMaster")?"active-item":""?>">
                             <div class="icon-box bg-success">
                                 <ion-icon name="cart-outline"></ion-icon>
                             </div>

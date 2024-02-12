@@ -17,13 +17,16 @@ class MY_Controller extends CI_Controller{
 		
 		$this->load->model('masterModel');
 		$this->load->model("UserMasterModel","userMaster");
+		$this->load->model("ItemCategoryModel","itemCategory");
+		$this->load->model("ItemMasterModel","item");
 
-		$this->setSessionVariables(["masterModel","userMaster"]);
+		$this->setSessionVariables(["masterModel","userMaster","itemCategory","item"]);
 	}
 
 	public function setSessionVariables($modelNames){
 
 		$this->loginId = $this->session->userdata('loginId');
+		$this->userCode = $this->session->userdata('user_code');
 		$this->userName = $this->session->userdata('user_name');
 		$this->userRole = $this->session->userdata('role');
 		$this->userRoleName = $this->session->userdata('roleName');
@@ -34,6 +37,7 @@ class MY_Controller extends CI_Controller{
 			$modelName = trim($modelName);
 
 			$this->{$modelName}->loginId = $this->loginId;
+			$this->{$modelName}->userCode = $this->userCode;
 			$this->{$modelName}->userName = $this->userName;
 			$this->{$modelName}->userRole = $this->userRole;
 			$this->{$modelName}->userRoleName = $this->userRoleName;

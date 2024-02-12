@@ -4,7 +4,7 @@ class UserMasterModel extends MasterModel{
 
     public function getDTRows($data){
         $data['tableName'] = $this->userMaster;
-        $data['select'] = "user_master.*,IF(user_image IS NOT NULL,CONCAT('".base_url('app/uploads/user_image/')."',user_image),'".base_url("assets/dist/img/avatar.png")."') as user_image";
+        $data['select'] = "user_master.*,IF(user_image IS NOT NULL,CONCAT('".base_url('assets/uploads/user_image/')."',user_image),'".base_url("assets/dist/img/avatar.png")."') as user_image";
 
         $data['where']['is_active'] = $data['is_active'];
         $data['where']['user_role !='] = -1;

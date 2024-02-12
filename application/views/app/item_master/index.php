@@ -1,5 +1,13 @@
 <?php $this->load->view("app/includes/header"); ?>
-
+<style>
+.imaged.w48 {
+    width: 100px !important;
+    height: 100px; /* Adjust the height as per your requirement */
+    object-fit: cover; /* This property ensures the image maintains its aspect ratio */
+    margin-left: -12px !important;
+    border: 1px solid #000000;
+}
+</style>
 <!-- App Header -->
 <div class="appHeader">
     <div class="left">
@@ -14,7 +22,7 @@
         </a>
 
         <?php
-            $addParam = "{'modal_id' : 'ModalBasic', 'controller' : 'userMaster','call_function':'addUser', 'form_id' : 'userForm', 'title' : 'Add Kariger'}";
+            $addParam = "{'modal_id' : 'ModalBasic', 'controller' : 'itemMaster','call_function':'addItem', 'form_id' : 'itemForm', 'title' : 'Add Product'}";
         ?>
         <a href="javascript:void(0)" class="button fs-px-40 text-success" onclick="modalAction(<?=$addParam?>);">
             <ion-icon name="add-outline"></ion-icon>
@@ -35,25 +43,8 @@
 
 <!-- App Capsule -->
 <div id="appCapsule">
-    <div class="card lazy-load-tab">
-        <div class="card-body pt-0">
-            <ul class="nav nav-tabs lined" role="tablist">
-                <li class="nav-item">
-                    <button class="nav-link text-success active" id="active_user" onclick="tabLoading('<?=base_url('app/userMaster/getDTRows/1')?>');" role="tab">
-                        Active
-                    </button>
-                </li>
-                <li class="nav-item">
-                    <button class="nav-link text-danger" id="inactive_user" onclick="tabLoading('<?=base_url('app/userMaster/getDTRows/0')?>');" role="tab">
-                        In-Active
-                    </button>
-                </li>
-            </ul>
-        </div>        
-    </div>
-
-    <div class="section m-t-80">
-        <div class="transactions" id="lazy-load-trans" data-url="<?=base_url("app/userMaster/getDTRows/1")?>">
+    <div class="section m-t-10">
+        <div class="transactions" id="lazy-load-trans" data-url="<?=base_url("app/itemMaster/getDTRows")?>">
         </div>
 
         <div id="lazyLoader" class="text-center  m-b-20" style="display:none;">
@@ -83,19 +74,19 @@ async function dataListing(response){
             var detailDiv = $('<div class="detail"></div>');
 
             // Create an image element with src attribute
-            var imgElement = $('<img src="'+row.user_image+'" alt="img" class="image-block imaged w48">');
+            var imgElement = $('<img src="'+row.item_image+'" alt="img" class="image-block imaged w48">');
 
             // Create a div with a strong tag containing text
             var details = $('<div></div>');
-            var userName = $("<strong></strong>").html(row.user_name);
-            var userCode = $("<small></small>").html("Code : "+row.user_code+"<br>");
-            var userMobile = $("<small></small>").html("Contact No. : "+row.mobile_no);
+            var itemName = $("<strong></strong>").html(row.item_name);
+            var categoryName = $("<small></small>").html("Category : "+row.category_name+"<br>");
+            var itemPrice = $("<small></small>").html("Price : "+row.price);
 
             // Append the image and name div to the detail div
             detailDiv.append(imgElement, details);
 
             // Append Listing Details
-            details.append(userName, userCode, userMobile);
+            details.append(itemName, categoryName, itemPrice);
 
             // Create a div with class "right"
             var rightDiv = $('<div class="right"></div>');
@@ -110,22 +101,16 @@ async function dataListing(response){
             var dropdownMenu = $('<div class="dropdown-menu dropdown-menu-end"></div>');
 
             // JSON object
-            var editJsonData = actionBtnJson({postData: {id: row.id}, modal_id : 'ModalBasic', controller : 'userMaster', call_function:'edit', form_id : 'userForm', title : 'Update Kariger'});
-            var deleteJsonData = actionBtnJson({postData: {id: row.id},'message' : 'Kariger'});
-            var statusJsonData = actionBtnJson({postData: {id: row.id,is_active:((row.is_active == 1)?0:1)},controller : 'userMaster', fnsave:'changeStatus','message' : 'Are you sure want to '+((row.is_active == 1)?'In-Active':'Active')+' this Kariger?'});
+            var editJsonData = actionBtnJson({postData: {id: row.id}, modal_id : 'ModalBasic', controller : 'itemMaster', call_function:'edit', form_id : 'itemForm', title : 'Update Product'});
+            var deleteJsonData = actionBtnJson({postData: {id: row.id},'message' : 'Product'});
 
             // Create anchor tag with onclick attribute
             var editLink = $('<span class="dropdown-item" href="javascript:void(0)" onclick="modalAction(' + editJsonData + ');"><ion-icon name="pencil-outline"></ion-icon>Edit</span>');
 
             var removeLink = $('<span class="dropdown-item" href="javascript:void(0)" onclick="trash(' + deleteJsonData + ');"><ion-icon name="trash"></ion-icon>Remove</span>');
-
-            if(row.is_active == 0){ editLink = ""; removeLink = ""; }
-
-            var statusIcon = (row.is_active == 1)?'<ion-icon name="close-circle-outline"></ion-icon>In-Active':'<ion-icon name="checkmark-circle-outline"></ion-icon>Active';
-            var statusLink = $('<span class="dropdown-item" href="javascript:void(0)" onclick="confirmStore(' + statusJsonData + ');">'+statusIcon+'</span>');
             
             // Append anchor tags to the dropdown menu
-            dropdownMenu.append(editLink, removeLink, statusLink);
+            dropdownMenu.append(editLink, removeLink);
 
             // Append the button and dropdown menu to the card-button div
             cardButtonDiv.append(buttonElement, dropdownMenu);

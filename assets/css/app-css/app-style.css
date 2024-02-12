@@ -89,16 +89,21 @@
 
 .select2-container--default.select2-container--focus .select2-selection--multiple, .select2-container--default.select2-container--focus .select2-selection--single {
   border-color: #5dd6b2;
+  margin-top: 8px !important;
+}
+
+.select2-container {
+  margin-top: 8px !important;
 }
 
 .select2-container--default .select2-results__option--highlighted[aria-selected] {
-  background-color: #20ffbc;
-  color: black;
+  background-color: #20ffbc !important;
+  color: black !important;
 }
 
 .select2-container--default .select2-results__option--highlighted[aria-selected]:hover {
-  background-color: #20ffbc;
-  color: black;
+  background-color: #20ffbc !important;
+  color: black !important;
 }
 
 .select2-container--default.select2-container--open .select2-selection--single {
@@ -109,7 +114,39 @@
   outline: 0;
   border: 1px solid #5dd6b2;
 }
+
+.select2-container--default .select2-selection--single {
+  background-color: #fff !important;
+  border: none !important;
+  border-bottom: 1px solid #DCDCE9 !important;
+  border-radius: 0px !important;
+  height: 35px !important;
+}
+
+.select2-container--default .select2-selection--single:focus {
+  border-bottom: 1px solid #5dd6b2 !important;
+}
+
+.select2-container .select2-selection--single .select2-selection__rendered {
+  display: block;
+  padding-left: 0px !important;
+  padding-right: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.select2-dropdown{
+  width: 1248px;
+  margin-top: -8px;
+}
 /* Select 2 */
+
+.form-control:disabled, .form-control[readonly] {
+  background-color: #e9ecef !important;
+  opacity: 1;
+  margin-top: 6px;
+}
 
 .form-control:focus {
     border-color: #5dd6b2;
@@ -222,6 +259,20 @@
     top: 40%;
     left: 12%;
   }
+}
+
+.dropdown .dropdown-menu .dropdown-item:hover, .dropdown .dropdown-menu .dropdown-item:active, .dropup .dropdown-menu .dropdown-item:hover, .dropup .dropdown-menu .dropdown-item:active {
+  background: rgba(220, 220, 233, 0.5);
+  color: #27173E;
+  cursor: pointer !important;
+}
+
+.icon-inner, .ionicon, svg {
+  display: block !important;
+  height: 100% !important;
+  width: 100% !important;
+  font-weight: 900 !important;
+  color: #000000 !important;
 }
 
 /* Margin in px start */
