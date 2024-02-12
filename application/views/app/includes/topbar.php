@@ -7,7 +7,7 @@
     </div>
     <div class="pageTitle">
         <!-- <img src="<?=base_url("assets/dist/img/logo.png")?>" alt="logo" class="logo"> -->
-        <h2 class="text-center text-white font-weight-bolder" style="font-weight: 700;margin-top: 1%;    font-size: 2rem; margin-bottom: 0rem;">SADHNA-<?=$this->userRole?></h2>
+        <h2 class="text-center text-white font-weight-bolder" style="font-weight: 700;margin-top: 1%;    font-size: 2rem; margin-bottom: 0rem;">SADHNA</h2>
     </div>
     <div class="right">
         <!-- <a href="app-notifications.html" class="headerButton">
