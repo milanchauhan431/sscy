@@ -25,7 +25,7 @@
                 <div class="error item_name"></div>
             </div>
 
-            <div class="form-group basic animated">
+            <!-- <div class="form-group basic animated">
                 <div class="input-wrapper">
                     <label class="label" for="category_id">Category</label>
                     <select name="category_id" id="category_id" class="form-control selectBox select2">
@@ -37,6 +37,22 @@
                             endforeach;
                         ?>
                     </select>
+                </div>
+                <div class="error category_id"></div>
+            </div> -->
+
+            <div class="form-group basic animated">
+                <div class="input-wrapper">
+                    <label class="label" for="category_id">Category</label>
+                    <select  id="category" data-input_id="category_id" data-placeholder="Select Category" class="form-control multiSelectBox multiselect" multiple="multiple">
+                        <?php
+                            foreach($itemCategoryList as $row):
+                                $selected = (!empty($dataRow->category_id) && $dataRow->category_id == $row->id)?"selected":"";
+                                echo '<option value="'.$row->id.'" '.$selected.'>'.$row->category_name.'</option>';
+                            endforeach;
+                        ?>
+                    </select>
+                    <input type="hidden" name="category_id" id="category_id" value="">
                 </div>
                 <div class="error category_id"></div>
             </div>

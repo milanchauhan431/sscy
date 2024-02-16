@@ -68,6 +68,7 @@
     <script src="<?=base_url("assets/plugins/jquery/jquery.min.js")?>"></script>
     <!-- Bootstrap -->
     <script src="<?=base_url("assets/js/app-js/lib/bootstrap.bundle.min.js")?>"></script>
+    
     <!-- Ionicons -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <!-- Splide -->
@@ -76,8 +77,13 @@
     <script src="<?=base_url("assets/js/app-js/base.js")?>"></script>
     <!-- Jquery Confirm -->
     <script src="<?=base_url("assets/js/jquery-confirm.js");?>"></script>
+    <!-- Multi Select -->
+    <script src="<?=base_url("assets/plugins/popper/umd/popper.min.js")?>"></script>
+    <script src="<?=base_url("assets/plugins/bootstrap/js/bootstrap.min.js")?>"></script>
+    <script src="<?=base_url("assets/plugins/multiselect/js/bootstrap-multiselect.js")?>"></script>
     <!-- Select2 -->
     <script src="<?=base_url("assets/plugins/select2/js/select2.full.min.js")?>"></script>
+    
 
     <!-- Custom JS -->
     <script src="<?=base_url("assets/js/app-js/app-comman.js")?>"></script>

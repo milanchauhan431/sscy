@@ -20,6 +20,12 @@
     <link rel="stylesheet" href="<?=base_url("assets/plugins/select2/css/select2.min.css")?>">
     <link rel="stylesheet" href="<?=base_url("assets/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css")?>">
 
+    <!-- Multi Select -->
+    <link rel="stylesheet" href="<?=base_url("assets/plugins/multiselect/css/bootstrap-multiselect.css")?>">
+
+    <!-- font-awesome CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <!-- Jquery Confirm -->
     <link href="<?=base_url("assets/css/jquery-confirm.css");?>" rel="stylesheet" type="text/css">
 

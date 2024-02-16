@@ -36,27 +36,27 @@ class ItemMaster extends MY_Controller{
         if(!empty($errorMessage)):
             $this->printJson(['status'=>0,'message'=>$errorMessage]);
         else:
-            if(!empty($_FILES['item_imgae']['name'])):
+            if(!empty($_FILES['item_image']['name'])):
                 $this->load->library('upload');
                 $this->load->library('image_lib');
 
                 $errorMessage['item_imgae_error'] = "";
 
-                $_FILES['userfile']['name']     = $_FILES['item_imgae']['name'];
-                $_FILES['userfile']['type']     = $_FILES['item_imgae']['type'];
-                $_FILES['userfile']['tmp_name'] = $_FILES['item_imgae']['tmp_name'];
-                $_FILES['userfile']['error']    = $_FILES['item_imgae']['error'];
-                $_FILES['userfile']['size']     = $_FILES['item_imgae']['size'];
+                $_FILES['userfile']['name']     = $_FILES['item_image']['name'];
+                $_FILES['userfile']['type']     = $_FILES['item_image']['type'];
+                $_FILES['userfile']['tmp_name'] = $_FILES['item_image']['tmp_name'];
+                $_FILES['userfile']['error']    = $_FILES['item_image']['error'];
+                $_FILES['userfile']['size']     = $_FILES['item_image']['size'];
 
                 $imagePath = realpath(APPPATH . '../assets/uploads/products/');
 
-                $fileName = preg_replace('/[^A-Za-z0-9]+/', '_', strtolower($_FILES['item_imgae']['name']));
+                $fileName = preg_replace('/[^A-Za-z0-9]+/', '_', strtolower($_FILES['item_image']['name']));
                 $config = ['file_name' => time() . "_PRD_" . $fileName, 'allowed_types' => 'jpg|jpeg|png|gif|JPG|JPEG|PNG', 'max_size' => 10240, 'overwrite' => FALSE, 'upload_path' => $imagePath];
 
                 $this->upload->initialize($config);
 
                 if(!$this->upload->do_upload()):
-                    $errorMessage['item_imgae_error'] .= $fileName . " => " . $this->upload->display_errors();
+                    $errorMessage['item_image_error'] .= $fileName . " => " . $this->upload->display_errors();
                 else:
                     $uploadData = $this->upload->data();
                     $attachment = $uploadData['file_name'];
@@ -76,7 +76,7 @@ class ItemMaster extends MY_Controller{
                     endif;
                 endif;
 
-                if(!empty($errorMessage['item_imgae_error'])):
+                if(!empty($errorMessage['item_image_error'])):
                     if (file_exists($imagePath . '/' . $attachment)) : unlink($imagePath . '/' . $attachment); endif;
                     $this->printJson(['status' => 0, 'message' => $errorMessage]);
                 endif;

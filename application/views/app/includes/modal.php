@@ -33,7 +33,7 @@
 <!-- * Modal Basic -->
 
 <!-- Panel Left -->
-<div class="modal fade panelbox panelbox-left" id="PanelLeft" tabindex="-1" role="dialog">
+<div class="modal fade panelbox panelbox-left" id="PanelLeft" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -50,7 +50,7 @@
 <!-- * Panel Left -->
 
 <!-- Panel Right -->
-<div class="modal fade panelbox panelbox-right" id="PanelRight" tabindex="-1" role="dialog">
+<div class="modal fade panelbox panelbox-right" id="PanelRight" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">

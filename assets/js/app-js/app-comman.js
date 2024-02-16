@@ -2,7 +2,7 @@
 var zindex = "9999";
 $(document).ready(function(){
 	//Select2 check if there is no dropdownParent and if the function is called on an element that has a parent of the type div.modal. If so, it will add that modal as the parent for the dropdown.
-	(function(){
+	/* (function(){
 		var oldSelect2 = jQuery.fn.select2;
 		jQuery.fn.select2 = function() {
 			const modalParent = jQuery(this).parents('div.modal').first();
@@ -20,7 +20,7 @@ $(document).ready(function(){
 		for (var key in oldSelect2) {
 			jQuery.fn.select2[key] = oldSelect2[key];
 		}
-	})();
+	})(); */
 
 	/*** Keep Selected Tab after page loading ***/
 	/* var selectedTab = localStorage.getItem('selected_tab');
@@ -143,7 +143,6 @@ function setInputEvent(){
 
 		// Event listeners for Select2
 		$(el).on('select2:open', function (e) {
-			console.log(el.className);
 			var parent = el.parentElement;
 			parent.classList.add("active");
 			parent.classList.add("not-empty");
@@ -169,6 +168,49 @@ function setInputEvent(){
 		// Check initial state
 		var checkSelected = $(el).val().length;
 		var parent = el.parentElement;
+
+		if (checkSelected > 0) {
+			parent.classList.add("not-empty");
+		} else {
+			parent.classList.remove("not-empty");
+		}
+	});
+
+	var multiSelectBox = document.querySelectorAll(".multiSelectBox");
+	multiSelectBox.forEach(function (el) { 
+		// Event listener for 'show.bs.dropdown' event
+		$(el).on('focus', function () {
+			var parent = el.parentElement;
+			parent = parent.parentElement;
+			parent.classList.add("active");
+		});
+
+		// Event listener for 'hide.bs.dropdown' event
+		$(el).on('blur', function () {
+			var parent = el.parentElement;
+			parent = parent.parentElement;
+			parent.classList.remove("active");
+		});
+
+		// Event listener for 'change' event
+		$(el).on('change', function () {
+			var checkSelected = $("#"+($(this).data('input_id'))).val().length;
+			var parent = el.parentElement;
+			parent = parent.parentElement;
+
+			if (checkSelected > 0) {
+				parent.classList.add("not-empty");
+				//parent.classList.add("active");
+			} else {
+				parent.classList.remove("not-empty");
+				parent.classList.remove("active");
+			}
+		});
+
+		// Check initial state
+		var checkSelected = $("#"+($(el).data('input_id'))).val().length;
+		var parent = el.parentElement;
+		parent = parent.parentElement;
 
 		if (checkSelected > 0) {
 			parent.classList.add("not-empty");
@@ -203,6 +245,35 @@ function setInputEvent(){
 		})
 	})
 	//-----------------------------------------------------------------------
+}
+
+function initMultiSelect(){
+	$('.multiselect').multiselect({
+		includeSelectAllOption:false,
+		enableFiltering:true,
+        enableCaseInsensitiveFiltering: true,
+		buttonWidth: '100%',
+		onChange: function() {
+			var inputId = this.$select.data('input_id');
+			var selected = this.$select.val();$('#' + inputId).val(selected);
+		}
+	});
+	$('.form-check-input').addClass('filled-in');
+	$('.multiselect-filter i').removeClass('fas');
+	$('.multiselect-filter i').removeClass('fa-sm');
+	$('.multiselect-filter i').addClass('fa');
+	$('.multiselect-container.dropdown-menu').addClass('scrollable');
+	$('.multiselect-container.dropdown-menu').css('max-height','200px');
+}
+
+function reInitMultiSelect(){
+	$('.scrollable').multiselect('rebuild');
+	$('.form-check-input').addClass('filled-in');
+	$('.multiselect-filter i').removeClass('fas');
+	$('.multiselect-filter i').removeClass('fa-sm');
+	$('.multiselect-filter i').addClass('fa');
+	$('.multiselect-container.dropdown-menu').addClass('scrollable');
+	$('.multiselect-container.dropdown-menu').css('height','200px');
 }
 
 function siteStatus(data=""){
@@ -260,7 +331,7 @@ function initModal(postData,response){
 	
 	setTimeout(function(){ 
 		$("#"+postData.modal_id+" .select2").select2(); 
-		setInputEvent();
+		setInputEvent();initMultiSelect();
 	}, 5);
 	setTimeout(function(){
 		//$('#'+postData.modal_id+'  :input:enabled:visible:first, select:first').focus();
