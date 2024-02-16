@@ -89,6 +89,7 @@ $(document).ready(function(){
 });
 
 function setInputEvent(){
+	
 	//-----------------------------------------------------------------------
 	// Input
 	// Clear input

@@ -296,6 +296,24 @@ span.multiselect-native-select select {
   border-radius: 100px;
   border: 1px solid #0f0f0f;
 }
+
+@media screen and (max-width:1023px){ 
+  .multiselect-container {
+    position: absolute;
+    list-style-type: none;
+    margin: 0;
+    padding-right: 30px;
+  }
+  .multiselect-container button.dropdown-item {
+    pointer-events:none;
+  }
+  .multiselect-container span.form-check input {
+    pointer-events: all;
+  }
+  .multiselect-container span.form-check label  {
+    pointer-events: all;
+  }
+}
 /* Multi Select End */
 
 .form-control:disabled, .form-control[readonly] {
