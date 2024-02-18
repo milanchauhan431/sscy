@@ -2,7 +2,7 @@
 var zindex = "9999";
 $(document).ready(function(){
 	//Select2 check if there is no dropdownParent and if the function is called on an element that has a parent of the type div.modal. If so, it will add that modal as the parent for the dropdown.
-	/* (function(){
+	(function(){
 		var oldSelect2 = jQuery.fn.select2;
 		jQuery.fn.select2 = function() {
 			const modalParent = jQuery(this).parents('div.modal').first();
@@ -20,7 +20,7 @@ $(document).ready(function(){
 		for (var key in oldSelect2) {
 			jQuery.fn.select2[key] = oldSelect2[key];
 		}
-	})(); */
+	})();
 
 	/*** Keep Selected Tab after page loading ***/
 	/* var selectedTab = localStorage.getItem('selected_tab');
