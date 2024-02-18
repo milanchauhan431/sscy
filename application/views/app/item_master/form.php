@@ -47,7 +47,7 @@
                     <select  id="category" data-input_id="category_id" data-placeholder="Select Category" class="form-control multiSelectBox multiselect" multiple="multiple">
                         <?php
                             foreach($itemCategoryList as $row):
-                                $selected = (!empty($dataRow->category_id) && in_array($row->id,explod(",",$dataRow->category_id)))?"selected":"";
+                                $selected = (!empty($dataRow->category_id) && in_array($row->id,explode(",",$dataRow->category_id)))?"selected":"";
                                 echo '<option value="'.$row->id.'" '.$selected.'>'.$row->category_name.'</option>';
                             endforeach;
                         ?>
