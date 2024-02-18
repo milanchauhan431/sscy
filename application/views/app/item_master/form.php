@@ -25,21 +25,21 @@
                 <div class="error item_name"></div>
             </div>
 
-            <!-- <div class="form-group basic animated">
+            <div class="form-group basic animated">
                 <div class="input-wrapper">
-                    <label class="label" for="category_id">Category</label>
-                    <select name="category_id" id="category_id" class="form-control selectBox select2">
-                        <option value="">Select Category</option>
+                    <label class="label" for="group_id">Group</label>
+                    <select name="group_id" id="group_id" class="form-control selectBox select2">
+                        <option value="">Select Group</option>
                         <?php
-                            foreach($itemCategoryList as $row):
-                                $selected = (!empty($dataRow->category_id) && $dataRow->category_id == $row->id)?"selected":"";
-                                echo '<option value="'.$row->id.'" '.$selected.'>'.$row->category_name.'</option>';
+                            foreach($itemGroupList as $row):
+                                $selected = (!empty($dataRow->group_id) && $dataRow->group_id == $row->id)?"selected":"";
+                                echo '<option value="'.$row->id.'" '.$selected.'>'.$row->group_name.'</option>';
                             endforeach;
                         ?>
                     </select>
                 </div>
-                <div class="error category_id"></div>
-            </div> -->
+                <div class="error group_id"></div>
+            </div>
 
             <div class="form-group basic animated">
                 <div class="input-wrapper">
@@ -52,7 +52,7 @@
                             endforeach;
                         ?>
                     </select>
-                    <input type="hidden" name="category_id" id="category_id" value="">
+                    <input type="hidden" name="category_id" id="category_id" value="<?=(!empty($dataRow->category_id))?$dataRow->category_id:""?>">
                 </div>
                 <div class="error category_id"></div>
             </div>

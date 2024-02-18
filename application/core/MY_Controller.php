@@ -17,10 +17,11 @@ class MY_Controller extends CI_Controller{
 		
 		$this->load->model('masterModel');
 		$this->load->model("UserMasterModel","userMaster");
+		$this->load->model("ItemGroupModel","itemGroup");
 		$this->load->model("ItemCategoryModel","itemCategory");
 		$this->load->model("ItemMasterModel","item");
 
-		$this->setSessionVariables(["masterModel","userMaster","itemCategory","item"]);
+		$this->setSessionVariables(["masterModel","userMaster","itemGroup","itemCategory","item"]);
 	}
 
 	public function setSessionVariables($modelNames){

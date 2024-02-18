@@ -14,7 +14,7 @@
         </a>
 
         <?php
-            $addParam = "{'modal_id' : 'ModalBasic', 'controller' : 'itemCategory','call_function':'addItemCategory', 'form_id' : 'itemCategoryForm', 'title' : 'Add Item Category'}";
+            $addParam = "{'modal_id' : 'ModalBasic', 'controller' : 'itemGroup','call_function':'addItemGroup', 'form_id' : 'itemGroupForm', 'title' : 'Add Product Group'}";
         ?>
         <a href="javascript:void(0)" class="button fs-px-40 text-success" onclick="modalAction(<?=$addParam?>);">
             <ion-icon name="add-outline"></ion-icon>
@@ -36,7 +36,7 @@
 <!-- App Capsule -->
 <div id="appCapsule">
     <div class="section m-t-10">
-        <div class="transactions" id="lazy-load-trans" data-url="<?=base_url("app/itemCategory/getDTRows")?>">
+        <div class="transactions" id="lazy-load-trans" data-url="<?=base_url("app/itemGroup/getDTRows")?>">
         </div>
 
         <div id="lazyLoader" class="text-center  m-b-20" style="display:none;">
@@ -67,14 +67,14 @@ async function dataListing(response){
 
             // Create a div with a strong tag containing text
             var details = $('<div></div>');
-            var categoryName = $("<strong></strong>").html(row.category_name);
-            var categoryRemark = $("<small></small>").html("Remark : "+row.remark+"<br>");
+            var groupName = $("<strong></strong>").html(row.group_name);
+            var groupRemark = $("<small></small>").html("Remark : "+row.remark+"<br>");
 
             // Append the image and name div to the detail div
             detailDiv.append(details);
 
             // Append Listing Details
-            details.append(categoryName, categoryRemark);
+            details.append(groupName, groupRemark);
 
             // Create a div with class "right"
             var rightDiv = $('<div class="right"></div>');
@@ -89,8 +89,8 @@ async function dataListing(response){
             var dropdownMenu = $('<div class="dropdown-menu dropdown-menu-end"></div>');
 
             // JSON object
-            var editJsonData = actionBtnJson({postData: {id: row.id}, modal_id : 'ModalBasic', controller : 'itemCategory', call_function:'edit', form_id : 'itemCategoryForm', title : 'Update Item Category'});
-            var deleteJsonData = actionBtnJson({postData: {id: row.id},'message' : 'Item Category'});
+            var editJsonData = actionBtnJson({postData: {id: row.id}, modal_id : 'ModalBasic', controller : 'itemGroup', call_function:'edit', form_id : 'itemGroupForm', title : 'Update Product Group'});
+            var deleteJsonData = actionBtnJson({postData: {id: row.id},'message' : 'Product Group'});
 
             // Create anchor tag with onclick attribute
             var editLink = $('<span class="dropdown-item" href="javascript:void(0)" onclick="modalAction(' + editJsonData + ');"><ion-icon name="pencil-outline"></ion-icon>Edit</span>');

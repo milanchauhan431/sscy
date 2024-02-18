@@ -20,6 +20,7 @@ class ItemMaster extends MY_Controller{
     }
 
     public function addItem(){
+        $this->data['itemGroupList'] = $this->itemGroup->getItemGroupList();
         $this->data['itemCategoryList'] = $this->itemCategory->getItemCategoryList();
         $this->load->view($this->form,$this->data);
     }
@@ -30,6 +31,8 @@ class ItemMaster extends MY_Controller{
 
         if(empty($data['item_name']))
             $errorMessage['item_name'] = "Product name is required.";
+        if(empty($data['group_id']))
+            $errorMessage['group_id'] = "Group name is required.";
         if(empty($data['category_id']))
             $errorMessage['category_id'] = "Category name is required.";
 
@@ -90,6 +93,7 @@ class ItemMaster extends MY_Controller{
 
     public function edit(){
         $data = $this->input->post();
+        $this->data['itemGroupList'] = $this->itemGroup->getItemGroupList();
         $this->data['itemCategoryList'] = $this->itemCategory->getItemCategoryList();
         $this->data['dataRow'] = $this->item->getItem($data);
         $this->load->view($this->form,$this->data);

@@ -79,14 +79,14 @@ async function dataListing(response){
             // Create a div with a strong tag containing text
             var details = $('<div></div>');
             var itemName = $("<strong></strong>").html(row.item_name);
-            var categoryName = $("<small></small>").html("Category : "+row.category_name+"<br>");
+            var groupName = $("<small></small>").html("Group : "+row.group_name+"<br>");
             var itemPrice = $("<small></small>").html("Price : "+row.price);
 
             // Append the image and name div to the detail div
             detailDiv.append(imgElement, details);
 
             // Append Listing Details
-            details.append(itemName, categoryName, itemPrice);
+            details.append(itemName, groupName, itemPrice);
 
             // Create a div with class "right"
             var rightDiv = $('<div class="right"></div>');
@@ -123,7 +123,7 @@ async function dataListing(response){
         });
     }else{
         if(totalRecords <= 0){
-            $("#transactions").html('<div class="text-center">No data available</div>');
+            $("#lazy-load-trans").html('<div class="text-center">No data available</div>');
         }
     }
 }

@@ -250,13 +250,24 @@ function setInputEvent(){
 
 function initMultiSelect(){
 	$('.multiselect').multiselect({
-		includeSelectAllOption:false,
+		includeSelectAllOption:true,
 		enableFiltering:true,
         enableCaseInsensitiveFiltering: true,
 		buttonWidth: '100%',
+		onDropdownShown: function(even) {
+			this.$filter.find('.multiselect-search').focus();
+		},
 		onChange: function() {
 			var inputId = this.$select.data('input_id');
 			var selected = this.$select.val();$('#' + inputId).val(selected);
+		},
+		onSelectAll: function(){
+			var inputId = this.$select.data('input_id');
+			var selected = this.$select.val();$('#' + inputId).val(selected.join(","));
+		},
+		onDeselectAll: function(){
+			var inputId = this.$select.data('input_id');
+			$('#' + inputId).val("");
 		}
 	});
 	$('.form-check-input').addClass('filled-in');

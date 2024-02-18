@@ -138,7 +138,7 @@ async function dataListing(response){
         });
     }else{
         if(totalRecords <= 0){
-            $("#transactions").html('<div class="text-center">No data available</div>');
+            $("#lazy-load-trans").html('<div class="text-center">No data available</div>');
         }
     }
 }

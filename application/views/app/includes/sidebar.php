@@ -14,6 +14,13 @@
             <strong>Karigar</strong>
         </div>
     </a>
+
+    <a href="<?=base_url("app/dashboard")?>" class="item <?=($headData->controller == "dashboard")?"active":""?>">
+        <div class="col">
+            <ion-icon name="cart-outline"></ion-icon>
+            <strong>Product</strong>
+        </div>
+    </a>
     <?php else: ?>
         <a href="<?=base_url("app/itemCategory")?>" class="item <?=($headData->controller == "itemCategory")?"active":""?>">
         <div class="col">
@@ -21,7 +28,6 @@
             <strong>Category</strong>
         </div>
     </a>
-    <?php endif; ?>
 
     <a href="<?=base_url("app/itemMaster")?>" class="item <?=($headData->controller == "itemMaster")?"active":""?>">
         <div class="col">
@@ -29,6 +35,9 @@
             <strong>Product</strong>
         </div>
     </a>
+    <?php endif; ?>
+
+    
     <a href="<?=base_url("app/orders")?>" class="item <?=($headData->controller == "orders")?"active":""?>">
         <div class="col">
             <ion-icon name="document-text-outline"></ion-icon>
@@ -135,6 +144,28 @@
                                 </div>
                             </a>
                         </li>
+
+                        <li>
+                            <a href="<?=base_url("app/itemGroup")?>" class="item <?=($headData->controller == "itemGroup")?"active-item":""?>">
+                                <div class="icon-box bg-success">
+                                    <ion-icon name="bookmark-outline"></ion-icon>
+                                </div>
+                                <div class="in">
+                                    Item Group
+                                </div>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="<?=base_url("app/dashboard")?>" class="item <?=($headData->controller == "dashboard")?"active-item":""?>">
+                                <div class="icon-box bg-success">
+                                    <ion-icon name="cart-outline"></ion-icon>
+                                </div>
+                                <div class="in">
+                                    Product
+                                </div>
+                            </a>
+                        </li>
                     <?php else: ?>
                         <li>
                             <a href="<?=base_url("app/itemCategory")?>" class="item <?=($headData->controller == "itemCategory")?"active-item":""?>">
@@ -146,18 +177,20 @@
                                 </div>
                             </a>
                         </li>
+
+                        <li>
+                            <a href="<?=base_url("app/itemMaster")?>" class="item <?=($headData->controller == "itemMaster")?"active-item":""?>">
+                                <div class="icon-box bg-success">
+                                    <ion-icon name="cart-outline"></ion-icon>
+                                </div>
+                                <div class="in">
+                                    Product
+                                </div>
+                            </a>
+                        </li>
                     <?php endif; ?>
 
-                    <li>
-                        <a href="<?=base_url("app/itemMaster")?>" class="item <?=($headData->controller == "itemMaster")?"active-item":""?>">
-                            <div class="icon-box bg-success">
-                                <ion-icon name="cart-outline"></ion-icon>
-                            </div>
-                            <div class="in">
-                                Product
-                            </div>
-                        </a>
-                    </li>
+                    
                     <li>
                         <a href="<?=base_url("app/orders")?>" class="item <?=($headData->controller == "orders")?"active-item":""?>">
                             <div class="icon-box bg-success">

@@ -4,9 +4,9 @@ class ItemMasterModel extends MasterModel{
 
     public function getDTRows($data){
         $data['tableName'] = $this->itemMaster;
-        $data['select'] = "item_master.*,IF(item_master.item_image != '',CONCAT('".base_url('assets/uploads/products/')."',item_master.item_image),'".base_url("assets/dist/img/app-img/sample/brand/1.jpg")."') as item_image,category_master.category_name";
+        $data['select'] = "item_master.*,IF(item_master.item_image != '',CONCAT('".base_url('assets/uploads/products/')."',item_master.item_image),'".base_url("assets/dist/img/app-img/sample/brand/1.jpg")."') as item_image,item_group.group_name";
 
-        $data['leftJoin']['category_master'] = "category_master.id = item_master.category_id";
+        $data['leftJoin']['item_group'] = "item_group.id = item_master.group_id";
 
         if($this->userRole > 1):
             $data['where']['item_master.created_by'] = $this->loginId;
@@ -15,7 +15,7 @@ class ItemMasterModel extends MasterModel{
         $data['searchCol'][] = "item_master.item_code";
         $data['searchCol'][] = "item_master.item_name";
         $data['searchCol'][] = "item_master.price";
-        $data['searchCol'][] = "category_master.category_name";
+        $data['searchCol'][] = "item_group.group_name";
 
         $data['order_by']['item_master.id'] = "DESC";
 
