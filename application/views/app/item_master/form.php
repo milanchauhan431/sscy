@@ -69,8 +69,8 @@
             </div>
 
             <div class="custom-file-upload m-t-10" id="fileUpload1">
-                <input type="file" name="item_imgae" id="item_imgae" accept=".png, .jpg, .jpeg">
-                <label for="item_imgae" style="background-image: url('<?=(!empty($dataRow->item_image))?base_url("assets/uploads/products/".$dataRow->item_image):""?>');" class="<?=(!empty($dataRow->item_image))?"file-uploaded":""?>">
+                <input type="file" name="item_image" id="item_image" accept=".png, .jpg, .jpeg">
+                <label for="item_image" style="background-image: url('<?=(!empty($dataRow->item_image))?base_url("assets/uploads/products/".$dataRow->item_image):""?>');" class="<?=(!empty($dataRow->item_image))?"file-uploaded":""?>">
                     <span>
                         <?php if(!empty($dataRow->item_image)): ?>
                             <?=$dataRow->item_image?>
@@ -82,7 +82,7 @@
                         <?php endif; ?>
                     </span>
                 </label>
-                <div class="error item_imgae_error"></div>
+                <div class="error item_image_error"></div>
             </div>
         </div>
     </div>

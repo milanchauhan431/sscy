@@ -45,6 +45,8 @@ class ItemCategoryModel extends MasterModel{
         if(!empty($data['id']))
             $queryData['where']['id !='] = $data['id'];
 
+        $queryData['where']['created_by'] = $this->loginId;
+
         $queryData['resultType'] = "numRows";
         return $this->specificRow($queryData);
     }

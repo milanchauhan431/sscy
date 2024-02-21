@@ -69,7 +69,7 @@ class ItemMaster extends MY_Controller{
                     $imgConfig['maintain_ratio'] = TRUE;
                     $imgConfig['width'] = 640;
                     $imgConfig['height'] = 480;
-                    $imgConfig['quality'] = "50%";
+                    $imgConfig['quality'] = "70%";
 
                     $this->image_lib->clear();
                     $this->image_lib->initialize($imgConfig);

@@ -8,37 +8,37 @@
     </a>
 
     <?php if($this->userRole <= 1): ?>
-    <a href="<?=base_url("app/userMaster")?>" class="item <?=($headData->controller == "userMaster")?"active":""?>">
-        <div class="col">
-            <ion-icon name="people-outline"></ion-icon>
-            <strong>Karigar</strong>
-        </div>
-    </a>
+        <a href="<?=base_url("app/userMaster")?>" class="item <?=($headData->controller == "userMaster")?"active":""?>">
+            <div class="col">
+                <ion-icon name="people-outline"></ion-icon>
+                <strong>Karigar</strong>
+            </div>
+        </a>
 
-    <a href="<?=base_url("app/dashboard")?>" class="item <?=($headData->controller == "dashboard")?"active":""?>">
-        <div class="col">
-            <ion-icon name="cart-outline"></ion-icon>
-            <strong>Product</strong>
-        </div>
-    </a>
+        <a href="<?=base_url("app/orders")?>" class="item <?=($headData->controller == "orders")?"active":""?>">
+            <div class="col">
+                <ion-icon name="cart-outline"></ion-icon>
+                <strong>Product</strong>
+            </div>
+        </a>
     <?php else: ?>
         <a href="<?=base_url("app/itemCategory")?>" class="item <?=($headData->controller == "itemCategory")?"active":""?>">
-        <div class="col">
-            <ion-icon name="bookmark-outline"></ion-icon>
-            <strong>Category</strong>
-        </div>
-    </a>
+            <div class="col">
+                <ion-icon name="bookmark-outline"></ion-icon>
+                <strong>Category</strong>
+            </div>
+        </a>
 
-    <a href="<?=base_url("app/itemMaster")?>" class="item <?=($headData->controller == "itemMaster")?"active":""?>">
-        <div class="col">
-            <ion-icon name="cart-outline"></ion-icon>
-            <strong>Product</strong>
-        </div>
-    </a>
+        <a href="<?=base_url("app/itemMaster")?>" class="item <?=($headData->controller == "itemMaster")?"active":""?>">
+            <div class="col">
+                <ion-icon name="cart-outline"></ion-icon>
+                <strong>Product</strong>
+            </div>
+        </a>
     <?php endif; ?>
 
     
-    <a href="<?=base_url("app/orders")?>" class="item <?=($headData->controller == "orders")?"active":""?>">
+    <a href="<?=base_url("app/orders/list")?>" class="item <?=($headData->controller == "orders/list")?"active":""?>">
         <div class="col">
             <ion-icon name="document-text-outline"></ion-icon>
             <strong>My Orders</strong>
@@ -157,7 +157,7 @@
                         </li>
 
                         <li>
-                            <a href="<?=base_url("app/dashboard")?>" class="item <?=($headData->controller == "dashboard")?"active-item":""?>">
+                            <a href="<?=base_url("app/Orders")?>" class="item <?=($headData->controller == "Orders")?"active-item":""?>">
                                 <div class="icon-box bg-success">
                                     <ion-icon name="cart-outline"></ion-icon>
                                 </div>
@@ -192,7 +192,7 @@
 
                     
                     <li>
-                        <a href="<?=base_url("app/orders")?>" class="item <?=($headData->controller == "orders")?"active-item":""?>">
+                        <a href="<?=base_url("app/orders/list")?>" class="item <?=($headData->controller == "orders/list")?"active-item":""?>">
                             <div class="icon-box bg-success">
                                 <ion-icon name="document-text-outline"></ion-icon>
                             </div>
