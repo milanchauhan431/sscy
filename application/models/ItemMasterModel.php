@@ -12,6 +12,16 @@ class ItemMasterModel extends MasterModel{
             $data['where']['item_master.created_by'] = $this->loginId;
         endif;
 
+        if(!empty($data['filters'])):
+            if(!empty($data['filters']['item_code'])):
+                $data['where']['item_master.item_code'] = $data['filters']['item_code'];
+            endif;
+
+            if(!empty($data['filters']['group_id'])):
+                $data['where']['item_master.group_id'] = $data['filters']['group_id'];
+            endif;
+        endif;
+
         $data['searchCol'][] = "item_master.item_code";
         $data['searchCol'][] = "item_master.item_name";
         $data['searchCol'][] = "item_master.price";

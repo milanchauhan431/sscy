@@ -7,10 +7,13 @@
             <div class="form-group basic animated">
                 <div class="input-wrapper">
                     <label class="label" for="user_code">Kariger Code</label>
-                    <input type="text" class="form-control" name="user_code" id="user_code" placeholder="Enter Kariger Code" value="<?=(!empty($dataRow->user_code))?$dataRow->user_code:""?>">
+                    <input type="text" class="form-control" name="user_code" id="user_code" placeholder="Enter Kariger Code" value="<?=(!empty($dataRow->user_code))?$dataRow->user_code:""?>" <?=(!empty($dataRow->user_code))?"readonly":""?>>
+
+                    <?php if(empty($dataRow)): ?>
                     <i class="clear-input">
                         <ion-icon name="close-circle"></ion-icon>
                     </i>
+                    <?php endif; ?>
                 </div>
                 <div class="error user_code"></div>
             </div>

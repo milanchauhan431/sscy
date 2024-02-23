@@ -64,8 +64,8 @@
         <div class="card-body pt-0">
             <ul class="nav nav-tabs lined m-t-5 m-b-5" role="tablist">
                 <li class="nav-item filter" style="border-right:1px solid #DCDCE9">
-                    <a href="javascript:void(0)" class="button fs-px-35 text-success">
-                        <ion-icon name="filter-circle-outline"></ion-icon>
+                    <a href="javascript:void(0)" class="button fs-px-35 text-success" id="filter-btn">
+                        <ion-icon name="filter-outline"></ion-icon>
                     </a>          
                 </li>
                 <li class="nav-item">
@@ -79,7 +79,7 @@
     </div>
 
     <div class="section m-t-45" align="center">
-        <div class="transactions col-12 row" id="lazy-load-trans" data-url="<?=base_url("app/orders/getProductListDTRows")?>" align="center">
+        <div class="transactions col-12 row" id="lazy-load-trans" data-url="<?=base_url("app/orders/getProductListDTRows")?>" data-filter_page_name="orders" align="center">
         </div>
 
         <div id="lazyLoader" class="text-center  m-b-20" style="display:none;">
@@ -89,75 +89,11 @@
 </div>
 <!-- * App Capsule -->
 
-<div class="modal fade dialogbox" id="filter-modal" data-bs-backdrop="static" style="display: none;" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Filters</h5>
-            </div>
-            <div class="modal-body">
-                <div class="col-md-12">
-                    <div class="row">
+<?php 
+    $this->load->view("app/includes/footer"); 
+    $this->load->view("app/orders/filter_form");
+?>
 
-                        <div class="form-group basic animated">
-                            <div class="input-wrapper">
-                                <label class="label" for="item_code">Code</label>
-                                <select name="item_code" id="item_code" class="form-control selectBox select2">
-                                    <option value="">Select Code</option>
-                                    <?php
-                                        /* foreach($itemGroupList as $row):
-                                            $selected = (!empty($dataRow->group_id) && $dataRow->group_id == $row->id)?"selected":"";
-                                            echo '<option value="'.$row->id.'" '.$selected.'>'.$row->group_name.'</option>';
-                                        endforeach; */
-                                    ?>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group basic animated">
-                            <div class="input-wrapper">
-                                <label class="label" for="group_id">Group</label>
-                                <select name="group_id" id="group_id" class="form-control selectBox select2">
-                                    <option value="">Select Group</option>
-                                    <?php
-                                        /* foreach($itemGroupList as $row):
-                                            $selected = (!empty($dataRow->group_id) && $dataRow->group_id == $row->id)?"selected":"";
-                                            echo '<option value="'.$row->id.'" '.$selected.'>'.$row->group_name.'</option>';
-                                        endforeach; */
-                                    ?>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group basic animated">
-                            <div class="input-wrapper">
-                                <label class="label" for="category_id">Category</label>
-                                <select name="category_id" id="category_id" class="form-control selectBox select2">
-                                    <option value="">Select Category</option>
-                                    <?php
-                                        /* foreach($itemGroupList as $row):
-                                            $selected = (!empty($dataRow->group_id) && $dataRow->group_id == $row->id)?"selected":"";
-                                            echo '<option value="'.$row->id.'" '.$selected.'>'.$row->group_name.'</option>';
-                                        endforeach; */
-                                    ?>
-                                </select>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <div class="btn-inline">
-                    <a href="#" class="btn btn-text-secondary" data-bs-dismiss="modal">CANCEL</a>
-                    <a href="#" class="btn btn-text-success" data-bs-dismiss="modal">Apply</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<?php $this->load->view("app/includes/footer"); ?>
 
 <script>
 $(document).ready(function(){

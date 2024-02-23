@@ -70,6 +70,14 @@ class UserMasterModel extends MasterModel{
         return $result;
     }
 
+    public function getUserList(){
+        $queryData = array();
+        $queryData['tableName'] = $this->userMaster;
+        $queryData['where']['is_active'] = 1;
+        $result = $this->rows($queryData);
+        return $result;
+    }
+
     public function changeStatus($data){
         try{
             $this->db->trans_begin();

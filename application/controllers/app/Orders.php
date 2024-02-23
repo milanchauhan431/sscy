@@ -9,6 +9,9 @@ class Orders extends MY_Controller{
     }
 
     public function index(){
+        $this->data['userList'] = $this->userMaster->getUserList();
+        $this->data['itemGroupList'] = $this->itemGroup->getItemGroupList();
+        //$this->data['itemCategoryList'] = $this->itemCategory->getItemCategoryList();
         $this->load->view($this->productList,$this->data);
     }
 
