@@ -66,7 +66,7 @@ function actionBtnJson(jsonData){
 function loadTransaction(){
     var search = $('#commanSerach').val() || "";
     var filter_page_name = $("#lazy-load-trans").data('filter_page_name') || "";
-    
+
     var filterData = {};
     if(filter_page_name){
         var flData = localStorage.getItem(filter_page_name);
@@ -76,7 +76,7 @@ function loadTransaction(){
         } 
     }
       
-	var dataSet = {draw:1,start:load_flag,length:25,search : {value : search, regex : false},filters:filterData};
+	var dataSet = {draw:1,start:load_flag,length:20,search : {value : search, regex : false},filters:filterData};
 	var url = $("#lazy-load-trans").attr('data-url');
 	var postData = {url:url,dataSet:dataSet,resFunctionName:"dataListing"};
 	loadMore(postData);
@@ -97,7 +97,7 @@ function reloadTransaction(){
         } 
     }
 
-	var dataSet = {draw:1,start:load_flag,length:25,search : {value : search, regex : false},filters:filterData};
+	var dataSet = {draw:1,start:load_flag,length:20,search : {value : search, regex : false},filters:filterData};
 	var url = $("#lazy-load-trans").attr('data-url');
 	var postData = {url:url,dataSet:dataSet,resFunctionName:"dataListing"};
 	loadMore(postData);
