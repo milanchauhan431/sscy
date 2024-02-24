@@ -397,7 +397,7 @@
                 </div>
                 <h2 class="h1"><?=(!empty($heading))?$heading:"Sorry! Page not found"?></h2>
                 <?=(!empty($message))?"<p>".$message."</p>":""?>
-                <a href="<?=base_url()?>" class="btn btn-danger btn-rounded waves-effect waves-light m-b-40">Back to
+                <a href="<?=base_url("/app")?>" class="btn btn-danger btn-rounded waves-effect waves-light m-b-40">Back to
                     home</a>
             </div>
         </div>

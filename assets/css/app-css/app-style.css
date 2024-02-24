@@ -1,52 +1,3 @@
-@media only screen and (max-width: 750px) {
-  .ajaxLoaderImg{
-    top: 40%;
-	  left: 34%;
-  }
-}
-
-@media only screen and (max-width: 600px) {
-  .ajaxLoaderImg{
-    top: 40%;
-    left: 27%;
-  }
-}
-
-@media only screen and (max-width: 500px) {
-  .ajaxLoaderImg{
-    top: 40%;
-    left: 23%;
-  }
-}
-
-@media only screen and (max-width: 450px) {
-  .ajaxLoaderImg{
-    top: 40%;
-    left: 20%;
-  }
-}
-
-@media only screen and (max-width: 400px) {
-  .ajaxLoaderImg{
-    top: 40%;
-    left: 18%;
-  }
-}
-
-@media only screen and (max-width: 380px) {
-  .ajaxLoaderImg{
-    top: 40%;
-    left: 18%;
-  }
-}
-
-@media only screen and (max-width: 350px) {
-  .ajaxLoaderImg{
-    top: 40%;
-    left: 12%;
-  }
-}
-
 #loader{
     background: #fff !important;
 }
@@ -509,7 +460,7 @@ span.multiselect-native-select select {
   width: 100%; 
 }
 #item-details-modal .modal-dialog .modal-content .modal-body{
-  max-height: 200px;
+  max-height: 450px;
   overflow-y: scroll;
 }
 #item-details-modal .modal-dialog .modal-content .modal-body::-webkit-scrollbar{
@@ -1756,3 +1707,52 @@ span.multiselect-native-select select {
 .fs-px-99{ font-size : 99px !important; }
 .fs-px-100{ font-size : 100px !important; }
 /* Font Size in px end */
+
+@media only screen and (max-width: 750px) {
+  .ajaxLoaderImg{
+    top: 40%;
+	  left: 34%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .ajaxLoaderImg{
+    top: 40%;
+    left: 27%;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .ajaxLoaderImg{
+    top: 40%;
+    left: 23%;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .ajaxLoaderImg{
+    top: 40%;
+    left: 20%;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .ajaxLoaderImg{
+    top: 40%;
+    left: 18%;
+  }
+}
+
+@media only screen and (max-width: 380px) {
+  .ajaxLoaderImg{
+    top: 40%;
+    left: 18%;
+  }
+}
+
+@media only screen and (max-width: 350px) {
+  .ajaxLoaderImg{
+    top: 40%;
+    left: 12%;
+  }
+}
