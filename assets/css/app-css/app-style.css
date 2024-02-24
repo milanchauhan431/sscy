@@ -490,7 +490,7 @@ span.multiselect-native-select select {
 #item-details-modal .modal-dialog .modal-content {
   max-width: 300px;
   margin: auto;
-  max-height: 600px;
+  max-height: 800px;
   overflow: auto;
   border: 0;
   border-radius: 16px;
