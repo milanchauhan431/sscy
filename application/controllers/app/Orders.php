@@ -20,5 +20,12 @@ class Orders extends MY_Controller{
         $result = $this->item->getDTRows($data);
         $this->printJson($result);
     }
+
+    public function getItemDetail(){
+        $data = $this->input->post();
+        $data['categoryList'] = 1;
+        $this->data['dataRow'] = $this->item->getItem($data);
+        $this->load->view("app/orders/item_detail",$this->data);
+    }
 }
 ?>

@@ -32,7 +32,7 @@
             <div class="form-group basic animated">
                 <div class="input-wrapper">
                     <label class="label" for="mobile_no">Mobile No.</label>
-                    <input type="tel" class="form-control numericOnly" name="mobile_no" id="mobile_no" placeholder="Enter Mobile No." value="<?=(!empty($dataRow->mobile_no))?$dataRow->mobile_no:""?>">
+                    <input type="number" class="form-control numericOnly" name="mobile_no" id="mobile_no" placeholder="Enter Mobile No." value="<?=(!empty($dataRow->mobile_no))?$dataRow->mobile_no:""?>">
                     <i class="clear-input">
                         <ion-icon name="close-circle"></ion-icon>
                     </i>

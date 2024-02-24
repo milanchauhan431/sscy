@@ -60,7 +60,7 @@
             <div class="form-group basic animated">
                 <div class="input-wrapper">
                     <label class="label" for="price">Price</label>
-                    <input type="tel" class="form-control numericOnly" name="price" id="price" placeholder="Enter Price" value="<?=(!empty($dataRow->price))?$dataRow->price:""?>">
+                    <input type="number" class="form-control floatOnly" name="price" id="price" placeholder="Enter Price" value="<?=(!empty($dataRow->price))?$dataRow->price:""?>">
                     <i class="clear-input">
                         <ion-icon name="close-circle"></ion-icon>
                     </i>

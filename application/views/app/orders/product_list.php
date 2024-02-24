@@ -1,37 +1,5 @@
 <?php $this->load->view("app/includes/header"); ?>
-<style>
-    .img-div{
-        padding : 5px !important;
-    }
-    .card-img-top{
-        border-radius: 10px !important;
-        border: 1px solid #bcbcbc;
-        height: 175px;
-        object-fit: cover;    
-    }
-    .col-6 {
-        display: flex !important;
-        text-align: left;
-    }
-    .card{
-        min-width: 100% !important;
-    }
-    .section {
-        padding: 3px !important;
-    }
-    .lazy-load-tab .nav-item .badge{
-        min-width: 16px;
-        height: 16px;
-        line-height: 9px !important;
-        font-size: 10px;
-        padding: 0 4px !important;
-        position: absolute;
-        top: 5px;
-    }
-    .lazy-load-tab .card-body {
-        padding: 0px !important;
-    }
-</style>
+
 <!-- App Header -->
 <div class="appHeader">
     <div class="left">
@@ -59,7 +27,7 @@
 <!-- * Search Component -->
 
 <!-- App Capsule -->
-<div id="appCapsule">
+<div id="appCapsule" class="orderPage">
     <div class="card lazy-load-tab">
         <div class="card-body pt-0">
             <ul class="nav nav-tabs lined m-t-5 m-b-5" role="tablist">
@@ -69,9 +37,9 @@
                     </a>          
                 </li>
                 <li class="nav-item">
-                    <a href="javascript:void(0)" class="button fs-px-35 text-success m-l-10">
+                    <a href="javascript:void(0)" class="button fs-px-35 text-success m-l-10" id="view-cart-btn">
                         <ion-icon name="cart-outline"></ion-icon>
-                        <span class="badge badge-danger">4</span>
+                        <span class="badge badge-danger">0</span>
                     </a>
                 </li>
             </ul>
@@ -92,12 +60,15 @@
 <?php 
     $this->load->view("app/includes/footer"); 
     $this->load->view("app/orders/filter_form");
+    $this->load->view("app/orders/view_cart");
 ?>
 
+<div id="item-detail-html"></div>
 
 <script>
 $(document).ready(function(){
     loadTransaction();
+    
     $(document).on('click','.filter',function(){
         $("#filter-modal").modal("show");
         $("#filter-modal .select2").select2(); 
@@ -135,7 +106,7 @@ async function dataListing(response){
 
             //Create a card footer div
             var footerDiv = $('<div class="card-footer text-center"></div>');
-            var addToCart = $('<span class="btn btn-warning">Add to Cart</span>');
+            var addToCart = $('<span class="btn btn-warning" onclick="itemDetail('+row.id+');">Add to Cart</span>');
 
             //Append Card Footer Button
             footerDiv.append(addToCart);
@@ -153,6 +124,20 @@ async function dataListing(response){
         if(totalRecords <= 0){
             $("#lazy-load-trans").html('<div class="text-center">No data available</div>');
         }
+    }
+}
+
+function itemDetail(id=""){
+    if(id){
+        $.ajax({ 
+            type: "POST",   
+            url: base_url + controller + '/getItemDetail',   
+            data: {id:id},
+        }).done(function(response){
+            $("#item-detail-html").html("");
+            $("#item-detail-html").html(response);
+            $("#item-details-modal").modal("show");
+        });
     }
 }
 </script>

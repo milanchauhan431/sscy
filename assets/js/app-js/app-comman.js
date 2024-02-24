@@ -54,11 +54,19 @@ $(document).ready(function(){
 	});
 
 	$(document).on("keypress",".numericOnly",function (e) {
-		if (String.fromCharCode(e.keyCode).match(/[^0-9]/g)) return false;
-	});	
+		if(String.fromCharCode(e.keyCode).match(/[^0-9]/g)){ return false; } 
+		if(e.originalEvent.data && e.originalEvent.data.match(/[^0-9]/g)){ return false; }
+	});
 
-	$(document).on("keypress",'.floatOnly',function(event) {
-		if ((event.which != 46 || $(this).val().indexOf('.') != -1) && (event.which < 48 || event.which > 57)) {event.preventDefault();}
+	$(document).on("keypress",'.floatOnly',function(e) {
+		if ((e.which != 46 || $(this).val().indexOf('.') != -1) && (e.which < 48 || e.which > 57)) {e.preventDefault();}
+
+		// Get the current input value
+		var inputValue = $(this).val();
+		// Allow only one dot and numeric characters
+		if ((inputValue.indexOf('.') !== -1 && e.data === '.') || (e.data !== '.' && (e.data < '0' || e.data > '9'))) {
+			e.preventDefault();
+		}
 	});
 
 	// on first focus (bubbles up to document), open the menu

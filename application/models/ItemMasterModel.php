@@ -1,6 +1,7 @@
 <?php
 class ItemMasterModel extends MasterModel{
     private $itemMaster = "item_master";
+    private $itemCategory = "category_master";
 
     public function getDTRows($data){
         $data['tableName'] = $this->itemMaster;
@@ -80,10 +81,18 @@ class ItemMasterModel extends MasterModel{
     public function getItem($data){
         $queryData = array();
         $queryData['tableName'] = $this->itemMaster;
-        $queryData['select'] = "item_master.*,category_master.category_name";
-        $queryData['leftJoin']['category_master'] = "category_master.id = item_master.category_id";
+        $queryData['select'] = "item_master.*,IF(item_master.item_image != '',CONCAT('".base_url('assets/uploads/products/')."',item_master.item_image),'".base_url("assets/dist/img/app-img/sample/brand/1.jpg")."') as item_image,item_group.group_name";
+        $queryData['leftJoin']['item_group'] = "item_group.id = item_master.group_id";
         $queryData['where']['item_master.id'] = $data['id'];
         $result = $this->row($queryData);
+
+        if(!empty($data['categoryList'])):
+            $queryData = array();
+            $queryData['tableName'] = $this->itemCategory;
+            $queryData['where_in']['id'] = $result->category_id;
+            $result->categoryList = $this->rows($queryData);
+        endif;
+        
         return $result;
     }
 
