@@ -460,7 +460,7 @@ span.multiselect-native-select select {
   width: 100%; 
 }
 #item-details-modal .modal-dialog .modal-content .modal-body{
-  max-height: 400px;
+  max-height: 350px;
   overflow-y: scroll;
 }
 #item-details-modal .modal-dialog .modal-content .modal-body::-webkit-scrollbar{
