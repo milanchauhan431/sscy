@@ -48,6 +48,7 @@
                                                             <td style="width:70%;vertical-align: middle;">
                                                                 '.$row->category_name.'
                                                                 <input type="hidden" name="category_id['.$row->id.']" value="'.$row->id.'">
+                                                                <input type="hidden" name="category_name['.$row->id.']" value="'.$row->category_name.'">
                                                             </td>
                                                             <td class="text-right" style="width:30%;">
                                                                 <div class="qty-input float-end">
@@ -71,8 +72,8 @@
             </div>
             <div class="modal-footer">
                 <div class="btn-inline">
-                    <a href="#" id="cancelItem" class="btn btn-text-secondary" data-bs-dismiss="modal">Cancel</a>
-                    <a href="#" id="addItem" class="btn btn-text-success" data-bs-dismiss="modal">Add</a>
+                    <span id="cancelItem" class="btn btn-text-secondary">Cancel</span>
+                    <span id="addItem" class="btn btn-text-success">Add</span>
                 </div>
             </div>
         </div>

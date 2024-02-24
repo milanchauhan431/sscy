@@ -1,5 +1,13 @@
 <?php $this->load->view("app/includes/header"); ?>
-
+<style>
+    .cart-item {
+    background: #ffffff;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+</style>
 <!-- App Header -->
 <div class="appHeader">
     <div class="left">
@@ -68,11 +76,33 @@
 <script>
 $(document).ready(function(){
     loadTransaction();
-    
+    //$("#view-cart").modal("show");
     $(document).on('click','.filter',function(){
         $("#filter-modal").modal("show");
         $("#filter-modal .select2").select2(); 
         setInputEvent();
+    });
+
+    $(document).on('click','#addItem',function(){
+        $(this).prop('disabled',true);
+        //item_detail
+        var form = $('#item_detail')[0], formData = {}; 
+        var fd = new FormData(form);
+        $.ajax({ 
+            url: base_url + controller + '/formatCartItemData',   
+            data:fd,
+			type: "POST",
+			processData:false,
+			contentType:false,
+            dataType:"json"
+        }).done(function(response){
+            console.log(response);
+        });
+    });
+
+    $(document).on('click','#cancelItem',function(){
+        $("#item-details-modal").modal("hide");
+        $("#item-detail-html").html("");
     });
 });
 
@@ -106,7 +136,7 @@ async function dataListing(response){
 
             //Create a card footer div
             var footerDiv = $('<div class="card-footer text-center"></div>');
-            var addToCart = $('<span class="btn btn-warning" onclick="itemDetail('+row.id+');">Add to Cart</span>');
+            var addToCart = $('<span class="btn btn-warning '+row.id+row.group_id+'" onclick="itemDetail('+row.id+');">Add to Cart</span>');
 
             //Append Card Footer Button
             footerDiv.append(addToCart);
