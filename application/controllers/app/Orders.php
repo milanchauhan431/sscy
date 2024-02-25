@@ -1,6 +1,7 @@
 <?php
 class Orders extends MY_Controller{
     private $productList = "app/orders/product_list";
+    private $index = "app/orders/index";
 
     public function __construct(){
         parent::__construct();
@@ -63,6 +64,18 @@ class Orders extends MY_Controller{
         else:
             $this->printJson($this->order->saveOrder($data));
         endif;
+    }
+
+    public function list(){
+        $this->data['headData']->controller = "myOrders";
+        $this->data['headData']->pageName = "My Orders";
+        $this->load->view($this->index,$this->data);
+    }
+
+    public function getMyOrdersDTRows(){
+        $data = $this->input->post();
+        $result = $this->order->getDTRows($data);
+        $this->printJson($result);
     }
 }
 ?>

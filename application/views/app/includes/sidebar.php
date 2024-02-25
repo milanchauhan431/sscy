@@ -38,7 +38,7 @@
     <?php endif; ?>
 
     
-    <a href="<?=base_url("app/orders/list")?>" class="item <?=($headData->controller == "orders/list")?"active":""?>">
+    <a href="<?=base_url("app/myOrders")?>" class="item <?=($headData->controller == "myOrders")?"active":""?>">
         <div class="col">
             <ion-icon name="document-text-outline"></ion-icon>
             <strong>My Orders</strong>
@@ -192,7 +192,7 @@
 
                     
                     <li>
-                        <a href="<?=base_url("app/orders/list")?>" class="item <?=($headData->controller == "orders/list")?"active-item":""?>">
+                        <a href="<?=base_url("app/myOrders")?>" class="item <?=($headData->controller == "myOrders")?"active-item":""?>">
                             <div class="icon-box bg-success">
                                 <ion-icon name="document-text-outline"></ion-icon>
                             </div>

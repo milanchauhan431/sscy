@@ -56,6 +56,7 @@ $route['translate_uri_dashes'] = FALSE;
 
 $route['logout'] = "login/logout";
 $route['app/logout'] = "app/login/logout";
+$route['app/myOrders'] = "app/orders/list";
 
 //$route['country'] = "baseController/countryList";
 //$route['country/edit/(:any)/(:any)'] = "baseController/editCountry/$1/$2";
