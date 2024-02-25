@@ -2,6 +2,7 @@
 class Orders extends MY_Controller{
     private $productList = "app/orders/product_list";
     private $index = "app/orders/index";
+    private $accpetOrdFrom = "app/orders/accept_order_form";
 
     public function __construct(){
         parent::__construct();
@@ -76,6 +77,25 @@ class Orders extends MY_Controller{
         $data = $this->input->post();
         $result = $this->order->getDTRows($data);
         $this->printJson($result);
+    }
+
+    public function changeOrderStatus(){
+        $data = $this->input->post();
+        if(empty($data['id'])):
+            $this->printJson(['status'=>0,'message'=>'Somthing went wrong...Please try again.']);
+        else:
+            if($data['trans_status'] == 1 && empty($data['delivery_date'])):
+                $this->printJson(['status'=>0,'message'=>['delivery_date'=>'Est. Delivery Date is required.']]);
+            endif;
+
+            $this->printJson($this->order->changeOrderStatus($data));
+        endif;
+    }
+
+    public function acceptOrder(){
+        $data = $this->input->post();
+        $this->data['postData'] = (object) $data;
+        $this->load->view($this->accpetOrdFrom,$this->data);
     }
 }
 ?>

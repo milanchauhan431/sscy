@@ -12,8 +12,8 @@
     background: #ffffff;
     box-shadow: none;
     border-radius: 10px;
-    padding: 20px 24px;
-    margin-bottom: 10px;
+    padding: 10px 20px;
+    margin-bottom: 0px;
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
@@ -50,13 +50,13 @@
     <div class="section m-t-10">
         <div class="transactions" id="lazy-load-trans" data-url="<?=base_url("app/orders/getMyOrdersDTRows")?>">
 
-            <div class="section mt-2" id="div11">
+            <!-- <div class="section mt-2" id="div11">
                 <div class="card">
                     <div class="card-header">
                         <div class="float-start">#1</div>
                         <div class="float-end">26-02-2023</div>
                     </div>
-                    <div class="card-body item mb-2">
+                    <div class="card-body item">
                         <div class="detail">
                             <img src="<?=base_url("assets/uploads/products/1708527366_PRD_17085273524479168839729157033747_jpg.jpg")?>" alt="img" class="image-block imaged w48">
 
@@ -77,13 +77,13 @@
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-end"></div>
                             </div>
-                        </div>                        
+                        </div>  
                     </div>
                     <div class="card-footer text-center">
-                        <span>Status : <span class="badge badge-dark">Pending</span></span>
+                        <span class="badge badge-warning p-15" style="border-radius: 10px">Pending</span>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
         </div>
 
@@ -98,7 +98,7 @@
 
 <script>
 $(document).ready(function(){
-    //loadTransaction();
+    loadTransaction();
 });
 
 async function dataListing(response){
@@ -107,63 +107,191 @@ async function dataListing(response){
     if(dataList.length > 0){
         $.each(dataList,function(key,row){
             
-            // Create a div with class "item"
-            var itemDiv = $('<div class="item mb-2"></div>');
+            // Create a new div with the specified class and id
+            var newDiv = $('<div>', {
+                class: 'section mt-2 mb-2',
+            });
 
-            // Create a div with class "detail"
-            var detailDiv = $('<div class="detail"></div>');
+            // Create the card element
+            var card = $('<div>', {
+                class: 'card'
+            });
 
-            // Create an image element with src attribute
-            var imgElement = $('<img src="'+row.item_image+'" alt="img" class="image-block imaged w48">');
+            // Create the card header
+            var cardHeader = $('<div>', {
+                class: 'card-header'
+            });
 
-            // Create a div with a strong tag containing text
-            var details = $('<div></div>');
-            var itemName = $("<strong></strong>").html(row.item_name);
-            var itemCode = $("<small></small>").html("Code : "+row.item_code);
-            var groupName = $("<small></small>").html("Group : "+row.group_name);
-            var categoryName = $("<small></small>").html("Category : "+row.category_name);
-            var qty = $("<small></small>").html("Qty. : "+row.qty);
-            var amount = $("<small></small>").html("Amt. : "+row.amount);
-            var ordStatus = $("<small></small>").html("Status : "+row.order_status);
+            // Create the divs within the card header
+            var orderNo = $('<small>', {
+                class: 'float-start',
+                text: "Ord. No. : "+row.trans_number
+            });
 
-            // Append the image and name div to the detail div
-            detailDiv.append(imgElement, details);
+            var orderDate = $('<small>', {
+                class: 'float-end',
+                text: "Date : "+row.trans_date
+            });
 
-            // Append Listing Details
-            details.append(itemName, itemCode, "<br>", groupName, "<br>", categoryName, "<br>", qty, "<br>", amount, "<br>", ordStatus);
+            // Append the float-start and float-end divs to the card header
+            cardHeader.append(orderNo, orderDate);
 
-            // Create a div with class "right"
-            var rightDiv = $('<div class="right"></div>');
+            // Create the card body
+            var cardBody = $('<div>', {
+                class: 'card-body item'
+            });
 
-            // Create a div with class "card-button dropdown"
-            var cardButtonDiv = $('<div class="card-button dropdown"></div>');
+            // Create the detail div
+            var cardDetail = $('<div>', {
+                class: 'detail'
+            });
 
-            // Create a button with data-bs-toggle attribute
-            var buttonElement = $('<button type="button" class="btn btn-link btn-icon" data-bs-toggle="dropdown"><ion-icon name="ellipsis-horizontal"></ion-icon></button>');
+            // Create the image block
+            var itemImage = $('<img>', {
+                src: row.item_image,
+                alt: 'img',
+                class: 'image-block imaged w48'
+            });
 
-            // Create a div with class "dropdown-menu dropdown-menu-end"
-            var dropdownMenu = $('<div class="dropdown-menu dropdown-menu-end"></div>');
+            // Create the div with product information
+            var itemInfo = $('<div>').html(`
+                <strong>`+row.item_name+`</strong>
+                <small>Code : `+row.item_code+`</small><br>
+                <small>Group : `+row.group_name+`</small><br>
+                <small>Category : `+row.category_name+`</small><br>
+                <small>Qty. : `+row.qty+`</small><br>
+                <small>Amt. : `+row.amount+`</small><br>
+            `);
 
-            // JSON object
-            //var editJsonData = actionBtnJson({postData: {id: row.id}, modal_id : 'ModalBasic', controller : 'itemMaster', call_function:'edit', form_id : 'itemForm', title : 'Update Product'});
-            //var deleteJsonData = actionBtnJson({postData: {id: row.id},'message' : 'Product'});
+            // Append the image and information to the detail div
+            cardDetail.append(itemImage, itemInfo);
 
-            // Create anchor tag with onclick attribute
-            var editLink = '';//$('<span class="dropdown-item" href="javascript:void(0)" onclick="modalAction(' + editJsonData + ');"><ion-icon name="pencil-outline"></ion-icon>Edit</span>');
+            // Append the detail and card-button dropdown to the card body
+            cardBody.append(cardDetail);
 
-            var removeLink = '';//$('<span class="dropdown-item" href="javascript:void(0)" onclick="trash(' + deleteJsonData + ');"><ion-icon name="trash"></ion-icon>Remove</span>');
-            
-            // Append anchor tags to the dropdown menu
-            dropdownMenu.append(editLink, removeLink);
+            <?php if($this->userRole <= 1): ?>
 
-            // Append the button and dropdown menu to the card-button div
-            cardButtonDiv.append(buttonElement, dropdownMenu);
+                // Create the action div
+                var actionDiv = $('<div>', {
+                    class: 'right text-right'
+                });
 
-            // Append detail div and right div to the item div
-            itemDiv.append(detailDiv, rightDiv.append(cardButtonDiv));
+                if(row.trans_status == 0){
+                    // Create the card-button dropdown
+                    var cardButton = $('<div>', {
+                        class: 'card-button dropdown'
+                    });
+
+                    // Create the ellipsis button
+                    var actionButton = $('<button>', {
+                        type: 'button',
+                        class: 'btn btn-link btn-icon',
+                        'data-bs-toggle': 'dropdown'
+                    }).html('<ion-icon name="ellipsis-horizontal" role="img" class="md hydrated" aria-label="ellipsis horizontal"></ion-icon>');
+
+                    // Create the dropdown menu
+                    var actionDropdown = $('<div>', {
+                        class: 'dropdown-menu dropdown-menu-end'
+                    });
+
+                    //Button JSON object
+                    var statusJsonData = actionBtnJson({postData: {id: row.id,trans_status:3},controller : 'orders', fnsave:'changeOrderStatus','message' : 'Are you sure want to cancel this Order?'});
+                    var statusButton = $('<span class="dropdown-item" href="javascript:void(0)" onclick="confirmStore(' + statusJsonData + ');"><ion-icon name="close-circle-outline"></ion-icon> Cancel Order</span>');
+
+                    // Append anchor tags to the dropdown menu
+                    actionDropdown.append(statusButton);
+
+                    // Append the button and dropdown menu to the card-button dropdown
+                    cardButton.append(actionButton, actionDropdown);                    
+                }else{
+                    var cardButton = $('<small>', {
+                        text : "Rec. Qty. : "+row.dispatch_qty
+                    });                    
+                }
+
+                // Append the detail and card-button dropdown to the card body
+                cardBody.append(actionDiv.append(cardButton));
+                
+            <?php else: ?>
+                // Create the action div
+                var actionDiv = $('<div>', {
+                    class: 'right text-right'
+                });
+
+                if(row.trans_status != 4){                    
+
+                    // Create the card-button dropdown
+                    var cardButton = $('<div>', {
+                        class: 'card-button dropdown'
+                    });
+
+                    // Create the ellipsis button
+                    var actionButton = $('<button>', {
+                        type: 'button',
+                        class: 'btn btn-link btn-icon',
+                        'data-bs-toggle': 'dropdown'
+                    }).html('<ion-icon name="ellipsis-horizontal" role="img" class="md hydrated" aria-label="ellipsis horizontal"></ion-icon>');
+
+                    // Create the dropdown menu
+                    var actionDropdown = $('<div>', {
+                        class: 'dropdown-menu dropdown-menu-end'
+                    });
+
+                    //Button JSON object 
+                    var rejectJsonData = actionBtnJson({postData: {id: row.id,trans_status:4},controller : 'orders', fnsave:'changeOrderStatus','message' : 'Are you sure want to cancel this Order?'});
+                    var rejectButton = $('<span class="dropdown-item" href="javascript:void(0)" onclick="confirmStore(' + rejectJsonData + ');"><ion-icon name="close-circle-outline"></ion-icon> Reject Order</span>');
+
+                    var acceptJsonData = actionBtnJson({postData: {id: row.id,trans_status:1},modal_id:'dialogbox-sm',call_function:'acceptOrder',controller : 'orders', fnsave:'changeOrderStatus', form_id : 'acceptOrder',js_store_fn:'confirmStore',title:'Accept Order [Ord No. : '+row.trans_number+']'});
+                    var acceptButton = $('<span class="dropdown-item" href="javascript:void(0)" onclick="modalAction(' + acceptJsonData + ');"><ion-icon name="checkmark-circle-outline"></ion-icon> Accept Order</span>');
+                    
+                    if(row.trans_status == 1){
+                        acceptButton = rejectButton = "";
+                    }
+
+                    // Append anchor tags to the dropdown menu
+                    actionDropdown.append(acceptButton,rejectButton);
+
+                    // Append the button and dropdown menu to the card-button dropdown
+                    cardButton.append(actionButton, actionDropdown);                    
+                }else{
+                    var cardButton = $('<small>', {
+                        text : "Disp. Qty. : "+row.dispatch_qty
+                    });
+                }
+
+                // Append the detail and card-button dropdown to the card body
+                cardBody.append(actionDiv.append(cardButton));
+            <?php endif; ?>           
+
+            // Create the card footer
+            var cardFooter = $('<div>', {
+                class: 'card-footer text-center'
+            });
+
+            // Create the status badge
+            var bage_class = "";
+            if(row.trans_status == 0){ bage_class = "badge-warning"; }
+            if(row.trans_status == 1){ bage_class = "badge-primary"; }
+            if(row.trans_status == 2){ bage_class = "badge-success"; }
+            if(row.trans_status == 3){ bage_class = "badge-dark"; }
+            if(row.trans_status == 4){ bage_class = "badge-danger"; }
+            var orderStatus = $('<span>', {
+                class: 'badge '+bage_class+' p-15',
+                style: 'border-radius: 10px',
+                text: row.order_status
+            });
+
+            // Append the status badge to the card footer
+            cardFooter.append(orderStatus);
+
+            // Append the card header, card body, and card footer to the card
+            card.append(cardHeader, cardBody, cardFooter);
+
+            // Append the card to the new div
+            newDiv.append(card);
 
             // Append the generated HTML to the container
-            $('#lazy-load-trans').append(itemDiv);
+            $('#lazy-load-trans').append(newDiv);
         });
     }else{
         if(totalRecords <= 0){

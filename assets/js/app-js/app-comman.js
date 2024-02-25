@@ -333,10 +333,13 @@ function initModal(postData,response){
 		$("#"+postData.modal_id+" .modal-body form").attr('data-res_function',resFunction);
 	}
 	$("#"+postData.modal_id+" .modal-header .btn-save").attr('onclick',jsStoreFn+"("+fnJson+");");
+	$("#"+postData.modal_id+" .modal-footer .btn-save").attr('onclick',jsStoreFn+"("+fnJson+");");
 	$("#"+postData.modal_id+" .btn-custom-save").attr('onclick',jsStoreFn+"("+fnJson+");");
 
 	$("#"+postData.modal_id+" .modal-header .btn-close").attr('data-modal_id',postData.modal_id);
+	$("#"+postData.modal_id+" .modal-footer .btn-close").attr('data-modal_id',postData.modal_id);
 	$("#"+postData.modal_id+" .modal-header .btn-close").attr('data-modal_class',postData.form_id+"Modal");
+	$("#"+postData.modal_id+" .modal-footer .btn-close").attr('data-modal_class',postData.form_id+"Modal");
 
 	if(button == "close"){
 		$("#"+postData.modal_id+" .modal-header .btn-close").show();
@@ -379,8 +382,6 @@ function modalAction(data){
 		initModal(data,response);
 	});
 }
-
-
 
 function closeModal(formId){
 	zindex--;

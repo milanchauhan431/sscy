@@ -32,6 +32,26 @@
 </div>
 <!-- * Modal Basic -->
 
+<!-- Modal Dailog Box SM -->
+<div class="modal fade dialogbox" id="dialogbox-sm" data-bs-backdrop="static" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"></h5>
+            </div>
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <div class="btn-inline">
+                    <a href="#" id="clearFilters" class="btn btn-text-danger btn-close" data-bs-dismiss="modal">Cancel</a>
+                    <a href="#" id="applyFilter" class="btn btn-text-success btn-save">Save</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Dailog Box SM -->
+
 <!-- Panel Left -->
 <div class="modal fade panelbox panelbox-left" id="PanelLeft" role="dialog">
     <div class="modal-dialog" role="document">

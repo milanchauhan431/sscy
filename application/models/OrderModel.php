@@ -4,7 +4,7 @@ class OrderModel extends masterModel{
 
     public function getDTRows($data){
         $data['tableName'] = $this->orderTrans;
-        $data['select'] = "order_transaction.*,item_master.item_code,item_master.item_name,IF(item_master.item_image != '',CONCAT('".base_url('assets/uploads/products/')."',item_master.item_image),'".base_url("assets/dist/img/app-img/sample/brand/1.jpg")."') as item_image,item_group.group_name,category_master.category_name,(CASE WHEN order_transaction.trans_status = 0 THEN 'Pending' WHEN order_transaction.trans_status = 1 THEN 'Accepted' WHEN order_transaction.trans_status = 2 THEN 'Competed' WHEN order_transaction.trans_status = 3 THEN 'Cancled' WHEN order_transaction.trans_status = 4 THEN 'Rejected' ELSE '' END) as order_status,DATE_FORMAT(order_transaction.trans_date,'d%-m%-Y%') as trans_date,DATE_FORMAT(order_transaction.delivery_date,'d%-m%-Y%') as delivery_date";
+        $data['select'] = "order_transaction.*,item_master.item_code,item_master.item_name,IF(item_master.item_image != '',CONCAT('".base_url('assets/uploads/products/')."',item_master.item_image),'".base_url("assets/dist/img/app-img/sample/brand/1.jpg")."') as item_image,item_group.group_name,category_master.category_name,(CASE WHEN order_transaction.trans_status = 0 THEN 'Pending' WHEN order_transaction.trans_status = 1 THEN 'Accepted' WHEN order_transaction.trans_status = 2 THEN 'Competed' WHEN order_transaction.trans_status = 3 THEN 'Cancled' WHEN order_transaction.trans_status = 4 THEN 'Rejected' ELSE '' END) as order_status,DATE_FORMAT(order_transaction.trans_date,'%d-%m-%Y') as trans_date,DATE_FORMAT(order_transaction.delivery_date,'%d-%m-%Y') as delivery_date";
 
         $data['leftJoin']['item_master'] = "item_master.id = order_transaction.item_id";
         $data['leftJoin']['item_group'] = "item_group.id = order_transaction.group_id";
@@ -12,6 +12,7 @@ class OrderModel extends masterModel{
 
         if($this->userRole > 1):
             $data['where']['order_transaction.party_id'] = $this->loginId;
+            $data['where']['order_transaction.trans_status !='] = 3;
         endif;
 
         /* if(!empty($data['filters'])):
@@ -25,8 +26,8 @@ class OrderModel extends masterModel{
         endif; */
 
         $data['searchCol'][] = "order_transaction.trans_number";
-        $data['searchCol'][] = "DATE_FORMAT(order_transaction.trans_date,'d%-m%-Y%')";
-        $data['searchCol'][] = "DATE_FORMAT(order_transaction.delivery_date,'d%-m%-Y%')";
+        $data['searchCol'][] = "DATE_FORMAT(order_transaction.trans_date,'%d-%m-%Y')";
+        $data['searchCol'][] = "DATE_FORMAT(order_transaction.delivery_date,'%d-%m-%Y')";
         $data['searchCol'][] = "order_transaction.qty";
         $data['searchCol'][] = "order_transaction.amount";
         $data['searchCol'][] = "(CASE WHEN order_transaction.trans_status = 0 THEN 'Pending' WHEN order_transaction.trans_status = 1 THEN 'Accepted' WHEN order_transaction.trans_status = 2 THEN 'Competed' WHEN order_transaction.trans_status = 3 THEN 'Cancled' WHEN order_transaction.trans_status = 4 THEN 'Rejected' ELSE '' END)";
@@ -43,7 +44,7 @@ class OrderModel extends masterModel{
     public function getNextNo($entry_type){
         $queryData = array();
         $queryData['tableName'] = $this->orderTrans;
-        $queryData['select'] = "ifnull(MAX(trans_no),1) as trans_no";
+        $queryData['select'] = "ifnull((MAX(trans_no) + 1),1) as trans_no";
         $queryData['where']['entry_type'] = $entry_type;
         $result = $this->row($queryData);
         return $result->trans_no;
@@ -70,6 +71,47 @@ class OrderModel extends masterModel{
             endforeach;
 
             $result['message'] = "Order placed successfully.";
+
+            if ($this->db->trans_status() !== FALSE):
+                $this->db->trans_commit();
+                return $result;
+            endif;
+        }catch(\Throwable $e){
+            $this->db->trans_rollback();
+            return ['status'=>2,'message'=>"somthing is wrong. Error : ".$e->getMessage()];
+        }
+    }
+
+    public function getOrder($data){
+        $queryData['tableName'] = $this->orderTrans;
+        $queryData['select'] = "order_transaction.*";
+        $queryData['where']['id'] = $data['id'];
+        $result = $this->row($queryData);
+        return $result;
+    }
+
+    public function changeOrderStatus($data){
+        try{
+            $this->db->trans_begin();
+
+            $orderData = $this->getOrder($data);
+
+            if($data['trans_status'] == 1 && $orderData->trans_status == 3):
+                return ['status'=>0,'message'=>'Order has been canceled. you can not accept it.'];
+            endif;
+
+            if($data['trans_status'] == 3 && $orderData->trans_status > 0):
+                return ['status'=>0,'message'=>'Order has been accepted/rejected. you can not cancel it.'];
+            endif;
+
+            $result = $this->store($this->orderTrans,$data);
+
+            if($data['trans_status'] == 1): $message = "Accepted"; endif;
+            if($data['trans_status'] == 2): $message = "Deliverd"; endif;
+            if($data['trans_status'] == 3): $message = "Canceled"; endif;
+            if($data['trans_status'] == 4): $message = "Rejected"; endif;
+
+            $result['message'] = "Order ".$message." Successfully.";
 
             if ($this->db->trans_status() !== FALSE):
                 $this->db->trans_commit();

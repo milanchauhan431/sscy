@@ -591,6 +591,13 @@ span.multiselect-native-select select {
   padding: 0px 4px !important;
 }
 
+.dialogbox .modal-dialog .modal-content .btn-inline .btn{
+  box-sizing: content-box;
+  height: 1em;
+  opacity: 1;
+  padding: 0;
+}
+
 /* Margin in px start */
 .m-1{ margin : 1px !important; }
 .m-2{ margin : 2px !important; }
