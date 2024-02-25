@@ -576,6 +576,17 @@ span.multiselect-native-select select {
 }
 /* Qty Toggel input End */
 
+.cart-imaged.w75 {
+  width: 75px !important;
+  height: 75px !important;
+  border: 1px solid #c4c4c4;
+  border-radius: 10px;
+}
+
+.btn-link {
+  color: #1DCC70 !important;
+}
+
 /* Margin in px start */
 .m-1{ margin : 1px !important; }
 .m-2{ margin : 2px !important; }

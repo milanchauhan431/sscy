@@ -34,8 +34,9 @@ class Orders extends MY_Controller{
         $dataRow = [];
         foreach($data['category_id'] as $key=>$category_id):
             if($data['category_qty'][$key] > 0):
-                $dataRow[$data['item_id'].$data['group_id']] = [
+                $dataRow[$data['item_id'].$data['group_id'].$category_id] = [
                     'id' => '',
+                    'party_id' => $data['party_id'],
                     'item_id' => $data['item_id'],
                     'item_code' => $data['item_code'],
                     'item_name' => $data['item_name'],
@@ -52,6 +53,16 @@ class Orders extends MY_Controller{
         endforeach;
 
         $this->printJson($dataRow);
+    }
+
+    public function saveOrder(){
+        $data = $this->input->post();
+
+        if(empty($data)):
+            $this->printJson(['status'=>0,'message'=>'Please add item to place order.']);
+        else:
+            $this->printJson($this->order->saveOrder($data));
+        endif;
     }
 }
 ?>

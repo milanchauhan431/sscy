@@ -451,7 +451,7 @@ function confirmStore(data){
 		var form = $('#'+formId)[0];
 		var fd = new FormData(form);
 		var resFunctionName = $("#"+formId).data('res_function') || "";
-		var msg = "Are you sure want to save this change ?";
+		var msg = $("#"+formId).data('confirm_message') || "Are you sure want to save this change ?";
 		var ajaxParam = {
 			url: base_url + controllerName + '/' + fnsave,
 			data:fd,

@@ -18,6 +18,7 @@
                             <input type="hidden" name="group_id" id="group_id" value="<?=$dataRow->group_id?>">
                             <input type="hidden" name="group_name" id="group_name" value="<?=$dataRow->group_name?>">
                             <input type="hidden" name="price" id="price" value="<?=$dataRow->price?>">
+                            <input type="hidden" name="party_id" id="party_id" value="<?=$dataRow->created_by?>">
                         </div>
 
                         <div class="col-md-12">

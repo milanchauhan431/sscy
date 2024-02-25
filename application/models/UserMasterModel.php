@@ -65,7 +65,13 @@ class UserMasterModel extends MasterModel{
     public function getUser($data){
         $queryData = array();
         $queryData['tableName'] = $this->userMaster;
-        $queryData['where']['id'] = $data['id'];
+
+        if(!empty($data['id']))
+            $queryData['where']['id'] = $data['id'];
+        
+        if(!empty($data['user_code']))
+            $queryData['where']['user_code'] = $data['user_code'];
+
         $result = $this->row($queryData);
         return $result;
     }
