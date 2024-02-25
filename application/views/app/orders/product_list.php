@@ -269,7 +269,7 @@ function countCartItems(){
                 type: 'number',
                 name: 'order_item['+key+'][qty]',
                 min: '1',
-                max: '1000',
+                max: '10000',
                 value: row.qty,
                 step: '1',
                 pattern: '[0-9]*',

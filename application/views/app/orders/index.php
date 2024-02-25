@@ -49,6 +49,7 @@
 <div id="appCapsule">
     <div class="section m-t-10">
         <div class="transactions" id="lazy-load-trans" data-url="<?=base_url("app/orders/getMyOrdersDTRows")?>">
+
             <div class="section mt-2" id="div11">
                 <div class="card">
                     <div class="card-header">
@@ -57,7 +58,7 @@
                     </div>
                     <div class="card-body item mb-2">
                         <div class="detail">
-                            <img src="http://localhost/sscy/assets/uploads/products/1708527366_PRD_17085273524479168839729157033747_jpg.jpg" alt="img" class="image-block imaged w48">
+                            <img src="<?=base_url("assets/uploads/products/1708527366_PRD_17085273524479168839729157033747_jpg.jpg")?>" alt="img" class="image-block imaged w48">
 
                             <div>
                                 <strong>Product 5</strong>
@@ -83,6 +84,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
 
         <div id="lazyLoader" class="text-center  m-b-20" style="display:none;">

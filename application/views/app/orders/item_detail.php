@@ -54,7 +54,7 @@
                                                             <td class="text-right" style="width:30%;">
                                                                 <div class="qty-input float-end">
                                                                     <button class="qty-count qty-count--minus" data-action="minus" type="button">-</button>
-                                                                    <input class="product-qty numericOnly" type="number" name="category_qty['.$row->id.']" min="0" max="1000" value="0" step="1" pattern="[0-9]*">
+                                                                    <input class="product-qty numericOnly" type="number" name="category_qty['.$row->id.']" min="0" max="10000" value="0" step="1" pattern="[0-9]*">
                                                                     <button class="qty-count qty-count--add" data-action="add" type="button">+</button>
                                                                 </div>
                                                             </td>
