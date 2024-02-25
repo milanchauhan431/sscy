@@ -80,7 +80,7 @@
                         </div>                        
                     </div>
                     <div class="card-footer text-center">
-                        <span>Status : Pending</span>
+                        <span>Status : <span class="badge badge-dark">Pending</span></span>
                     </div>
                 </div>
             </div>
