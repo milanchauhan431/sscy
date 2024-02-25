@@ -451,6 +451,7 @@ function resSaveOrder(response,formId){
             $(".error").html("");
             $.each( response.message, function( key, value ) {$("."+key).html(value);});
         }else{
+            $("#view-cart-modal").modal("hide");
             toastbox('error',response.message, 3000);
         }			
     }
