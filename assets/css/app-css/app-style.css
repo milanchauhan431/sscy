@@ -498,7 +498,7 @@ span.multiselect-native-select select {
   display: flex;
   align-items: center;
   overflow: hidden;
-  width:75%;
+  width:80%;
   border: 1px solid #5dd6b2;
   border-radius: 0.5rem;
 }
@@ -519,7 +519,7 @@ span.multiselect-native-select select {
   outline: none;
 }
 .qty-input .product-qty {
-  width: 50px;
+  width: 60px;
   min-width: 0;
   display: inline-block;
   text-align: center;
