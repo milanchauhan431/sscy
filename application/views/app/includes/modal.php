@@ -43,8 +43,8 @@
             </div>
             <div class="modal-footer">
                 <div class="btn-inline">
-                    <a href="#" id="clearFilters" class="btn btn-text-danger btn-close" data-bs-dismiss="modal">Cancel</a>
-                    <a href="#" id="applyFilter" class="btn btn-text-success btn-save">Save</a>
+                    <span class="btn btn-text-danger btn-close" data-bs-dismiss="modal">Cancel</span>
+                    <span class="btn btn-text-success btn-save">Save</span>
                 </div>
             </div>
         </div>

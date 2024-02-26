@@ -3,6 +3,7 @@ class Orders extends MY_Controller{
     private $productList = "app/orders/product_list";
     private $index = "app/orders/index";
     private $accpetOrdFrom = "app/orders/accept_order_form";
+    private $dispatchOrdFrom = "app/orders/dispatch_order_form";
 
     public function __construct(){
         parent::__construct();
@@ -88,6 +89,10 @@ class Orders extends MY_Controller{
                 $this->printJson(['status'=>0,'message'=>['delivery_date'=>'Est. Delivery Date is required.']]);
             endif;
 
+            if($data['trans_status'] == 2 && empty($data['dispatch_qty'])):
+                $this->printJson(['status'=>0,'message'=>['dispatch_qty'=>'Dispatch Qty. is required.']]);
+            endif;
+
             $this->printJson($this->order->changeOrderStatus($data));
         endif;
     }
@@ -96,6 +101,12 @@ class Orders extends MY_Controller{
         $data = $this->input->post();
         $this->data['postData'] = (object) $data;
         $this->load->view($this->accpetOrdFrom,$this->data);
+    }
+
+    public function dispatchOrder(){
+        $data = $this->input->post();
+        $this->data['dataRow'] = $this->order->getOrder($data);
+        $this->load->view($this->dispatchOrdFrom,$this->data);
     }
 }
 ?>

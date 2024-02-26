@@ -205,7 +205,8 @@ async function dataListing(response){
                     cardButton.append(actionButton, actionDropdown);                    
                 }else{
                     var cardButton = $('<small>', {
-                        text : "Rec. Qty. : "+row.dispatch_qty
+                        class : "text-dark",
+                        html : "Rec. Qty. : "+row.dispatch_qty+"<br>"+"Amt. : "+(parseFloat(parseFloat(row.dispatch_qty) * parseFloat(row.price)).toFixed(2))
                     });                    
                 }
 
@@ -218,7 +219,7 @@ async function dataListing(response){
                     class: 'right text-right'
                 });
 
-                if(row.trans_status != 4){                    
+                if($.inArray(row.trans_status,['0','1']) !== -1){                    
 
                     // Create the card-button dropdown
                     var cardButton = $('<div>', {
@@ -244,18 +245,26 @@ async function dataListing(response){
                     var acceptJsonData = actionBtnJson({postData: {id: row.id,trans_status:1},modal_id:'dialogbox-sm',call_function:'acceptOrder',controller : 'orders', fnsave:'changeOrderStatus', form_id : 'acceptOrder',js_store_fn:'confirmStore',title:'Accept Order [Ord No. : '+row.trans_number+']'});
                     var acceptButton = $('<span class="dropdown-item" href="javascript:void(0)" onclick="modalAction(' + acceptJsonData + ');"><ion-icon name="checkmark-circle-outline"></ion-icon> Accept Order</span>');
                     
+                    var disptchButton = "";
                     if(row.trans_status == 1){
                         acceptButton = rejectButton = "";
+
+                        var disptchJsonData = actionBtnJson({postData: {id: row.id,trans_status:2},modal_id:'dialogbox-sm',call_function:'dispatchOrder',controller : 'orders', fnsave:'changeOrderStatus', form_id : 'dispatchOrder',js_store_fn:'confirmStore',title:'Dispatch Order [Ord No. : '+row.trans_number+']'});
+
+                        disptchButton = $('<span class="dropdown-item" href="javascript:void(0)" onclick="modalAction(' + disptchJsonData + ');"><ion-icon name="checkmark-circle-outline"></ion-icon> Diaptch Order</span>');
                     }
 
+                    if(row.trans_status == 2){ disptchButton = acceptButton = rejectButton = ""; }
+
                     // Append anchor tags to the dropdown menu
-                    actionDropdown.append(acceptButton,rejectButton);
+                    actionDropdown.append(acceptButton,rejectButton,disptchButton);
 
                     // Append the button and dropdown menu to the card-button dropdown
                     cardButton.append(actionButton, actionDropdown);                    
                 }else{
                     var cardButton = $('<small>', {
-                        text : "Disp. Qty. : "+row.dispatch_qty
+                        class : "text-dark",
+                        html : "Disp. Qty. : "+row.dispatch_qty+"<br>"+"Amt. : "+(parseFloat(parseFloat(row.dispatch_qty) * parseFloat(row.price)).toFixed(2))
                     });
                 }
 

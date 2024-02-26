@@ -100,6 +100,10 @@ class OrderModel extends masterModel{
                 return ['status'=>0,'message'=>'Order has been canceled. you can not accept it.'];
             endif;
 
+            if($data['trans_status'] == 2 && $data['dispatch_qty'] > $orderData->qty):
+                return ['status'=>0,'message'=>['dispatch_qty'=>'Invalid Qty.']];
+            endif;
+
             if($data['trans_status'] == 3 && $orderData->trans_status > 0):
                 return ['status'=>0,'message'=>'Order has been accepted/rejected. you can not cancel it.'];
             endif;
@@ -107,7 +111,7 @@ class OrderModel extends masterModel{
             $result = $this->store($this->orderTrans,$data);
 
             if($data['trans_status'] == 1): $message = "Accepted"; endif;
-            if($data['trans_status'] == 2): $message = "Deliverd"; endif;
+            if($data['trans_status'] == 2): $message = "Delivered"; endif;
             if($data['trans_status'] == 3): $message = "Canceled"; endif;
             if($data['trans_status'] == 4): $message = "Rejected"; endif;
 

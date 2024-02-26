@@ -47,7 +47,9 @@ $(document).ready(function(){
 		$('.modal-i-'+(zindex-1)).addClass('show');
 
 		$("#"+modal_id+" .modal-header .btn-close").attr('data-modal_id',"");
+		$("#"+modal_id+" .modal-footer .btn-close").attr('data-modal_id',"");
 		$("#"+modal_id+" .modal-header .btn-close").attr('data-modal_class',"");
+		$("#"+modal_id+" .modal-footer .btn-close").attr('data-modal_class',"");
 		setTimeout(function(){ 
 			//$("#"+modalId+" .select2").select2({with:null});
 		}, 500);
@@ -395,7 +397,9 @@ function closeModal(formId){
 	$('.modal-i-'+(zindex-1)).addClass('show');
 
 	$("#"+modal_id+" .modal-header .btn-close").attr('data-modal_id',"");
+	$("#"+modal_id+" .modal-footer .btn-close").attr('data-modal_id',"");
 	$("#"+modal_id+" .modal-header .btn-close").attr('data-modal_class',"");
+	$("#"+modal_id+" .modal-footer .btn-close").attr('data-modal_class',"");
 	setTimeout(function(){ 
 		$("#"+modal_id+" .select2").select2({with:null});	
 	}, 500);
