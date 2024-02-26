@@ -49,42 +49,6 @@
 <div id="appCapsule">
     <div class="section m-t-10">
         <div class="transactions" id="lazy-load-trans" data-url="<?=base_url("app/orders/getMyOrdersDTRows")?>">
-
-            <!-- <div class="section mt-2" id="div11">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="float-start">#1</div>
-                        <div class="float-end">26-02-2023</div>
-                    </div>
-                    <div class="card-body item">
-                        <div class="detail">
-                            <img src="<?=base_url("assets/uploads/products/1708527366_PRD_17085273524479168839729157033747_jpg.jpg")?>" alt="img" class="image-block imaged w48">
-
-                            <div>
-                                <strong>Product 5</strong>
-                                <small>Code : M001</small><br>
-                                <small>Group : Test Group 3</small><br>
-                                <small>Category : Category 1</small><br>
-                                <small>Qty. : 1.00</small><br>
-                                <small>Amt. : 200.00</small><br>                                
-                            </div>
-                        </div>
-
-                        <div class="right">
-                            <div class="card-button dropdown">
-                                <button type="button" class="btn btn-link btn-icon" data-bs-toggle="dropdown">
-                                    <ion-icon name="ellipsis-horizontal" role="img" class="md hydrated" aria-label="ellipsis horizontal"></ion-icon>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-end"></div>
-                            </div>
-                        </div>  
-                    </div>
-                    <div class="card-footer text-center">
-                        <span class="badge badge-warning p-15" style="border-radius: 10px">Pending</span>
-                    </div>
-                </div>
-            </div> -->
-
         </div>
 
         <div id="lazyLoader" class="text-center  m-b-20" style="display:none;">

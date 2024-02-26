@@ -16,13 +16,14 @@ class MY_Controller extends CI_Controller{
 		$this->load->library('form_validation');
 		
 		$this->load->model('masterModel');
+		$this->load->model("DashboardModel","dashboard");
 		$this->load->model("UserMasterModel","userMaster");
 		$this->load->model("ItemGroupModel","itemGroup");
 		$this->load->model("ItemCategoryModel","itemCategory");
 		$this->load->model("ItemMasterModel","item");
 		$this->load->model("OrderModel","order");
 
-		$this->setSessionVariables(["masterModel","userMaster","itemGroup","itemCategory","item","order"]);
+		$this->setSessionVariables(["masterModel","dashboard","userMaster","itemGroup","itemCategory","item","order"]);
 	}
 
 	public function setSessionVariables($modelNames){
