@@ -60,7 +60,7 @@
 <div id="appCapsule">
     <div class="section mt-2">
         <div class="section-heading">
-            <h2 class="title"><?=($this->loginId <= 1)?"Top 10 Items You Orderd":"Pending for accpet/reject orders"?></h2>
+            <h2 class="title"><?=($this->loginId <= 1)?"Top 10 Items You Orderd":"New Orders"?></h2>
             <a href="<?=base_url("app/myOrders")?>" class="link">View All</a>
         </div>
         <div class="transactions" id="dasboardData">            
