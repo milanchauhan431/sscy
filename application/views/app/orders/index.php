@@ -242,8 +242,12 @@ async function dataListing(response){
                     var rejectJsonData = actionBtnJson({postData: {id: row.id,trans_status:4},controller : 'orders', fnsave:'changeOrderStatus','message' : 'Are you sure want to cancel this Order?'});
                     var rejectButton = $('<span class="dropdown-item" href="javascript:void(0)" onclick="confirmStore(' + rejectJsonData + ');"><ion-icon name="close-circle-outline"></ion-icon> Reject Order</span>');
 
-                    var acceptJsonData = actionBtnJson({postData: {id: row.id,trans_status:1},modal_id:'dialogbox-sm',call_function:'acceptOrder',controller : 'orders', fnsave:'changeOrderStatus', form_id : 'acceptOrder',js_store_fn:'confirmStore',title:'Accept Order [Ord No. : '+row.trans_number+']'});
-                    var acceptButton = $('<span class="dropdown-item" href="javascript:void(0)" onclick="modalAction(' + acceptJsonData + ');"><ion-icon name="checkmark-circle-outline"></ion-icon> Accept Order</span>');
+                    /* var acceptJsonData = actionBtnJson({postData: {id: row.id,trans_status:1},modal_id:'dialogbox-sm',call_function:'acceptOrder',controller : 'orders', fnsave:'changeOrderStatus', form_id : 'acceptOrder',js_store_fn:'confirmStore',title:'Accept Order [Ord No. : '+row.trans_number+']'});
+                    var acceptButton = $('<span class="dropdown-item" href="javascript:void(0)" onclick="modalAction(' + acceptJsonData + ');"><ion-icon name="checkmark-circle-outline"></ion-icon> Accept Order</span>'); */
+
+                    var acceptJsonData = actionBtnJson({postData: {id: row.id,trans_status:1},controller : 'orders', fnsave:'changeOrderStatus','message' : 'Are you sure want to Accept this Order?'});
+                    var acceptButton = $('<span class="dropdown-item" href="javascript:void(0)" onclick="confirmStore(' + acceptJsonData + ');"><ion-icon name="checkmark-circle-outline"></ion-icon> Accept Order</span>');
+
                     
                     var disptchButton = "";
                     if(row.trans_status == 1){

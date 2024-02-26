@@ -85,9 +85,9 @@ class Orders extends MY_Controller{
         if(empty($data['id'])):
             $this->printJson(['status'=>0,'message'=>'Somthing went wrong...Please try again.']);
         else:
-            if($data['trans_status'] == 1 && empty($data['delivery_date'])):
+            /* if($data['trans_status'] == 1 && empty($data['delivery_date'])):
                 $this->printJson(['status'=>0,'message'=>['delivery_date'=>'Est. Delivery Date is required.']]);
-            endif;
+            endif; */
 
             if($data['trans_status'] == 2 && empty($data['dispatch_qty'])):
                 $this->printJson(['status'=>0,'message'=>['dispatch_qty'=>'Dispatch Qty. is required.']]);
