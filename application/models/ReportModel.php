@@ -38,7 +38,7 @@ class ReportModel extends MasterModel{
             $to_date = date('Y-m-d');
         endif;
 
-        $result = $this->db->query("SELECT abs(ifnull(lb.op_balance,0)) as op_balance, (CASE WHEN lb.op_balance > 0 THEN 'Cr' WHEN lb.op_balance < 0 THEN 'Dr' ELSE '' END) as op_balance_type,abs(ifnull(lb.cl_balance,0)) as cl_balance, (CASE WHEN lb.cl_balance > 0 THEN 'Cr' WHEN lb.cl_balance < 0 THEN 'Dr' ELSE '' END) as cl_balance_type FROM (SELECT (CASE WHEN trans_date < '".$from_date."' THEN SUM(net_amount * p_or_m) ELSE 0 END) as op_balance,(CASE WHEN trans_date >= '".$from_date."' AND trans_date <= '".$to_date."'  THEN SUM(net_amount * p_or_m) ELSE 0 END) as cl_balance FROM order_transaction WHERE is_delete = 0  AND party_id = ".$data['party_id'].") as lb ")->row();
+        $result = $this->db->query("SELECT abs(ifnull(lb.op_balance,0)) as op_balance, (CASE WHEN lb.op_balance > 0 THEN 'Cr' WHEN lb.op_balance < 0 THEN 'Dr' ELSE '' END) as op_balance_type,abs(ifnull(lb.cl_balance,0)) as cl_balance, (CASE WHEN lb.cl_balance > 0 THEN 'Cr' WHEN lb.cl_balance < 0 THEN 'Dr' ELSE '' END) as cl_balance_type FROM (SELECT SUM((CASE WHEN trans_date < '".$from_date."' THEN (net_amount * p_or_m) ELSE 0 END)) as op_balance,SUM((CASE WHEN trans_date >= '".$from_date."' AND trans_date <= '".$to_date."'  THEN (net_amount * p_or_m)) ELSE 0 END) as cl_balance FROM order_transaction WHERE is_delete = 0  AND party_id = ".$data['party_id'].") as lb ")->row();
         //$this->printQuery();
         return $result;
     }
