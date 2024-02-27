@@ -9,6 +9,8 @@ class ReportModel extends MasterModel{
             if(!empty($data['filters']['to_date'])):
                 $ledgerDate = "AND trans_date <= '".$data['filters']['to_date']."'";
             endif;
+        else:
+            $ledgerDate = "AND trans_date <= '".date("Y-m-d")."'";
         endif;
 
         $data['leftJoin']["(SELECT party_id,abs(SUM(net_amount * p_or_m)) as cl_balance, (CASE WHEN SUM(net_amount * p_or_m) > 0 THEN 'Cr' WHEN SUM(net_amount * p_or_m) < 0 THEN 'Dr' ELSE '' END) as balance_type FROM order_transaction WHERE ((entry_type = 5 AND trans_status = 2) OR (entry_type = 6)) ".$ledgerDate." AND is_delete = 0 GROUP BY party_id) as ledger"] = "ledger.party_id = user_master.id";  
