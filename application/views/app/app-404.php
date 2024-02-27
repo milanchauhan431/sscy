@@ -28,7 +28,7 @@
     <!-- App Header -->
     <div class="appHeader no-border">
         <div class="left">
-            <a href="#" class="headerButton goBack">
+            <a href="<?=base_url("app/login")?>" class="headerButton goBack1 text-dark">
                 <ion-icon name="chevron-back-outline"></ion-icon>
             </a>
         </div>

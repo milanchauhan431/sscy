@@ -19,6 +19,7 @@ class LoginModel extends CI_Model{
 				$this->session->set_userdata('roleName',$this->empRole[$resData->user_role]);
 				$this->session->set_userdata('user_code',$resData->user_code);
 				$this->session->set_userdata('user_name',$resData->user_name);
+				$this->session->set_userdata('user_image',((!empty($resData->user_image))?base_url('assets/uploads/user_image/'.$resData->user_image):base_url("assets/dist/img/avatar.png")));
 				
 				return ['status'=>1,'message'=>'Login Success.'];
 			endif;

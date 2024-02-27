@@ -11,7 +11,10 @@ class DashboardModel extends MasterModel{
         $queryData['leftJoin']['item_group'] = "item_group.id = order_transaction.group_id";
         $queryData['leftJoin']['category_master'] = "category_master.id = order_transaction.category_id";
 
-        $queryData['where']['entry_type'] = 5;
+        $queryData['where']['order_transaction.entry_type'] = 5;
+
+        $queryData['where']['order_transaction.trans_date >='] = date('Y-m-d', strtotime('-30 days'));
+        $queryData['where']['order_transaction.trans_date <='] = date('Y-m-d');
         
         $queryData['group_by'][] = "order_transaction.item_id";
         $queryData['group_by'][] = "order_transaction.group_id";

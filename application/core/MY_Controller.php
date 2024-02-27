@@ -22,8 +22,10 @@ class MY_Controller extends CI_Controller{
 		$this->load->model("ItemCategoryModel","itemCategory");
 		$this->load->model("ItemMasterModel","item");
 		$this->load->model("OrderModel","order");
+		$this->load->model("PaymentVoucherModel","paymentVoucher");
+		$this->load->model("ReportModel","report");
 
-		$this->setSessionVariables(["masterModel","dashboard","userMaster","itemGroup","itemCategory","item","order"]);
+		$this->setSessionVariables(["masterModel","dashboard","userMaster","itemGroup","itemCategory","item","order","paymentVoucher","report"]);
 	}
 
 	public function setSessionVariables($modelNames){
@@ -31,6 +33,7 @@ class MY_Controller extends CI_Controller{
 		$this->loginId = $this->session->userdata('loginId');
 		$this->userCode = $this->session->userdata('user_code');
 		$this->userName = $this->session->userdata('user_name');
+		$this->userImage = $this->session->userdata('user_image');
 		$this->userRole = $this->session->userdata('role');
 		$this->userRoleName = $this->session->userdata('roleName');
 		$this->isApp = $this->session->userdata('is_app');
@@ -42,6 +45,7 @@ class MY_Controller extends CI_Controller{
 			$this->{$modelName}->loginId = $this->loginId;
 			$this->{$modelName}->userCode = $this->userCode;
 			$this->{$modelName}->userName = $this->userName;
+			$this->{$modelName}->userImage = $this->userImage;
 			$this->{$modelName}->userRole = $this->userRole;
 			$this->{$modelName}->userRoleName = $this->userRoleName;
 			$this->{$modelName}->isApp = $this->isApp;

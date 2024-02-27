@@ -14,8 +14,8 @@
             <ion-icon class="icon" name="notifications-outline"></ion-icon>
             <span class="badge badge-danger">4</span>
         </a> -->
-        <a href="<?=base_url("app/uaerMaster/userProfile")?>" class="headerButton">
-            <img src="<?=base_url("assets/dist/img/avatar.png")?>" alt="image" class="imaged w32">
+        <a href="<?=base_url("app/myProfile")?>" class="headerButton">
+            <img src="<?=$this->userImage?>" alt="image" class="imaged w32">
         </a>
     </div>
 </div>

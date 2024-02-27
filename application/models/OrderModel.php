@@ -107,6 +107,15 @@ class OrderModel extends masterModel{
                 return ['status'=>0,'message'=>'Order has been accepted/rejected. you can not cancel it.'];
             endif;
 
+            if(in_array($data['trans_status'],[1,3,4])):
+                $data['order_accpetd_at'] = date("Y-m-d H:i:s");
+            endif;
+
+            if($data['trans_status'] == 2):
+                $data['net_amount'] = round(($data['dispatch_qty'] * $orderData->price),2);
+                $data['order_completed_at'] = date("Y-m-d H:i:s");
+            endif;
+
             $result = $this->store($this->orderTrans,$data);
 
             if($data['trans_status'] == 1): $message = "Accepted"; endif;

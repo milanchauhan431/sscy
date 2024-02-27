@@ -2,6 +2,8 @@
 class UserMaster extends MY_Controller{
     private $index = "app/user_master/index";
     private $form = "app/user_master/form";
+    private $myProfile = "app/user_master/user_profile";
+    private $changePswForm = "app/user_master/change_password";
 
     public function __construct(){
         parent::__construct();
@@ -77,6 +79,72 @@ class UserMaster extends MY_Controller{
             $this->printJson(['status'=>0,'message'=>'Somthing went wrong...Please try again.']);
         else:
             $this->printJson($this->userMaster->changeStatus($data));
+        endif;
+    }
+
+    public function userProfile(){
+        $this->data['headData']->controller = "myProfile";
+        $this->data['headData']->pageName = "MY PROFILE";
+        $this->data['dataRow'] = $this->userMaster->getUser(['id'=>$this->loginId]);
+        //print_r($this->data);exit;
+        $this->load->view($this->myProfile,$this->data);
+    }
+
+    public function uploadProfile(){
+        $data = $this->input->post();
+
+        if($_FILES['user_image']['name'] != null || !empty($_FILES['user_image']['name'])):
+            $this->load->library('upload');
+            $_FILES['userfile']['name']     = $_FILES['user_image']['name'];
+            $_FILES['userfile']['type']     = $_FILES['user_image']['type'];
+            $_FILES['userfile']['tmp_name'] = $_FILES['user_image']['tmp_name'];
+            $_FILES['userfile']['error']    = $_FILES['user_image']['error'];
+            $_FILES['userfile']['size']     = $_FILES['user_image']['size'];
+            
+            $imagePath = realpath(APPPATH . '../assets/uploads/user_image/');
+            $ext = pathinfo($_FILES['user_image']['name'], PATHINFO_EXTENSION);
+
+            $config = ['file_name' => $data['id'].'.'.$ext,'allowed_types' => '*','max_size' => 10240,'overwrite' => FALSE, 'upload_path' => $imagePath];
+
+            if(file_exists($config['upload_path'].'/'.$config['file_name'])) unlink($config['upload_path'].'/'.$config['file_name']);
+
+            $this->upload->initialize($config);
+            if (!$this->upload->do_upload()):
+                $errorMessage['newProfilePhoto'] = $this->upload->display_errors();
+            else:
+                $uploadData = $this->upload->data();
+                $data['user_image'] = $uploadData['file_name'];
+            endif;
+        else:
+            $this->printJson(['status'=>0,'message'=>"Image not found."]);exit;
+        endif;
+
+        $this->printJson($this->userMaster->save($data));
+    }
+
+    public function changePassword(){
+        $this->load->view($this->changePswForm,$this->data);
+    }
+
+    public function saveChangePassword(){
+        $data = $this->input->post();
+        $errorMessage = array();
+
+        if(empty($data['old_password']))
+            $errorMessage['old_password'] = "Old Password is required.";
+        if(empty($data['password'])):
+            $errorMessage['password'] = "New Password is required.";
+        else:
+            if($data['password'] != $data['pass_code']):
+                $errorMessage['pass_code'] = "Confirm password does not match.";
+            endif;
+            $data['password'] = md5($data['password']);
+        endif;
+
+        if(!empty($errorMessage)):
+            $this->printJson(['status'=>0,'message'=>$errorMessage]);
+        else:
+            $this->printJson($this->userMaster->saveChangePassword($data));
         endif;
     }
 }
