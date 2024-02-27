@@ -56,8 +56,8 @@ class ReportModel extends MasterModel{
                 $data['where']['trans_date <='] = $data['filters']['to_date'];
             endif;
         else:
-            $queryData['where']['order_transaction.trans_date >='] = date('Y-m-d', strtotime('-120 days'));
-            $queryData['where']['order_transaction.trans_date <='] = date('Y-m-d');
+            $data['where']['order_transaction.trans_date >='] = date('Y-m-d', strtotime('-120 days'));
+            $data['where']['order_transaction.trans_date <='] = date('Y-m-d');
         endif;
 
         $data['where']['party_id'] = $data['party_id'];
