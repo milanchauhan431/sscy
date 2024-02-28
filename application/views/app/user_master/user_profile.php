@@ -27,7 +27,7 @@
                 <div class="pic-holder">
                     <!-- uploaded pic shown here -->
                     <img id="profilePic" class="pic" src="<?=$dataRow->user_image?>">
-                    <input class="uploadProfileInput" type="file" name="user_image" id="newProfilePhoto" accept="image/*" style="opacity: 0;" />
+                    <input class="uploadProfileInput" type="file" name="user_image" id="newProfilePhoto" accept=".png, .jpg, .jpeg" style="opacity: 0;" />
                     <label for="newProfilePhoto" class="upload-file-block">
                         <div class="text-center">
                             <div class="mb-2"><i class="fa fa-camera fa-2x"></i></div>
