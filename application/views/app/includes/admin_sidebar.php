@@ -48,7 +48,7 @@
                         <img src="<?=base_url("assets/dist/img/icon.png")?>" alt="image" class="imaged w50">
                     </div>
                     <div class="in">
-                        <strong>SADHNA</strong>
+                        <strong><?=SITENAME?></strong>
                     </div>
                     <a href="#" class="btn btn-link btn-icon sidebar-close" data-bs-dismiss="modal">
                         <ion-icon name="close-outline"></ion-icon>
