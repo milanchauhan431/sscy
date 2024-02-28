@@ -526,6 +526,45 @@ span.multiselect-native-select select {
   }
 }
 
+@media only screen 
+  and (min-device-width: 414px) 
+  and (max-device-width: 844px) 
+  and (-webkit-min-device-pixel-ratio: 3) {
+  
+  #item-details-modal .modal-dialog .modal-content .modal-body {
+    max-height: 300px;
+    overflow-y: scroll;
+  }
+
+  #item-details-modal .modal-dialog .modal-content .modal-body::-webkit-scrollbar {
+    height: 4px;
+    width: 4px;
+    background: #5dd6b2;
+    border-radius: 20px;
+  }
+
+  /* Track */
+  #item-details-modal .modal-dialog .modal-content .modal-body::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  /* Handle */
+  #item-details-modal .modal-dialog .modal-content .modal-body::-webkit-scrollbar-thumb {
+    background: #5dd6b2;
+    border-radius: 20px;
+  }
+
+  /* Handle on hover */
+  #item-details-modal .modal-dialog .modal-content .modal-body::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
+  #item-details-modal .modal-dialog .modal-content .modal-body::-webkit-scrollbar-thumb:horizontal {
+    background: #000;
+    border-radius: 10px;
+  }
+}
+
 /* Qty Toggel input Start */
 .qty-input {
   color: #000;
