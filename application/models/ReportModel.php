@@ -19,7 +19,7 @@ class ReportModel extends MasterModel{
 
         $data['searchCol'][] = "user_master.user_code";
         $data['searchCol'][] = "user_master.user_name";
-        $data['searchCol'][] = "SUM(order_transaction.amount * order_transaction.p_or_m)";
+        //$data['searchCol'][] = "SUM(order_transaction.amount * order_transaction.p_or_m)";
 
         $data['order_by']['user_master.user_name'] = "ASC";
 
