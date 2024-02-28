@@ -4,7 +4,7 @@
 //--------------------------------------------------------------------------
 
 // Version
-var VERSION = 2;
+var VERSION = 3.0;
 
 // Cache name
 var CACHE_NAME = 'cache-version-' + VERSION;
