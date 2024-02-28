@@ -460,9 +460,10 @@ span.multiselect-native-select select {
   width: 90%;
   margin-top: 15px; 
 }
+
 #item-details-modal .modal-dialog .modal-content .modal-body{
   max-height: 300px;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 #item-details-modal .modal-dialog .modal-content .modal-body::-webkit-scrollbar{
   height: 4px;
@@ -480,15 +481,45 @@ span.multiselect-native-select select {
   background: #5dd6b2;
   border-radius: 20px;
 }
-
 /* Handle on hover */
 #item-details-modal .modal-dialog .modal-content .modal-body::-webkit-scrollbar-thumb:hover {
   background: #555; 
 }
-
 #item-details-modal .modal-dialog .modal-content .modal-body::-webkit-scrollbar-thumb:horizontal{
   background: #000;
   border-radius: 10px;
+}
+
+@media screen and (max-width: 767px) {
+  /* Mobile-specific styles */
+  #item-details-modal .modal-dialog .modal-content .modal-body {
+    max-height: 300px;
+    overflow-y: scroll;
+  }
+  #item-details-modal .modal-dialog .modal-content .modal-body::-webkit-scrollbar{
+    height: 4px;
+    width: 4px;
+    background: #5dd6b2;
+    border-radius: 20px;
+  }
+  /* Track */
+  #item-details-modal .modal-dialog .modal-content .modal-body::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }    
+  /* Handle */
+  #item-details-modal .modal-dialog .modal-content .modal-body::-webkit-scrollbar-thumb {
+    /* background: #888;  */
+    background: #5dd6b2;
+    border-radius: 20px;
+  }  
+  /* Handle on hover */
+  #item-details-modal .modal-dialog .modal-content .modal-body::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }  
+  #item-details-modal .modal-dialog .modal-content .modal-body::-webkit-scrollbar-thumb:horizontal{
+    background: #000;
+    border-radius: 10px;
+  }
 }
 
 /* Qty Toggel input Start */

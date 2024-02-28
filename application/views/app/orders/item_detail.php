@@ -7,7 +7,7 @@
             <div class="modal-header">
                 <h5 class="modal-title"><?=$dataRow->item_name?></h5>
             </div>
-            <div class="modal-body text-left">
+            <div class="modal-body text-left custom-scrollbar">
                 <div class="scrollbar">
                     <form id="item_detail">
                         <div class="hiddenInputs">
