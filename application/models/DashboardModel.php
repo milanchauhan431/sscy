@@ -36,6 +36,7 @@ class DashboardModel extends MasterModel{
         $queryData['leftJoin']['item_group'] = "item_group.id = order_transaction.group_id";
         $queryData['leftJoin']['category_master'] = "category_master.id = order_transaction.category_id";
 
+        $queryData['where']['order_transaction.entry_type'] = 5;
         $queryData['where']['order_transaction.party_id'] = $this->loginId;
         $queryData['where']['order_transaction.trans_status'] = 0;
 

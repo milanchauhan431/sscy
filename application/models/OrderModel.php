@@ -15,6 +15,8 @@ class OrderModel extends masterModel{
             $data['where']['order_transaction.trans_status !='] = 3;
         endif;
 
+        $data['where']['order_transaction.entry_type'] = 5;
+
         /* if(!empty($data['filters'])):
             if(!empty($data['filters']['item_code'])):
                 $data['where']['item_master.item_code'] = $data['filters']['item_code'];
