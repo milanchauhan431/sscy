@@ -6,7 +6,7 @@
 //-----------------------------------------------------------------------
 // Template Settings
 //-----------------------------------------------------------------------
-const SADHNA = {
+const SSCY = {
     //-------------------------------------------------------------------
     // PWA Settings
     PWA: {
@@ -60,7 +60,7 @@ var loader =  document.getElementById('loader');
 //-----------------------------------------------------------------------
 // Service Workers
 //-----------------------------------------------------------------------
-if (SADHNA.PWA.enable) {
+if (SSCY.PWA.enable) {
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('https://sscy.toxscube.com/service-worker.js')
             .then(reg => console.log('service worker registered'))
@@ -98,7 +98,7 @@ function goBackAnimation() {
 var goBackButton = document.querySelectorAll(".goBack");
 goBackButton.forEach(function (el) {
     el.addEventListener("click", function () {
-        if (SADHNA.Animation.goBack) {
+        if (SSCY.Animation.goBack) {
             goBackAnimation();
         }
         else {
@@ -112,7 +112,7 @@ goBackButton.forEach(function (el) {
 
 //-----------------------------------------------------------------------
 // RTL (Right to Left)
-if (SADHNA.RTL.enable) {
+if (SSCY.RTL.enable) {
     var pageHTML = document.querySelector("html")
     pageHTML.dir = "rtl"
     document.querySelector("body").classList.add("rtl-mode")
@@ -455,12 +455,12 @@ function androidAddtoHome() {
 }
 function AddtoHome(time, once) {
     if (once) {
-        var AddHomeStatus = localStorage.getItem("SADHNAAddtoHome");
+        var AddHomeStatus = localStorage.getItem("SSCYAddtoHome");
         if (AddHomeStatus === "1" || AddHomeStatus === 1) {
             // already showed up
         }
         else {
-            localStorage.setItem("SADHNAAddtoHome", 1)
+            localStorage.setItem("SSCYAddtoHome", 1)
             window.addEventListener('load', () => {
                 if (navigator.standalone) {
                     // if app installed ios home screen
@@ -514,19 +514,19 @@ function AddtoHome(time, once) {
 
 //-----------------------------------------------------------------------
 // Dark Mode
-var checkDarkModeStatus = localStorage.getItem("SADHNADarkmode");
+var checkDarkModeStatus = localStorage.getItem("SSCYDarkmode");
 var switchDarkMode = document.querySelectorAll(".dark-mode-switch");
 var pageBodyActive = pageBody.classList.contains("dark-mode");
 
 // Check if enable as default
-if (SADHNA.Dark_Mode.default) {
+if (SSCY.Dark_Mode.default) {
     pageBody.classList.add("dark-mode");
 }
 
 // Local Dark Mode
-if (SADHNA.Dark_Mode.local_mode.enable) {
-    var nightStart = SADHNA.Dark_Mode.local_mode.start_time;
-    var nightEnd = SADHNA.Dark_Mode.local_mode.end_time;
+if (SSCY.Dark_Mode.local_mode.enable) {
+    var nightStart = SSCY.Dark_Mode.local_mode.start_time;
+    var nightEnd = SSCY.Dark_Mode.local_mode.end_time;
     var currentDate = new Date();
     var currentHour = currentDate.getHours();
     if (currentHour >= nightStart || currentHour < nightEnd) {
@@ -536,7 +536,7 @@ if (SADHNA.Dark_Mode.local_mode.enable) {
 }
 
 // Auto Detect Dark Mode
-if (SADHNA.Dark_Mode.auto_detect.enable)
+if (SSCY.Dark_Mode.auto_detect.enable)
     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
         pageBody.classList.add("dark-mode");
     }
@@ -561,17 +561,17 @@ else {
 }
 switchDarkMode.forEach(function (el) {
     el.addEventListener("click", function () {
-        var darkmodeCheck = localStorage.getItem("SADHNADarkmode");
+        var darkmodeCheck = localStorage.getItem("SSCYDarkmode");
         var bodyCheck = pageBody.classList.contains('dark-mode');
         if (darkmodeCheck === 1 || darkmodeCheck === "1" || bodyCheck) {
             pageBody.classList.remove("dark-mode");
-            localStorage.setItem("SADHNADarkmode", "0");
+            localStorage.setItem("SSCYDarkmode", "0");
             switchDarkModeCheck(false);
         }
         else {
             pageBody.classList.add("dark-mode")
             switchDarkModeCheck(true);
-            localStorage.setItem("SADHNADarkmode", "1");
+            localStorage.setItem("SSCYDarkmode", "1");
         }
     })
 })
@@ -585,7 +585,7 @@ function testMode() {
     var colorSuccess = "color: #1DCC70; font-weight:bold;"
 
     console.clear();
-    console.log("%cSADHNA", "font-size: 1.3em; font-weight: bold; color: #FFF; background-color: #6236FF; padding: 10px 120px; margin-bottom: 16px;")
+    console.log("%cSSCY", "font-size: 1.3em; font-weight: bold; color: #FFF; background-color: #6236FF; padding: 10px 120px; margin-bottom: 16px;")
     console.log("%c🚀 TEST MODE ACTIVATED ..!", "font-size: 1em; font-weight: bold; margin: 4px 0;");
 
     function testModeMsg(value, msg) {
@@ -604,13 +604,13 @@ function testMode() {
     }
 
     testModeSubtitle("THEME SETTINGS")
-    testModeMsg(SADHNA.PWA.enable, "PWA")
-    testModeMsg(SADHNA.Dark_Mode.default, "Set dark mode as default theme")
-    testModeMsg(SADHNA.Dark_Mode.local_mode.enable, "Local dark mode (between " + SADHNA.Dark_Mode.local_mode.start_time + ":00 and " + SADHNA.Dark_Mode.local_mode.end_time + ":00)")
-    testModeMsg(SADHNA.Dark_Mode.auto_detect.enable, "Auto detect dark mode")
-    testModeMsg(SADHNA.RTL.enable, "RTL")
-    testModeMsg(SADHNA.Test.enable, "Test mode")
-    testModeMsg(SADHNA.Test.alert, "Test mode alert")
+    testModeMsg(SSCY.PWA.enable, "PWA")
+    testModeMsg(SSCY.Dark_Mode.default, "Set dark mode as default theme")
+    testModeMsg(SSCY.Dark_Mode.local_mode.enable, "Local dark mode (between " + SSCY.Dark_Mode.local_mode.start_time + ":00 and " + SSCY.Dark_Mode.local_mode.end_time + ":00)")
+    testModeMsg(SSCY.Dark_Mode.auto_detect.enable, "Auto detect dark mode")
+    testModeMsg(SSCY.RTL.enable, "RTL")
+    testModeMsg(SSCY.Test.enable, "Test mode")
+    testModeMsg(SSCY.Test.alert, "Test mode alert")
 
     testModeSubtitle("PREVIEW INFOS")
     // Resolution
@@ -646,10 +646,10 @@ function testMode() {
     }
 
     testModeSubtitle("ANIMATIONS")
-    testModeMsg(SADHNA.Animation.goBack, "Go Back")
+    testModeMsg(SSCY.Animation.goBack, "Go Back")
 }
 function themeTesting() {
-    var word = SADHNA.Test.word;
+    var word = SSCY.Test.word;
     var value = "";
     window.addEventListener('keypress', function (e) {
         value = value + String.fromCharCode(e.keyCode).toLowerCase();
@@ -658,7 +658,7 @@ function themeTesting() {
         }
         if (value == word || value === word) {
             value = ""
-            if (SADHNA.Test.alert) {
+            if (SSCY.Test.alert) {
                 var content = document.getElementById("appCapsule")
                 content.appendChild(document.createElement("div")).className = "test-alert-wrapper";
                 var alert =
@@ -668,7 +668,7 @@ function themeTesting() {
                     +
                     "<div class='text'><h1 class='text-light mb-05'>🤖</h1><strong>"
                     +
-                    SADHNA.Test.alertMessage
+                    SSCY.Test.alertMessage
                     +
                     "</strong></div></div></div>"
                 var wrapper = document.querySelector(".test-alert-wrapper")
@@ -684,7 +684,7 @@ function themeTesting() {
     })
 }
 
-if (SADHNA.Test.enable) {
+if (SSCY.Test.enable) {
     themeTesting();
 }
 //-----------------------------------------------------------------------

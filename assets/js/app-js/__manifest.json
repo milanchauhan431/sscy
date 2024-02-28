@@ -1,6 +1,6 @@
 {
-    "name": "SS-CY",
-    "short_name": "SS-CY",
+    "name": "SSCY",
+    "short_name": "SSCY",
     "id":"sscy",
     "start_url": "https://sscy.toxscube.com/app/",
     "display": "standalone",

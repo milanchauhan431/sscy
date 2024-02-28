@@ -101,7 +101,7 @@ else:
 	define('DEVELOPMENT',0);
 endif;
 
-define('SITENAME','SS-CY');
+define('SITENAME','SSCY');
 define('MASTER_DB', SERVER_PREFIX.'sscy');
 define('POPUP_TITLE', 'SSCY');
 define('ISO_COMPANY_TITLE', 'SSCY');
