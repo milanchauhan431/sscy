@@ -1,6 +1,6 @@
 <div class="modal fade dialogbox" id="item-details-modal" data-bs-backdrop="static" style="display: none;" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <div class="modal-content" style="max-width: 400px;">
+        <div class="modal-content" style="max-width: 375px;">
             <div class="p-3 text-center">
                 <img src="<?=$dataRow->item_image?>" alt="image" class="item-detail-img mb-1">
             </div>
