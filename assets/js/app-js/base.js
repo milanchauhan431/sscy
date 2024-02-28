@@ -66,9 +66,9 @@ if (SSCY.PWA.enable) {
             .then(reg => console.log('service worker registered'))
             .catch(err => console.log('service worker not registered - there is an error.', err)); */
 
-        /* navigator.serviceWorker.register('http://localhost/sscy/service-worker.js')
+        navigator.serviceWorker.register('http://localhost/sscy/service-worker.js')
             .then(reg => console.log('service worker registered'))
-            .catch(err => console.log('service worker not registered - there is an error.', err)); */
+            .catch(err => console.log('service worker not registered - there is an error.', err));
     }
 }
 //-----------------------------------------------------------------------
