@@ -494,7 +494,7 @@ span.multiselect-native-select select {
        only screen and (max-device-width: 640px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
   #item-details-modal .modal-dialog .modal-content .modal-body {
     max-height: 300px;
-    overflow: scroll;
+    overflow-y: scroll;
   }
 
   #item-details-modal .modal-dialog .modal-content .modal-body::-webkit-scrollbar {
