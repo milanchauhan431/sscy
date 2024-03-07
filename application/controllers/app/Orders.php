@@ -50,7 +50,8 @@ class Orders extends MY_Controller{
                     'category_name' => $data['category_name'][$key],
                     'qty' => $data['category_qty'][$key],
                     'price' => $data['price'],
-                    'amount' => round(($data['category_qty'][$key] * $data['price']),2)
+                    'amount' => round(($data['category_qty'][$key] * $data['price']),2),
+                    'remark' => $data['remark']
                 ];
             endif;
         endforeach;

@@ -65,7 +65,19 @@
                                         </table>
                                     </div>
                                 </div>
-
+                                
+                                <div class="col-md-12 m-t-10">
+                                    <div class="form-group basic animated">
+                                        <div class="input-wrapper">
+                                            <label class="label" for="remark">Specific Note</label>
+                                            <input type="text" class="form-control" name="remark" id="remark" placeholder="Enter Specific Note" value="">
+                                            <i class="clear-input">
+                                                <ion-icon name="close-circle"></ion-icon>
+                                            </i>
+                                        </div>
+                                        <div class="error remark"></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </form>
@@ -83,6 +95,7 @@
 
 <script>
 $(document).ready(function(){
+    setInputEvent();
     addItemQty();
     OverlayScrollbars(document.querySelector('#item-details-modal .modal-body'), {});
 });

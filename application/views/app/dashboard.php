@@ -140,14 +140,24 @@ function getPendingOrderList(){
                 var cardBody = $('<div>').addClass('card-body item');
                 var detailDiv = $('<div>').addClass('detail');
                 var productImage = $('<img>').attr('src', row.item_image).attr('alt', 'img').addClass('image-block imaged w48');
-                var details = $('<div>').append(
+
+                var details = $('<div>').html(`
+                    <strong>`+row.item_name+`</strong><br>
+                    <small>Code : `+row.item_code+`</small><br>
+                    <small>Group : `+row.group_name+`</small><br>
+                    <small>Category : `+row.category_name+`</small><br>
+                    <small>Qty. : `+row.quantity+`</small><br>
+                    <small>Amt. : `+row.amount+`</small><br>
+                    <small class="text-warning">Note : `+row.remark+`</small><br>
+                `);
+                /* var details = $('<div>').append(
                     $('<strong>').text(row.item_name),
                     $('<small>').text('Code : ' + row.item_code),
                     $('<small>').text('Group : ' + row.group_name),
                     $('<small>').text('Category : ' + row.category_name),
                     $('<small>').text('Qty. : ' + row.quantity),
                     $('<small>').text('Amt. : ' + row.amount)
-                );
+                ); */
                 var rightDiv = $('<div>').addClass('right text-right').append(
                     $('<span>').addClass('badge badge-warning p-15').css('border-radius', '10px').text(row.status)
                 );

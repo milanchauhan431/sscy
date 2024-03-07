@@ -125,6 +125,7 @@ async function dataListing(response){
                 <small>Category : `+row.category_name+`</small><br>
                 <small>Qty. : `+row.qty+`</small><br>
                 <small>Amt. : `+row.amount+`</small><br>
+                <small class="text-warning">Note : `+row.remark+`</small><br>
             `);
 
             // Append the image and information to the detail div

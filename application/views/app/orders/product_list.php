@@ -241,6 +241,7 @@ function countCartItems(){
                 <small>Code : `+row.item_code+`</small><br>
                 <small>Group : `+row.group_name+`</small><br>
                 <small>Category : `+row.category_name+`</small><br>
+                <small class="text-warning">Note : `+row.remark+`</small><br>
             `);
 
             // Append the image and information to the detail div
@@ -257,10 +258,9 @@ function countCartItems(){
             });
 
             // Create the buttons and input for quantity
-            var qtyMinusBtn = $('<button>', {
+            var qtyMinusBtn = $('<span>', {
                 class: 'qty-count qty-count--minus',
                 'data-action': 'minus',
-                type: 'button',
                 text: '-'
             });
 
@@ -277,10 +277,9 @@ function countCartItems(){
                 'data-price' : row.price
             });
 
-            var qtyAddBtn = $('<button>', {
+            var qtyAddBtn = $('<span>', {
                 class: 'qty-count qty-count--add',
                 'data-action': 'add',
-                type: 'button',
                 text: '+'
             });
 
@@ -316,9 +315,10 @@ function countCartItems(){
             var categoryIdInput = $('<input>',{type : 'hidden', name : 'order_item['+key+'][category_id]', value : row.category_id});
             var priceIdInput = $('<input>',{type : 'hidden', name : 'order_item['+key+'][price]', value : row.price});
             var partyIdInput = $('<input>',{type : 'hidden', name : 'order_item['+key+'][party_id]', value : row.party_id});
+            var remarkInput = $('<input>',{type : 'hidden', name : 'order_item['+key+'][remark]', value : row.remark});
 
             // Append the card to the new div
-            itemDiv.append(card,itemIdInput,groupIdInput,categoryIdInput,priceIdInput,partyIdInput);
+            itemDiv.append(card,itemIdInput,groupIdInput,categoryIdInput,priceIdInput,partyIdInput,remarkInput);
 
             // Append the new div to the body or any other element you want
             $('#view-cart-modal #cartItemList').append(itemDiv);            
