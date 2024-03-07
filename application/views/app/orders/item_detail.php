@@ -53,9 +53,9 @@
                                                             </td>
                                                             <td class="text-right" style="width:30%;">
                                                                 <div class="qty-input float-end">
-                                                                    <button class="qty-count qty-count--minus" data-action="minus" type="button">-</button>
+                                                                    <span class="qty-count qty-count--minus" data-action="minus"></span>
                                                                     <input class="product-qty numericOnly" type="number" name="category_qty['.$row->id.']" min="0" max="10000" value="0" step="1" pattern="[0-9]*">
-                                                                    <button class="qty-count qty-count--add" data-action="add" type="button">+</button>
+                                                                    <span class="qty-count qty-count--add" data-action="add"></span>
                                                                 </div>
                                                             </td>
                                                         </tr>';
@@ -84,7 +84,6 @@
 <script>
 $(document).ready(function(){
     addItemQty();
-
     OverlayScrollbars(document.querySelector('#item-details-modal .modal-body'), {});
 });
 
