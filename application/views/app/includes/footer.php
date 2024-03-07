@@ -82,7 +82,10 @@
     <script src="<?=base_url("assets/plugins/bootstrap/js/bootstrap.min.js")?>"></script>
     <script src="<?=base_url("assets/plugins/multiselect/js/bootstrap-multiselect.js")?>"></script>
     <!-- Select2 -->
-    <script src="<?=base_url("assets/plugins/select2/js/select2.full.min.js")?>"></script>    
+    <script src="<?=base_url("assets/plugins/select2/js/select2.full.min.js")?>"></script>
+    
+    <!-- overlayScrollbars -->
+    <script src="<?=base_url("assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js")?>"></script>
 
     <!-- Custom JS -->
     <script src="<?=base_url("assets/js/app-js/app-comman.js")?>"></script>

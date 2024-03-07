@@ -1,13 +1,13 @@
 <div class="modal fade dialogbox" id="item-details-modal" data-bs-backdrop="static" style="display: none;" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <div class="modal-content" style="max-width: 100%;">
+        <div class="modal-content" style="max-width: 90%;">
             <div class="p-3 text-center">
                 <img src="<?=$dataRow->item_image?>" alt="image" class="item-detail-img mb-1">
             </div>
             <div class="modal-header">
                 <h5 class="modal-title"><?=$dataRow->item_name?></h5>
             </div>
-            <div class="modal-body text-left custom-scrollbar">
+            <div class="modal-body text-left">
                 <div class="scrollbar">
                     <form id="item_detail">
                         <div class="hiddenInputs">
@@ -83,6 +83,12 @@
 
 <script>
 $(document).ready(function(){
+    addItemQty();
+
+    OverlayScrollbars(document.querySelector('#item-details-modal .modal-body'), {});
+});
+
+function addItemQty(){
     var QtyInput = (function () {
         var $qtyInputs = $(".qty-input");
 
@@ -147,5 +153,5 @@ $(document).ready(function(){
             $input.val(qty);
         });
     })();
-});
+}
 </script>

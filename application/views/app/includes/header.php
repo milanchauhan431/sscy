@@ -30,6 +30,9 @@
     <!-- Jquery Confirm -->
     <link href="<?=base_url("assets/css/jquery-confirm.css");?>" rel="stylesheet" type="text/css">
 
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="<?=base_url("assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css")?>">
+
     <link rel="manifest" href="<?=base_url("assets/js/app-js/__manifest.json")?>">
 </head>
 
