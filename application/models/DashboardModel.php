@@ -22,7 +22,7 @@ class DashboardModel extends MasterModel{
 
         $queryData['order_by']['SUM(order_transaction.qty)'] = "DESC";
 
-        $queryData['limit'] = "10";
+        $queryData['limit'] = "20";
 
         $result = $this->rows($queryData);
         return $result;

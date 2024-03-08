@@ -114,6 +114,7 @@ class UserMaster extends MY_Controller{
             else:
                 $uploadData = $this->upload->data();
                 $data['user_image'] = $uploadData['file_name'];
+                $this->session->set_userdata('user_image',base_url('assets/uploads/user_image/'.$data['user_image']));
             endif;
         else:
             $this->printJson(['status'=>0,'message'=>"Image not found."]);exit;

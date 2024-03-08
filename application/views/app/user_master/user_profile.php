@@ -27,7 +27,7 @@
                 <div class="pic-holder">
                     <!-- uploaded pic shown here -->
                     <img id="profilePic" class="pic" src="<?=$dataRow->user_image?>">
-                    <input class="uploadProfileInput" type="file" name="user_image" id="newProfilePhoto" accept=".png, .jpg, .jpeg" style="opacity: 0;" />
+                    
                     <label for="newProfilePhoto" class="upload-file-block">
                         <div class="text-center">
                             <div class="mb-2"><i class="fa fa-camera fa-2x"></i></div>
@@ -36,6 +36,7 @@
                     </label>
                     <input type="hidden" name="id" id="id" value="<?=(!empty($dataRow->id))?$dataRow->id:""; ?>" />
                 </div>
+                <input class="uploadProfileInput" type="file" name="user_image" id="newProfilePhoto" accept=".png, .jpg, .jpeg" style="opacity: 0;" />
             </div>
         </form>
     </div>
@@ -149,6 +150,7 @@ $(document).ready(function(){
                             window.location.reload();
                         }else if(data.status==1){ 
                             toastbox('success',"Profile Photo updated successfully.", 3000);
+                            window.location.reload();
                         }
                         $(holder).removeClass("uploadInProgress");
                         $(holder).find(".upload-loader").remove();

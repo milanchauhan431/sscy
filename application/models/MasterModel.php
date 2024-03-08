@@ -1048,5 +1048,59 @@ class MasterModel extends CI_Model{
 
         return ['status'=>1,'message' => 'Entry Ref. not found.'];
     }
+
+    public function notify($data){
+        $result = array();
+        $this->db->select("web_push_token,app_push_token");
+        
+        $this->db->group_start();
+            $this->db->where('web_push_token !=',"");
+            $this->db->or_where('app_push_token !=',"");
+        $this->db->group_end();
+        
+        //$this->db->where('id != ',$this->loginId);
+        if(!empty($data['user_ids'])):
+            $this->db->where_in('id',$data['user_ids']);
+        endif;
+
+        if(!empty($data['user_roles'])):
+            $this->db->where_in('user_role',$data['user_roles']);
+        endif;
+
+        $this->db->where('is_delete',0);
+        $this->db->where('is_active',1);
+        $result = $this->db->get('user_master')->result();
+        
+        $token = array();
+        foreach($result as $row):
+            if(!empty($row->web_push_token)):
+                $token[] = $row->web_push_token;
+            endif;
+            
+            if(!empty($row->app_push_token)):
+                $token[] = $row->app_push_token;
+            endif;
+        endforeach;
+
+        $result = array();
+        if(!empty($token)):
+            $data['pushToken'] = $token;
+            $result = $this->notification->sendMultipalNotification($data);
+        endif;
+
+        $logData = [
+            'log_date' => date("Y-m-d H:i:s"),
+            'notification_data' => json_encode($data),
+            'notification_response' => json_encode($result),
+            'created_by' => (isset($this->loginId))?$this->loginId:0,
+            'created_at' => date("Y-m-d H:i:s"),
+            'updated_by' => (isset($this->loginId))?$this->loginId:0,
+            'updated_at' => date("Y-m-d H:i:s")
+        ];
+        $this->db->insert('notification_log',$logData);
+
+        return $result;
+    }
+
 }
 ?>

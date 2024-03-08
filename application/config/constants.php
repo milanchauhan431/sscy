@@ -89,7 +89,7 @@ define('FIREBASE_API_KEY','');
 define("LIVE_LINK","https://sscy.toxscube.com/");
 
 define('HOST_NAME','localhost');
-if($_SERVER['HTTP_HOST'] == 'localhost' || $_SERVER['HTTP_HOST'] == "192.168.1.4"):
+if($_SERVER['HTTP_HOST'] == 'localhost' || $_SERVER['HTTP_HOST'] == "192.168.1.2"):
 	define('SERVER_PREFIX','');
 	define('USER_NAME','root');
 	define('PASSWORD','');

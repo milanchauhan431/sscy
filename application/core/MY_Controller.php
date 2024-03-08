@@ -14,8 +14,10 @@ class MY_Controller extends CI_Controller{
 		$this->data['headData'] = new StdClass;
 
 		$this->load->library('form_validation');
+		$this->load->library('fcm');
 		
 		$this->load->model('masterModel');
+		$this->load->model('NotificationModel',"notification");
 		$this->load->model("DashboardModel","dashboard");
 		$this->load->model("UserMasterModel","userMaster");
 		$this->load->model("ItemGroupModel","itemGroup");
@@ -25,7 +27,7 @@ class MY_Controller extends CI_Controller{
 		$this->load->model("PaymentVoucherModel","paymentVoucher");
 		$this->load->model("ReportModel","report");
 
-		$this->setSessionVariables(["masterModel","dashboard","userMaster","itemGroup","itemCategory","item","order","paymentVoucher","report"]);
+		$this->setSessionVariables(["masterModel","notification","dashboard","userMaster","itemGroup","itemCategory","item","order","paymentVoucher","report"]);
 	}
 
 	public function setSessionVariables($modelNames){

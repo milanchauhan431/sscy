@@ -44,6 +44,7 @@
                             <div class="error errorMsg text-center"><?=$errorMsg?></div>
                         <?php endif; ?>
 
+                        <input type="hidden" name="app_push_token" id="app_push_token" value="">
                         <div class="form-group basic animated">
                             <div class="input-wrapper">
                                 <label class="label" for="user_name">Mobile No.</label>
@@ -103,6 +104,10 @@
     <!-- Base Js File -->
     <script src="<?=base_url("assets/js/app-js/base.js")?>"></script>
     
+    <!-- Firebase App is always required and must be first -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script> 
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-messaging.js"></script>
+    <script type="module" src="<?=base_url()?>assets/js/notification.js?v=<?=time()?>"></script>
 </body>
 
 </html>
@@ -132,5 +137,9 @@ function lsRememberMe() {
         localStorage.sscy_password = "";
         localStorage.sscy_checkbox = "";
     }
+}
+
+if (Notification.permission !== "granted"){  
+    Notification.requestPermission();
 }
 </script>

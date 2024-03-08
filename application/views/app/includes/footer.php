@@ -1,7 +1,7 @@
     <?php $this->load->view("app/includes/sidebar"); ?>
     
     <!-- iOS Add to Home Action Sheet -->
-    <div class="modal inset fade action-sheet ios-add-to-home" id="ios-add-to-home-screen" tabindex="-1" role="dialog">
+    <div class="modal inset fade action-sheet ios-add-to-home" id="ios-add-to-home-screen" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -33,7 +33,7 @@
 
 
     <!-- Android Add to Home Action Sheet -->
-    <div class="modal inset fade action-sheet android-add-to-home" id="android-add-to-home-screen" tabindex="-1" role="dialog">
+    <div class="modal inset fade action-sheet android-add-to-home" id="android-add-to-home-screen" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -90,6 +90,11 @@
     <!-- Custom JS -->
     <script src="<?=base_url("assets/js/app-js/app-comman.js")?>"></script>
     <script src="<?=base_url("assets/js/app-js/app-lazy-load.js")?>"></script>
+
+    <!-- Firebase App is always required and must be first -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script> 
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-messaging.js"></script>
+    <script type="module" src="<?=base_url()?>assets/js/notification.js?v=<?=time()?>"></script>
 
     <script>
         // Add to Home with 2 seconds delay.
