@@ -1,7 +1,7 @@
     <?php $this->load->view("app/includes/sidebar"); ?>
     
     <!-- iOS Add to Home Action Sheet -->
-    <div class="modal inset fade action-sheet ios-add-to-home" id="ios-add-to-home-screen" role="dialog">
+    <div class="modal inset fade action-sheet ios-add-to-home" tabindex="-1" id="ios-add-to-home-screen" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -33,7 +33,7 @@
 
 
     <!-- Android Add to Home Action Sheet -->
-    <div class="modal inset fade action-sheet android-add-to-home" id="android-add-to-home-screen" role="dialog">
+    <div class="modal inset fade action-sheet android-add-to-home" tabindex="-1" id="android-add-to-home-screen" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
