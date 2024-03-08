@@ -62,11 +62,11 @@ var loader =  document.getElementById('loader');
 //-----------------------------------------------------------------------
 if (SSCY.PWA.enable) {
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('https://sscy.toxscube.com/service_worker.js')
+        navigator.serviceWorker.register('https://sscy.toxscube.com/service-worker.js')
             .then(reg => console.log('service worker registered'))
             .catch(err => console.log('service worker not registered - there is an error.', err));
 
-        /* navigator.serviceWorker.register('http://localhost/sscy/service_worker.js')
+        /* navigator.serviceWorker.register('http://localhost/sscy/service-worker.js')
             .then(reg => console.log('service worker registered'))
             .catch(err => console.log('service worker not registered - there is an error.', err)); */
     }
