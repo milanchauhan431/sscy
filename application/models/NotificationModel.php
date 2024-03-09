@@ -79,7 +79,7 @@ class NotificationModel extends MasterModel{
             /**
              * set callback url for open web page when click on notification
              */
-            $callBack = (!empty($data['callBack']))?$data['callBack']:base_url();
+            $callBack = (!empty($data['callBack']))?$data['callBack']:base_url("app");
             $this->fcm->setCallbackLink($callBack);
 
             /**
