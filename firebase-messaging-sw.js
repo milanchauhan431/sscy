@@ -60,8 +60,8 @@ self.addEventListener('notificationclick', function(event) {
     var redirectUrl = event.notification.tag;
     //console.log('On notification click: ', event.notification);
     event.notification.close();
-
-    if (redirectUrl) {       
+    window.open(redirectUrl);
+    /* if (redirectUrl) {       
         event.waitUntil(async function () {
             var allClients = await clients.matchAll({
                 includeUncontrolled: true
@@ -80,5 +80,5 @@ self.addEventListener('notificationclick', function(event) {
                 return chatClient;
             }
         }());        
-    }
+    } */
 });

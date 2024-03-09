@@ -46,7 +46,8 @@ messaging.onMessage((payload) => {
 
     // Handle the click event
     notification.onclick = function () {
-        // Check if the window is already open
+        window.open(payload.onclick);
+        /* // Check if the window is already open
         var isOpen = false;
 
         // Iterate through existing windows
@@ -61,8 +62,8 @@ messaging.onMessage((payload) => {
 
         // If the window is not open, open a new one
         if (!isOpen) {
-            window.open(payload.onclick, '_blank');
-        }
+            window.open(payload.onclick);
+        } */
     };
 });
 
