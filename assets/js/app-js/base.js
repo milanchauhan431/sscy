@@ -61,10 +61,34 @@ var loader =  document.getElementById('loader');
 // Service Workers
 //-----------------------------------------------------------------------
 if (SSCY.PWA.enable) {
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('https://sscy.toxscube.com/service-worker.js')
-            .then(reg => console.log('service worker registered'))
-            .catch(err => console.log('service worker not registered - there is an error.', err));
+    if ('serviceWorker' in navigator  && 'PushManager' in window) {
+        /* navigator.serviceWorker.register('https://sscy.toxscube.com/service-worker.js').then(reg => console.log('service worker registered')).catch(err => console.log('service worker not registered - there is an error.', err)); */
+
+        navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
+            // Registration was successful
+            console.log('Service Worker registered with scope:', registration.scope);
+
+            // Handle push notification click
+            registration.pushManager.subscribe({
+                userVisibleOnly: true,
+                applicationServerKey: 'AAAAJCVOrWw:APA91bH5BC2yjmURyJN8I5vQx14RfpWnoI1S7QFsQNwnDFfvU4XaahPrnm3rok01RpG1-X47hGl_WThJrYhLxx-k1wHP9f4LGKOyR8OVSMisrhDYtNXkPyj-zIKi9P2Dm2LJMAG1ihxP'
+            }).then(function(subscription) {
+                console.log('Push subscription successful:', subscription);
+
+                // Add click event listener for push notifications
+                self.addEventListener('notificationclick', function(event) {
+                    // Prevent default action (e.g., open a new page)
+                    event.preventDefault();
+
+                    // Open your web application when notification is clicked
+                    window.open('https://sscy.toxscube.com/app', '_blank');
+                });
+            }).catch(function(error) {
+                console.error('Push subscription error:', error);
+            });
+        }).catch(function(error) {
+            console.error('Service Worker registration failed:', error);
+        });
 
         /* navigator.serviceWorker.register('http://localhost/sscy/service-worker.js')
             .then(reg => console.log('service worker registered'))
