@@ -62,30 +62,30 @@ self.addEventListener('notificationclick', function(event) {
     event.notification.close();
     
     if (redirectUrl) {   
-        // Open the app when it's already installed
-        if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true) {
-            // The web app is running in standalone mode
-            console.log('Web app is installed!');
-        }else{
-            event.waitUntil(async function () {
-                var allClients = await clients.matchAll({
-                    includeUncontrolled: true
-                });
-                var chatClient;            
-                for (var i = 0; i < allClients.length; i++) {
-                    var client = allClients[i];                
-                    if (client['url'].indexOf(redirectUrl) >= 0) {
-                        client.focus();
-                        chatClient = client;
-                        break;
-                    }
+        event.waitUntil(async function () {
+            var allClients = await clients.matchAll({
+                includeUncontrolled: true
+            });
+            var chatClient;            
+            for (var i = 0; i < allClients.length; i++) {
+                var client = allClients[i];                
+                if (client['url'].indexOf(redirectUrl) >= 0) {
+                    client.focus();
+                    chatClient = client;
+                    break;
                 }
-                if (chatClient == null || chatClient == 'undefined') {
-                    chatClient = clients.openWindow(redirectUrl);
-                    return chatClient;
-                }
-            }());
-        }    
-        
+            }
+
+            if (chatClient == null || chatClient == 'undefined') {
+                chatClient = clients.openWindow(redirectUrl);
+                return chatClient;
+            }
+
+            // Check if the web app is installed
+            if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone) {
+                // Web app is installed, focus on it
+                chatClient.focus();
+            }
+        }());        
     }
 });
