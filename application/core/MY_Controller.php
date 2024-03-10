@@ -38,6 +38,7 @@ class MY_Controller extends CI_Controller{
 		$this->userImage = $this->session->userdata('user_image');
 		$this->userRole = $this->session->userdata('role');
 		$this->userRoleName = $this->session->userdata('roleName');
+		$this->adminId = $this->session->userdata('admin_id');
 		$this->isApp = $this->session->userdata('is_app');
 
 		$models = $modelNames;
@@ -50,6 +51,7 @@ class MY_Controller extends CI_Controller{
 			$this->{$modelName}->userImage = $this->userImage;
 			$this->{$modelName}->userRole = $this->userRole;
 			$this->{$modelName}->userRoleName = $this->userRoleName;
+			$this->{$modelName}->adminId = $this->adminId;
 			$this->{$modelName}->isApp = $this->isApp;
 		endforeach;
 		return true;

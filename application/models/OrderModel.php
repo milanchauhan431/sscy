@@ -73,6 +73,14 @@ class OrderModel extends masterModel{
 
             $result['message'] = "Order placed successfully.";
 
+            /* Send Notification */
+            $notifyData = array();
+            $notifyData['notificationTitle'] = "New Order";
+            $notifyData['notificationMsg'] = "You have new order. Please take action against order.";
+            $notifyData['callBack'] = base_url("app/myOrders");
+            $notifyData['user_ids'] = array_unique(array_column($data['order_item'],'party_id'));
+            $this->notify($notifyData);
+
             if ($this->db->trans_status() !== FALSE):
                 $this->db->trans_commit();
                 return $result;
@@ -120,12 +128,44 @@ class OrderModel extends masterModel{
 
             $result = $this->store($this->orderTrans,$data);
 
-            if($data['trans_status'] == 1): $message = "Accepted"; endif;
-            if($data['trans_status'] == 2): $message = "Delivered"; endif;
-            if($data['trans_status'] == 3): $message = "Canceled"; endif;
-            if($data['trans_status'] == 4): $message = "Rejected"; endif;
+            /* Send Notification */
+            $notifyData = array();
+            if($data['trans_status'] == 1): 
+                $message = "Accepted"; 
+
+                $notifyData['notificationTitle'] = "Order Accepted";
+                $notifyData['notificationMsg'] = "Your order has been accepted.\nOrd. No. : ".$orderData->trans_number;
+                $notifyData['user_ids'] = [$orderData->vou_acc_id];
+            endif;
+
+            if($data['trans_status'] == 2): 
+                $message = "Delivered"; 
+
+                $notifyData['notificationTitle'] = "Order Completed";
+                $notifyData['notificationMsg'] = "Your order has been completed.\nOrd. No. : ".$orderData->trans_number;
+                $notifyData['user_ids'] = [$orderData->vou_acc_id];
+            endif;
+
+            if($data['trans_status'] == 3): 
+                $message = "Canceled"; 
+
+                $notifyData['notificationTitle'] = "Order Canceled";
+                $notifyData['notificationMsg'] = "Your order has been canceled.\nOrd. No. : ".$orderData->trans_number;
+                $notifyData['user_ids'] = [$orderData->party_id];
+            endif;
+            
+            if($data['trans_status'] == 4): 
+                $message = "Rejected"; 
+
+                $notifyData['notificationTitle'] = "Order Rejected";
+                $notifyData['notificationMsg'] = "Your order has been rejected.\nOrd. No. : ".$orderData->trans_number;
+                $notifyData['user_ids'] = [$orderData->vou_acc_id];
+            endif;
 
             $result['message'] = "Order ".$message." Successfully.";
+
+            $notifyData['callBack'] = base_url("app/myOrders");            
+            $this->notify($notifyData);
 
             if ($this->db->trans_status() !== FALSE):
                 $this->db->trans_commit();

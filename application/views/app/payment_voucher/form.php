@@ -2,6 +2,7 @@
     <div class="col-md-12">
         <div class="row">
             <input type="hidden" name="id" id="id" value="<?=(!empty($dataRow->id))?$dataRow->id:""?>">
+            <input type="hidden" name="trans_number" id="trans_number" value="<?=(!empty($dataRow->trans_number))?$dataRow->trans_number:""?>">
 
             <div class="form-group basic animated">
                 <div class="input-wrapper">

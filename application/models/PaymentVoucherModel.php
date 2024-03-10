@@ -45,11 +45,20 @@ class PaymentVoucherModel extends MasterModel{
 
             $data['party_id'] = $this->loginId;
             $data['opp_acc_id'] = $data['party_id'];
+            $data['vou_acc_id'] = $this->adminId;
             $data['net_amount'] = $data['amount'];
             $data['p_or_m'] = -1;
             $data['c_or_d'] = 'Dr';
 
             $result = $this->store($this->paymentTrans,$data,'Voucher');
+
+            /* Send Notification */
+            $notifyData = array();
+            $notifyData['notificationTitle'] = ((empty($data['id'])))?"New Payment Voucher":"Update Payment Voucher";
+            $notifyData['notificationMsg'] = "Kariger Code : ".$this->userCode."\nVou. No. : ".$data['trans_number']."\nVou. Amt. : ".$data['amount'];
+            $notifyData['callBack'] = base_url("app/karigerLedger");
+            $notifyData['user_ids'] = [$this->adminId];
+            $this->notify($notifyData);
 
             if ($this->db->trans_status() !== FALSE):
                 $this->db->trans_commit();
@@ -73,7 +82,17 @@ class PaymentVoucherModel extends MasterModel{
         try{
             $this->db->trans_begin();
 
+            $paymentVou = $this->getPaymentVoucher(['id'=>$id]);
+
             $result = $this->trash($this->paymentTrans,['id'=>$id],'Voucher');
+
+            /* Send Notification */
+            $notifyData = array();
+            $notifyData['notificationTitle'] = "Removed Payment Voucher";
+            $notifyData['notificationMsg'] = "Kariger Code : ".$this->userCode."\nVou. No. : ".$paymentVou->trans_number."\nVou. Amt. : ".$paymentVou->amount;
+            $notifyData['callBack'] = base_url("app/karigerLedger");
+            $notifyData['user_ids'] = [$this->adminId];
+            $this->notify($notifyData);
 
             if ($this->db->trans_status() !== FALSE):
                 $this->db->trans_commit();
