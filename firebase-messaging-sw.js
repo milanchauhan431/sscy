@@ -62,7 +62,7 @@ self.addEventListener('notificationclick', function(event) {
     event.notification.close();
     
     if (redirectUrl) {       
-        /* event.waitUntil(async function () {
+        event.waitUntil(async function () {
             var allClients = await clients.matchAll({
                 includeUncontrolled: true
             });
@@ -79,24 +79,6 @@ self.addEventListener('notificationclick', function(event) {
                 chatClient = clients.openWindow(redirectUrl);
                 return chatClient;
             }
-        }()); */    
-        
-        // Check if the window is already open
-        var isOpen = false;
-
-        // Iterate through existing windows
-        $.each(window.frames, function (index, frame) {
-            if (frame.location.href === redirectUrl) {
-                isOpen = true;
-                // Focus on the existing window
-                frame.focus();
-                return false; // Exit the loop
-            }
-        });
-
-        // If the window is not open, open a new one
-        if (!isOpen) {
-            window.open(redirectUrl);
-        }
+        }());
     }
 });
