@@ -43,15 +43,15 @@
         <div class="modal-content">
             <div class="modal-body p-0">
                 <!-- profile box -->
-                <div class="profileBox pt-1 pb-1 bg-success">
+                <div class="profileBox pt-1 pb-1 bg-gold">
                     <div class="image-wrapper">
                         <img src="<?=base_url("assets/dist/img/icon.png")?>" alt="image" class="imaged w50">
                     </div>
                     <div class="in">
                         <strong><?=SITENAME?></strong>
                     </div>
-                    <a href="#" class="btn btn-link btn-icon sidebar-close" data-bs-dismiss="modal">
-                        <ion-icon name="close-outline"></ion-icon>
+                    <a href="#" class="btn btn-link btn-icon sidebar-close text-dark" data-bs-dismiss="modal">
+                        <ion-icon name="close-outline" class="fs-px-50"></ion-icon>
                     </a>
                 </div>
 
