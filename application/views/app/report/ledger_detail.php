@@ -17,11 +17,11 @@
     </div>
     <div class="pageTitle"><?=(isset($headData->pageName)) ? $headData->pageName : '' ?></div>
     <div class="right">
-        <a href="#" class="headerButton toggle-searchbox text-success">
+        <a href="#" class="headerButton toggle-searchbox text-gold">
             <ion-icon name="search-outline"></ion-icon>
         </a>
 
-        <a href="javascript:void(0)" class="button fs-px-35 text-success filter" id="filter-btn">
+        <a href="javascript:void(0)" class="button fs-px-35 text-dark filter" id="filter-btn">
             <ion-icon name="filter-outline"></ion-icon>
         </a>  
     </div>
@@ -42,7 +42,7 @@
 <div id="appCapsule">
     
     <div class="card lazy-load-tab">
-        <div class="card-body" style="padding:5px !important;">
+        <div class="card-body text-dark" style="padding:5px !important;">
             <div class="float-start">Op. Balance</div>
             <div class="float-end" id="op_balance">0</div>
         </div>        
@@ -70,7 +70,7 @@
     </div>
 
     <div class="card bottom-balance">
-        <div class="card-body" style="padding:5px !important;">
+        <div class="card-body text-dark" style="padding:5px !important;">
             <div class="float-start">Cl. Balance</div>
             <div class="float-end" id="cl_balance">0</div>
         </div>        

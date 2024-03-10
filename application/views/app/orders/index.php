@@ -28,7 +28,7 @@
     </div>
     <div class="pageTitle"><?=(isset($headData->pageName)) ? $headData->pageName : '' ?></div>
     <div class="right">
-        <a href="#" class="headerButton toggle-searchbox text-success">
+        <a href="#" class="headerButton toggle-searchbox text-gold">
             <ion-icon name="search-outline"></ion-icon>
         </a>
     </div>

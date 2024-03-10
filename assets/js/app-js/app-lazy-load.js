@@ -39,7 +39,7 @@ $(document).ready(function(){
         };
 
         localStorage.setItem(page_name, JSON.stringify(storageData));
-        $("#filter-btn").removeClass('text-success').addClass('text-warning');
+        $("#filter-btn").removeClass('text-dark').addClass('text-warning');
         reloadTransaction();
     });
 
@@ -48,7 +48,7 @@ $(document).ready(function(){
         $("#filter_form")[0].reset();
         $("#filter-modal .select2").select2();
         localStorage.removeItem(page_name);
-        $("#filter-btn").removeClass('text-warning').addClass('text-success');
+        $("#filter-btn").removeClass('text-warning').addClass('text-dark');
         reloadTransaction();
     });
 });

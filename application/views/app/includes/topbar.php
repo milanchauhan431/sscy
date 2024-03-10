@@ -1,13 +1,13 @@
 <!-- App Header -->
 <div class="appHeader bg-gold text-light">
     <div class="left">
-        <a href="#" class="headerButton" data-bs-toggle="modal" data-bs-target="#sidebarPanel">
+        <a href="#" class="headerButton text-dark" data-bs-toggle="modal" data-bs-target="#sidebarPanel">
             <ion-icon name="menu-outline"></ion-icon>
         </a>
     </div>
     <div class="pageTitle">
         <!-- <img src="<?=base_url("assets/dist/img/logo.png")?>" alt="logo" class="logo"> -->
-        <h2 class="text-center text-white font-weight-bolder" style="font-weight: 700;margin-top: 1%;    font-size: 2rem; margin-bottom: 0rem;"><?=SITENAME?></h2>
+        <h2 class="text-center text-dark font-weight-bolder" style="font-weight: 700;margin-top: 1%;    font-size: 2rem; margin-bottom: 0rem;"><?=SITENAME?></h2>
     </div>
     <div class="right">
         <!-- <a href="app-notifications.html" class="headerButton">

@@ -17,7 +17,7 @@
     </div>
     <div class="pageTitle"><?=(isset($headData->pageName)) ? $headData->pageName : '' ?></div>
     <div class="right">
-        <a href="#" class="headerButton toggle-searchbox text-success">
+        <a href="#" class="headerButton toggle-searchbox text-gold">
             <ion-icon name="search-outline"></ion-icon>
         </a>       
     </div>
@@ -40,12 +40,12 @@
         <div class="card-body pt-0">
             <ul class="nav nav-tabs lined m-t-5 m-b-5" role="tablist">
                 <li class="nav-item filter" style="border-right:1px solid #DCDCE9">
-                    <a href="javascript:void(0)" class="button fs-px-35 text-success" id="filter-btn">
+                    <a href="javascript:void(0)" class="button fs-px-35 text-dark" id="filter-btn">
                         <ion-icon name="filter-outline"></ion-icon>
                     </a>          
                 </li>
                 <li class="nav-item view-cart-btn">
-                    <a href="javascript:void(0)" class="button fs-px-35 text-success m-l-10" >
+                    <a href="javascript:void(0)" class="button fs-px-35 text-dark m-l-10" >
                         <ion-icon name="cart-outline"></ion-icon>
                         <span class="badge badge-danger" id="cart-item-count">0</span>
                     </a>
@@ -200,6 +200,7 @@ function countCartItems(){
         $("#view-cart-modal #cartItemList").html("");
         cartItemList = JSON.parse(cartItemList);
         $("#cart-item-count").html(Object.keys(cartItemList).length);
+        $(".view-cart-btn a").removeClass('text-dark').addClass('text-warning');
         $.each(cartItemList,function(key,row){
             
             // Create a new div with the specified class and id
@@ -334,6 +335,7 @@ function countCartItems(){
         calculateCartQty();
     }else{
         $("#cart-item-count").html('0');
+        $(".view-cart-btn a").removeClass('text-warning').addClass('text-dark');
         $("#view-cart-modal #cartItemList").html('<div class="text-center">Your cart is empty.</div>');
     }
 }

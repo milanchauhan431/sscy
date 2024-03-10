@@ -9,14 +9,14 @@
     </div>
     <div class="pageTitle"><?=(isset($headData->pageName)) ? $headData->pageName : '' ?></div>
     <div class="right">
-        <a href="#" class="headerButton toggle-searchbox text-success">
+        <a href="#" class="headerButton toggle-searchbox text-gold">
             <ion-icon name="search-outline"></ion-icon>
         </a>
 
         <?php
             $addParam = "{'modal_id' : 'ModalBasic', 'controller' : 'paymentVoucher','call_function':'addPaymentVoucher', 'form_id' : 'paymentVoucherForm', 'title' : 'Add Voucher'}";
         ?>
-        <a href="javascript:void(0)" class="button fs-px-40 text-success" onclick="modalAction(<?=$addParam?>);">
+        <a href="javascript:void(0)" class="button fs-px-40 text-gold" onclick="modalAction(<?=$addParam?>);">
             <ion-icon name="add-outline"></ion-icon>
         </a>
     </div>

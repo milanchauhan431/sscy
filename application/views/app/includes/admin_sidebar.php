@@ -60,19 +60,19 @@
                 <ul class="listview flush transparent no-line image-listview">
                     <li>
                         <a href="<?=base_url("app/dashboard")?>" class="item <?=($headData->controller == "dashboard")?"active-item":""?>">
-                            <div class="icon-box bg-success">
+                            <div class="icon-box bg-gold">
                                 <ion-icon name="pie-chart-outline"></ion-icon>
                             </div>
                             <div class="in">
                                 Overview
-                                <span class="badge badge-success">10</span>
+                                <!-- <span class="badge badge-success">10</span> -->
                             </div>
                         </a>
                     </li>
                     
                     <li>
                         <a href="<?=base_url("app/userMaster")?>" class="item <?=($headData->controller == "userMaster")?"active-item":""?>">
-                            <div class="icon-box bg-success">
+                            <div class="icon-box bg-gold">
                                 <ion-icon name="people-outline"></ion-icon>
                             </div>
                             <div class="in">
@@ -83,7 +83,7 @@
 
                     <li>
                         <a href="<?=base_url("app/itemGroup")?>" class="item <?=($headData->controller == "itemGroup")?"active-item":""?>">
-                            <div class="icon-box bg-success">
+                            <div class="icon-box bg-gold">
                                 <ion-icon name="bookmark-outline"></ion-icon>
                             </div>
                             <div class="in">
@@ -94,7 +94,7 @@
 
                     <li>
                         <a href="<?=base_url("app/Orders")?>" class="item <?=($headData->controller == "Orders")?"active-item":""?>">
-                            <div class="icon-box bg-success">
+                            <div class="icon-box bg-gold">
                                 <ion-icon name="cart-outline"></ion-icon>
                             </div>
                             <div class="in">
@@ -105,7 +105,7 @@
 
                     <li>
                         <a href="<?=base_url("app/myOrders")?>" class="item <?=($headData->controller == "myOrders")?"active-item":""?>">
-                            <div class="icon-box bg-success">
+                            <div class="icon-box bg-gold">
                                 <ion-icon name="document-text-outline"></ion-icon>
                             </div>
                             <div class="in">
@@ -116,7 +116,7 @@
 
                     <li>
                         <a href="<?=base_url("app/karigerLedger")?>" class="item <?=($headData->controller == "karigerLedger")?"active-item":""?>">
-                            <div class="icon-box bg-success">
+                            <div class="icon-box bg-gold">
                                 <ion-icon name="book-outline"></ion-icon>
                             </div>
                             <div class="in">
@@ -127,7 +127,7 @@
 
                     <li>
                         <a href="<?=base_url("app/logout")?>" class="item">
-                            <div class="icon-box bg-success">
+                            <div class="icon-box bg-gold">
                                 <ion-icon name="log-out-outline"></ion-icon>
                             </div>
                             <div class="in">
@@ -138,7 +138,7 @@
 
                     <!-- <li>
                         <a href="#" class="item" id="forceReload">
-                            <div class="icon-box bg-success">
+                            <div class="icon-box bg-gold">
                                 <ion-icon name="reload-outline"></ion-icon>
                             </div>
                             <div class="in">
