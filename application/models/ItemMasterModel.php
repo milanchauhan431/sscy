@@ -5,9 +5,10 @@ class ItemMasterModel extends MasterModel{
 
     public function getDTRows($data){
         $data['tableName'] = $this->itemMaster;
-        $data['select'] = "item_master.*,IF(item_master.item_image != '',CONCAT('".base_url('assets/uploads/products/')."',item_master.item_image),'".base_url("assets/dist/img/app-img/sample/brand/1.jpg")."') as item_image,item_group.group_name";
+        $data['select'] = "item_master.*,IF(item_master.item_image != '',CONCAT('".base_url('assets/uploads/products/')."',item_master.item_image),'".base_url("assets/dist/img/app-img/sample/brand/1.jpg")."') as item_image,item_group.group_name,GROUP_CONCAT(category_master.category_name) as category_name";
 
         $data['leftJoin']['item_group'] = "item_group.id = item_master.group_id";
+        $data['leftJoin']['category_master'] = "FIND_IN_SET(category_master.id,item_master.category_id) > 0";
 
         if($this->userRole > 1):
             $data['where']['item_master.created_by'] = $this->loginId;
@@ -27,8 +28,11 @@ class ItemMasterModel extends MasterModel{
         $data['searchCol'][] = "item_master.item_name";
         $data['searchCol'][] = "item_master.price";
         $data['searchCol'][] = "item_group.group_name";
+        $data['searchCol'][] = "category_master.category_name";
 
         $data['order_by']['item_master.id'] = "DESC";
+
+        $data['group_by'][] = "item_master.id";
 
 		return $this->pagingRows($data);
     }
