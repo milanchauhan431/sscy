@@ -82,7 +82,7 @@
                 </div>
 
                 <div class="form-button-group  transparent">
-                    <button type="submit" class="btn btn-success btn-block btn-lg">Log in</button>
+                    <button type="submit" class="btn btn-gold btn-block btn-lg">Log in</button>
                 </div>
 
             </form>

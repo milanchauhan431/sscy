@@ -1,6 +1,11 @@
 .bg-gold{
   background-color: #ffe140;
 }
+.btn-gold{
+  background: #ffe140 !important;
+  border-color: #ffe140 !important;
+  color: #000 !important;
+}
 .text-gold{
   color: #ffe140 !important;
 }
