@@ -69,6 +69,15 @@ if (SSCY.PWA.enable) {
             .catch(err => console.log('service worker not registered - there is an error.', err)); */
     }
 }
+
+// Check if the web app is installed
+window.addEventListener('beforeinstallprompt', function (event) {
+    // Prevent Chrome 67 and earlier from automatically showing the prompt
+    event.preventDefault();
+
+    // Show the prompt manually
+    event.prompt();
+});
 //-----------------------------------------------------------------------
 
 

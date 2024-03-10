@@ -89,18 +89,3 @@ self.addEventListener('notificationclick', function(event) {
         
     }
 });
-
-// Check if the web app is installed
-window.addEventListener('beforeinstallprompt', function (event) {
-    // Prevent Chrome 67 and earlier from automatically showing the prompt
-    event.preventDefault();
-
-    // Show the prompt manually
-    event.prompt();
-});
-
-// Open the app when it's already installed
-if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true) {
-    // The web app is running in standalone mode
-    console.log('Web app is installed!');
-}
