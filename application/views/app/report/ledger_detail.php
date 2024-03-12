@@ -40,15 +40,26 @@
 
 <!-- App Capsule -->
 <div id="appCapsule">
-    
     <div class="card lazy-load-tab">
-        <div class="card-body text-dark" style="padding:5px !important;">
-            <div class="float-start">Op. Balance</div>
-            <div class="float-end" id="op_balance">0</div>
+        <div class="card-body" style="padding:0px;">
+            <ul class="nav nav-tabs lined m-t-5 m-b-5 text-dark" role="tablist">
+                <li class="nav-item filter" style="border-right:1px solid #DCDCE9">
+                    <div class="float-start text-center">
+                        Op. Balance<br>
+                        <span id="op_balance">0</span>
+                    </div>        
+                </li>
+                <li class="nav-item view-cart-btn">
+                    <div class="float-end text-center" id="op_balance">
+                        Cl. Balance<br>
+                        <span id="cl_balance">0</span>
+                    </div>
+                </li>
+            </ul>
         </div>        
     </div>
 
-    <div class="section m-t-40 m-b-40">
+    <div class="section m-t-70 m-b-40">
         <div class="transactions" id="lazy-load-trans" data-url="<?=base_url("app/report/getLedgerDetail/".$userData->id)?>" data-filter_page_name="ledgerDetail">
             <!-- <div class="card m-t-10 m-b-10">
                 <div class="card-body">
@@ -68,17 +79,8 @@
             <img src="<?=base_url("assets/dist/img/infinity-rb.gif")?>" width="80" alt="Loader">
         </div>
     </div>
-
-    
 </div>
 <!-- * App Capsule -->
-
-<div class="card bottom-balance">
-    <div class="card-body text-dark" style="padding:5px !important;">
-        <div class="float-start">Cl. Balance</div>
-        <div class="float-end" id="cl_balance">0</div>
-    </div>        
-</div>
 
 <?php 
     $this->load->view("app/includes/footer"); 
