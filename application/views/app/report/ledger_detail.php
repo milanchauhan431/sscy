@@ -69,14 +69,16 @@
         </div>
     </div>
 
-    <div class="card bottom-balance">
-        <div class="card-body text-dark" style="padding:5px !important;">
-            <div class="float-start">Cl. Balance</div>
-            <div class="float-end" id="cl_balance">0</div>
-        </div>        
-    </div>
+    
 </div>
 <!-- * App Capsule -->
+
+<div class="card bottom-balance">
+    <div class="card-body text-dark" style="padding:5px !important;">
+        <div class="float-start">Cl. Balance</div>
+        <div class="float-end" id="cl_balance">0</div>
+    </div>        
+</div>
 
 <?php 
     $this->load->view("app/includes/footer"); 
