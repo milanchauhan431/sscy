@@ -72,6 +72,7 @@ class Orders extends MY_Controller{
     public function list(){
         $this->data['headData']->controller = "myOrders";
         $this->data['headData']->pageName = "My Orders";
+        $this->data['userList'] = $this->userMaster->getUserList();
         $this->load->view($this->index,$this->data);
     }
 
@@ -108,6 +109,33 @@ class Orders extends MY_Controller{
         $data = $this->input->post();
         $this->data['dataRow'] = $this->order->getOrder($data);
         $this->load->view($this->dispatchOrdFrom,$this->data);
+    }
+
+    public function printOrder($jsonData=""){
+        //$data = $this->input->post();
+        $data = (Array) decodeURL($jsonData);
+
+        $this->data['orderList'] = $this->order->getOrderList($data);
+        $this->data['userDetail'] = $userDetail = $this->userMaster->getUser(['id'=>$data['party_id']]);
+        $this->data['printDate'] = $data['trans_date'];
+        $pdfData = $this->load->view('app/orders/order_print', $this->data, true);
+        
+        $logo = base_url('assets/dist/img/logo.png');
+        
+        $mpdf = new \Mpdf\Mpdf();
+        $filePath = realpath(APPPATH . '../assets/uploads/order/');
+        $pdfFileName = str_replace(["/","-"],"_",$userDetail->user_code."_".$data['trans_date']) . '.pdf';
+
+        $stylesheet = file_get_contents(base_url('assets/css/pdf-style.css?v='.time()));
+        $mpdf->WriteHTML($stylesheet, 1);
+        $mpdf->SetDisplayMode('fullpage');
+        $mpdf->SetWatermarkImage($logo, 0.03, array(120, 120));
+        $mpdf->showWatermarkImage = true;
+        $mpdf->AddPage('P','','','','',10,5,5,5,5,5,'','','','','','','','','','A4-P');
+        $mpdf->WriteHTML($pdfData);
+        
+        ob_clean();
+        $mpdf->Output($pdfFileName, 'D');
     }
 }
 ?>

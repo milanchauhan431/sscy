@@ -31,6 +31,11 @@
         <a href="#" class="headerButton toggle-searchbox text-gold">
             <ion-icon name="search-outline"></ion-icon>
         </a>
+        <?php if(in_array($this->userRole,[-1,1])): ?>
+        <span id="print-dialog" class="headerButton text-gold">
+            <ion-icon name="print-outline"></ion-icon>
+        </span>
+        <?php endif; ?>
     </div>
 </div>
 <!-- * App Header -->
@@ -58,11 +63,20 @@
 </div>
 <!-- * App Capsule -->
 
-<?php $this->load->view("app/includes/footer"); ?>
+<?php 
+    $this->load->view("app/includes/footer"); 
+    $this->load->view("app/orders/print_form");
+?>
 
 <script>
 $(document).ready(function(){
     loadTransaction();
+
+    $(document).on('click','#print-dialog',function(){
+        $("#print-modal").modal("show");
+        $("#print-modal .select2").select2(); 
+        setInputEvent();
+    });
 });
 
 async function dataListing(response){
@@ -248,11 +262,11 @@ async function dataListing(response){
 
             // Create the status badge
             var bage_class = "";
-            if(row.trans_status == 0){ bage_class = "badge-warning"; }
-            if(row.trans_status == 1){ bage_class = "badge-primary"; }
-            if(row.trans_status == 2){ bage_class = "badge-success"; }
-            if(row.trans_status == 3){ bage_class = "badge-dark"; }
-            if(row.trans_status == 4){ bage_class = "badge-danger"; }
+            if(row.trans_status == 0){ bage_class = "badge-warning"; } //Pending
+            if(row.trans_status == 1){ bage_class = "badge-primary"; } //Accepted
+            if(row.trans_status == 2){ bage_class = "badge-success"; } //Competed
+            if(row.trans_status == 3){ bage_class = "badge-dark"; } //Cancled
+            if(row.trans_status == 4){ bage_class = "badge-danger"; } //Rejected
             var orderStatus = $('<span>', {
                 class: 'badge '+bage_class+' p-15',
                 style: 'border-radius: 10px',

@@ -99,6 +99,28 @@ class OrderModel extends masterModel{
         return $result;
     }
 
+    public function getOrderList($data){
+        $queryData = array();
+        $queryData['tableName'] = $this->orderTrans;
+
+        $queryData['select'] = "order_transaction.*,item_master.item_code,item_master.item_name,IF(item_master.item_image != '',CONCAT('".base_url('assets/uploads/products/')."',item_master.item_image),'".base_url("assets/dist/img/app-img/sample/brand/1.jpg")."') as item_image,item_group.group_name,category_master.category_name,(CASE WHEN order_transaction.trans_status = 0 THEN 'Pending' WHEN order_transaction.trans_status = 1 THEN 'Accepted' WHEN order_transaction.trans_status = 2 THEN 'Competed' WHEN order_transaction.trans_status = 3 THEN 'Cancled' WHEN order_transaction.trans_status = 4 THEN 'Rejected' ELSE '' END) as order_status,DATE_FORMAT(order_transaction.trans_date,'%d-%m-%Y') as trans_date,ifnull(order_transaction.remark,'') as remark";
+
+        $queryData['leftJoin']['item_master'] = "item_master.id = order_transaction.item_id";
+        $queryData['leftJoin']['item_group'] = "item_group.id = order_transaction.group_id";
+        $queryData['leftJoin']['category_master'] = "category_master.id = order_transaction.category_id";
+
+        $queryData['where']['order_transaction.party_id'] = $data['party_id'];
+        $queryData['where']['order_transaction.trans_date'] = $data['trans_date'];
+        if($data['trans_status'] != "")
+            $queryData['where']['order_transaction.trans_status'] = $data['trans_status'];
+
+        $queryData['order_by']['order_transaction.trans_date'] = "ASC";
+        $queryData['order_by']['order_transaction.trans_no'] = "ASC";
+
+        $result = $this->rows($queryData);
+        return $result;
+    }
+
     public function changeOrderStatus($data){
         try{
             $this->db->trans_begin();
