@@ -1,2 +1,2 @@
-# admix
-Nativebit Technologies
+# Toxscube
+SSCY APP
