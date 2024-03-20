@@ -1,6 +1,3 @@
 application/logs/
 assets/uploads/products
 assets/uploads/user_image
-vendor/
-/composer.lock
-/default.php
