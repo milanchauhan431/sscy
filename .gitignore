@@ -1,3 +1,4 @@
 application/logs/
 assets/uploads/products
 assets/uploads/user_image
+/composer.json
