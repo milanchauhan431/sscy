@@ -7,6 +7,9 @@
     border-radius: 0;
     bottom: 57px;    
 }
+.appHeader .left .icon, .appHeader .left ion-icon, .appHeader .right .icon, .appHeader .right ion-icon {
+    font-size: 25px !important;
+}
 </style>
 <!-- App Header -->
 <div class="appHeader">
@@ -17,11 +20,11 @@
     </div>
     <div class="pageTitle"><?=(isset($headData->pageName)) ? $headData->pageName : '' ?></div>
     <div class="right">
-        <a href="#" class="headerButton toggle-searchbox text-gold">
+        <a href="#" class="headerButton toggle-searchbox text-gold" style="padding: 0px;">
             <ion-icon name="search-outline"></ion-icon>
         </a>
 
-        <a href="javascript:void(0)" class="button fs-px-35 text-dark filter" id="filter-btn">
+        <a href="javascript:void(0)" class="headerButton text-dark filter" id="filter-btn" style="padding: 0px;">
             <ion-icon name="filter-outline"></ion-icon>
         </a>  
     </div>
@@ -43,17 +46,22 @@
     <div class="card lazy-load-tab">
         <div class="card-body" style="padding:0px;">
             <ul class="nav nav-tabs lined m-t-5 m-b-5 text-dark" role="tablist">
-                <li class="nav-item filter" style="border-right:1px solid #DCDCE9">
+                <li class="nav-item" style="border-right:1px solid #DCDCE9">
                     <div class="float-start text-center">
                         Op. Balance<br>
                         <span id="op_balance">0</span>
                     </div>        
                 </li>
-                <li class="nav-item view-cart-btn">
+                <li class="nav-item" style="border-right:1px solid #DCDCE9">
                     <div class="float-end text-center" id="op_balance">
                         Cl. Balance<br>
                         <span id="cl_balance">0</span>
                     </div>
+                </li>
+                <li class="nav-item" style="width:20%;">
+                    <span id="print-dialog" class="button fs-px-35 text-gold">
+                        <ion-icon name="print-outline"></ion-icon>
+                    </span>   
                 </li>
             </ul>
         </div>        
@@ -85,6 +93,7 @@
 <?php 
     $this->load->view("app/includes/footer"); 
     $this->load->view("app/report/ledger_detail_filter_form");
+    $this->load->view("app/report/ledger_detail_print_form");
 ?>
 
 <script>
@@ -94,6 +103,12 @@ $(document).ready(function(){
     $(document).on('click','.filter',function(){
         $("#filter-modal").modal("show");
         $("#filter-modal .select2").select2(); 
+        setInputEvent();
+    });
+
+    $(document).on('click','#print-dialog',function(){
+        $("#print-modal").modal("show");
+        $("#print-modal .select2").select2(); 
         setInputEvent();
     });
 });

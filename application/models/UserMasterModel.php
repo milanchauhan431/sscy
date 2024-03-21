@@ -85,6 +85,7 @@ class UserMasterModel extends MasterModel{
         $queryData = array();
         $queryData['tableName'] = $this->userMaster;
         $queryData['where']['is_active'] = 1;
+        $queryData['where']['user_role !='] = -1;
         $result = $this->rows($queryData);
         return $result;
     }

@@ -45,18 +45,18 @@ $(document).ready(function(){
         $.each(applyedFilters.filters,function(key,value){ $("#filter_form #"+key).val(value); });
         $("#filter-modal .select2").select2(); 
         $("#filter-btn").removeClass('text-success').addClass('text-warning');
-        setTimeout(function(){$("#from_date").trigger('change');},100);
+        setTimeout(function(){$("#filter_form #from_date").trigger('change');},100);
     }  
 
-    $(document).on('change','#from_date',function(){
-		var inputDate = $("#from_date").val();
+    $(document).on('change','#filter_form #from_date',function(){
+		var inputDate = $("#filter_form #from_date").val();
 		if (inputDate) {
 			var dateObj = new Date(inputDate);
 			dateObj.setDate(dateObj.getDate());
 
 			var resultDate = dateObj.toISOString().split('T')[0];
-			$("#to_date").val(resultDate);
-			$("#to_date").attr('min',resultDate);
+			$("#filter_form #to_date").val(resultDate);
+			$("#filter_form #to_date").attr('min',resultDate);
 		}
 	});
 });

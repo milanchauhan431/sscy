@@ -5,7 +5,7 @@
     <body>
         <table class="table table-bordered">
             <tr>
-                <th colspan="2" class="text-center border-bottom">SSCY</th>
+                <th colspan="2" class="text-center fs-px-30 border-bottom">SSCY</th>
             </tr>
             <tr>
                 <th class="text-left">

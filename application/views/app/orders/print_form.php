@@ -17,14 +17,15 @@
                                 <div class="error trans_date"></div>
                             </div>
 
-                            <div class="form-group basic animated">
+                            <div class="form-group basic animated <?=(!in_array($this->userRole,[-1,1]))?"hidden":""?>">
                                 <div class="input-wrapper">
                                     <label class="label" for="party_id">Code</label>
                                     <select name="party_id" id="party_id" class="form-control selectBox select2">
                                         <option value="">Select Code</option>
                                         <?php
                                             foreach($userList as $row):
-                                                echo '<option value="'.$row->id.'">'.$row->user_code.'</option>';
+                                                $selected = ($this->loginId == $row->id)?"selected":"";
+                                                echo '<option value="'.$row->id.'" '.$selected.'>'.$row->user_code.'</option>';
                                             endforeach;
                                         ?>
                                     </select>

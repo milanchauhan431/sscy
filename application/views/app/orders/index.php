@@ -31,11 +31,9 @@
         <a href="#" class="headerButton toggle-searchbox text-gold">
             <ion-icon name="search-outline"></ion-icon>
         </a>
-        <?php if(in_array($this->userRole,[-1,1])): ?>
         <span id="print-dialog" class="headerButton text-gold">
             <ion-icon name="print-outline"></ion-icon>
-        </span>
-        <?php endif; ?>
+        </span>        
     </div>
 </div>
 <!-- * App Header -->

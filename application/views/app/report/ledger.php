@@ -17,9 +17,9 @@
             <ion-icon name="search-outline"></ion-icon>
         </a>
 
-        <a href="javascript:void(0)" class="button fs-px-35 text-dark filter" id="filter-btn">
+        <!-- <a href="javascript:void(0)" class="button fs-px-35 text-dark filter" id="filter-btn">
             <ion-icon name="filter-outline"></ion-icon>
-        </a>  
+        </a> -->   
     </div>
 </div>
 <!-- * App Header -->
@@ -36,7 +36,24 @@
 
 <!-- App Capsule -->
 <div id="appCapsule">
-    <div class="section m-t-10">
+    <div class="card lazy-load-tab">
+        <div class="card-body p-0">
+            <ul class="nav nav-tabs lined m-t-5 m-b-5" role="tablist">
+                <li class="nav-item filter" style="border-right:1px solid #DCDCE9">
+                    <a href="javascript:void(0)" class="button fs-px-35 text-dark" id="filter-btn">
+                        <ion-icon name="filter-outline"></ion-icon>
+                    </a>          
+                </li>
+                <li class="nav-item">
+                    <span id="print-dialog" class="button fs-px-35 text-gold">
+                        <ion-icon name="print-outline"></ion-icon>
+                    </span>   
+                </li>
+            </ul>
+        </div>        
+    </div>
+
+    <div class="section m-t-50">
         <div class="transactions" id="lazy-load-trans" data-url="<?=base_url("app/report/getLedgerList")?>" data-filter_page_name="ledger">
         </div>
 
@@ -50,6 +67,7 @@
 <?php 
     $this->load->view("app/includes/footer"); 
     $this->load->view("app/report/ledger_filter_form");
+    $this->load->view("app/report/ledger_print_form");
 ?>
 <script>
 $(document).ready(function(){
@@ -58,6 +76,12 @@ $(document).ready(function(){
     $(document).on('click','.filter',function(){
         $("#filter-modal").modal("show");
         $("#filter-modal .select2").select2(); 
+        setInputEvent();
+    });
+
+    $(document).on('click','#print-dialog',function(){
+        $("#print-modal").modal("show");
+        $("#print-modal .select2").select2(); 
         setInputEvent();
     });
 });

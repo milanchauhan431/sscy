@@ -681,6 +681,10 @@ span.multiselect-native-select select {
 }
 /* Profile Upload End */
 
+.hidden{
+  display: none !important;
+}
+
 /* Margin in px start */
 .m-1{ margin : 1px !important; }
 .m-2{ margin : 2px !important; }

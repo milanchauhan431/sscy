@@ -121,6 +121,14 @@ class Orders extends MY_Controller{
         $pdfData = $this->load->view('app/orders/order_print', $this->data, true);
         
         $logo = base_url('assets/dist/img/logo.png');
+
+        $htmlFooter = '<table class="table top-table" style="margin-top:10px;border-top:1px solid #545454;">
+            <tr>
+                <td style="width:25%;">Print Date : '.date("d-m-Y").'</td>
+                <td style="width:25%;"></td>
+                <td style="width:25%;text-align:right;">Page No. {PAGENO}/{nbpg}</td>
+            </tr>
+        </table>';
         
         $mpdf = new \Mpdf\Mpdf();
         $filePath = realpath(APPPATH . '../assets/uploads/order/');
@@ -131,7 +139,8 @@ class Orders extends MY_Controller{
         $mpdf->SetDisplayMode('fullpage');
         $mpdf->SetWatermarkImage($logo, 0.03, array(120, 120));
         $mpdf->showWatermarkImage = true;
-        $mpdf->AddPage('P','','','','',10,5,5,5,5,5,'','','','','','','','','','A4-P');
+        $mpdf->SetHTMLFooter($htmlFooter);
+        $mpdf->AddPage('P','','','','',10,5,5,15,5,5,'','','','','','','','','','A4-P');
         $mpdf->WriteHTML($pdfData);
         
         ob_clean();
